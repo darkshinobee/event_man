@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-4">
 
-          <p>&copy; 2017 EVENTMAN. ALL RIGHTS RESEVED</p>
+          <p class="pull-right">&copy; 2017 EVENTMAN. ALL RIGHTS RESEVED</p>
         </div>
       </div>
 
@@ -23,10 +23,8 @@
             <h3>About</h3>
             <ul>
               <li><a href="#">Our Company</a></li>
-              <li><a href="#">Careers</a></li>
-              <li><a href="#">Advertising</a></li>
-              <li><a href="#">Press Room</a></li>
-              <li><a href="#">Trademarks</a></li>
+              {{-- <li><a href="#">Careers</a></li> --}}
+              {{-- <li><a href="#">Advertising</a></li> --}}
               <li><a href="#">Terms of Service</a></li>
               <li><a href="#">Privacy Policy</a></li>
             </ul>
@@ -36,9 +34,7 @@
             <h3>Support and Contact</h3>
             <ul>
               <li><a href="#">Customer Support Contacts</a></li>
-              <li><a href="#">Feedback</a></li>
               <li><a href="#">Help</a></li>
-              <li><a href="#">Sitemap</a></li>
             </ul>
           </div>
 
@@ -71,8 +67,8 @@
               </li>
               <li class="rss">
                 <a href="#">
-                  <i class="fa fa-rss-square" aria-hidden="true"></i>
-                  RSS
+                  <i class="fa fa-instagram" aria-hidden="true"></i>
+                  Instagram
                 </a>
               </li>
             </ul>
@@ -83,8 +79,8 @@
           <div class="footer-dashboard">
             <h3>EVENTMAN Dashboard</h3>
             <ul>
-              <li><a href="#">Professional</a></li>
-              <li><a href="#">Subscriber Login</a></li>
+              <li><a href="#">Organizer</a></li>
+              <li><a href="#">Attendee</a></li>
             </ul>
           </div>
         </div>

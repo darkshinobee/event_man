@@ -3,3 +3,11 @@
   position: absolute;
   width: 100%;
 }
+
+.myBtn{
+	background-color: green;
+}
+
+#site-navigation .nav li a.myBtn:hover{
+  color: greenyellow;
+}

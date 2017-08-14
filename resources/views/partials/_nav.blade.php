@@ -57,13 +57,13 @@
               </button>
 
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="full-event-schedule.html">Schedule</a></li>
-                <li><a href="artist-page.html">Concerts</a></li>
-                <li><a href="upcoming-events.html">Sports</a></li>
-                <li><a href="order-ticket-without-seat.html">Parties</a></li>
-                <li><a href="event-by-category.html">Theater</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="select-seat-2.html">Ticekts</a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="btn myBtn" href="#">CREATE EVENT</a></li>
                 <li class="cart"><a href="#">0</a></li>
               </ul>
             </div>
