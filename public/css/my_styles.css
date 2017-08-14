@@ -6,6 +6,11 @@
 
 .myBtn{
 	background-color: green;
+  color: white;
+}
+
+.myBtn:hover{
+  color: greenyellow;
 }
 
 #site-navigation .nav li a.myBtn:hover{
