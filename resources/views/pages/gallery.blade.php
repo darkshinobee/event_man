@@ -4,7 +4,7 @@
   <section class="section-gallery">
     <div class="container">
       <div class="row">
-        <h1>A JOURNEY THROUGH TIME</h1>
+        <h1>JOURNEY THROUGH TIME</h1>
         <div class="gallery-list row">
           @for ($i = 0; $i <= 8; $i++)
           <div class="gallery-img col-sm-4">
