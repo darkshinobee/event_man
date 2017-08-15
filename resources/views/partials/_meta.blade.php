@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="/theme/publish/css/bootstrap.offcanvas.min.css">
 <link rel="stylesheet" href="/theme/publish/css/core.css">
 
-{{-- <link rel="stylesheet" href="/css/app.css"> --}}
+<link rel="stylesheet" href="/css/app.css">
 <link rel="stylesheet" href="/css/my_styles.css">
 
 <!-- Custom styles for this template -->

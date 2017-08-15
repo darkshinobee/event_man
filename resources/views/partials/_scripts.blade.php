@@ -12,4 +12,4 @@
 <script src="/theme/publish/js/bootstrap.offcanvas.min.js"></script>
 <script src="/theme/publish/js/main.js"></script>
 
-{{-- <script src="/js/app.js"></script> --}}
+<script src="/js/app.js"></script>

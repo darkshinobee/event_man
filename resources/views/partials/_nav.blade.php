@@ -60,7 +60,7 @@
                 <li class="active"><a href="/">Home</a></li>
                 <li><a href="#">Events</a></li>
                 <li><a href="/gallery">Gallery</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="/blog">Blog</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a class="btn myBtn" href="#">CREATE EVENT</a></li>
                 <li class="cart"><a href="#">0</a></li>
