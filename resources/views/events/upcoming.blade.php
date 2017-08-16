@@ -25,7 +25,7 @@
           <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="tab1">
               <ul class="clearfix">
-                @for ($i = 0; $i < 6; $i++)      
+                @for ($i = 0; $i < 6; $i++)
                 <li>
                   <div class="date">
                     <a href="#">
