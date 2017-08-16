@@ -186,6 +186,10 @@ body{
 	background:none;
 }
 
+.top-header .top-right ul li a:hover{
+  color: greenyellow;
+}
+
 .main-header{
 	padding:20px 0;
 	position:relative;

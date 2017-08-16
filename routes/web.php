@@ -26,3 +26,6 @@ Route::get('blog', function () {
 Route::get('single_event', function () {
     return view('events.single');
 });
+Route::get('single_blog', function () {
+    return view('pages.single_blog');
+});

@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Single Event')
+@section('title', 'Single Article')
 @section('content')
 
   <section class="section-refine-search">
@@ -7,7 +7,7 @@
       <div class="row">
         <form class="row">
           <div class="keyword col-md-8">
-            <label>Search Event</label>
+            <label>Search Article</label>
             <input type="text" class="form-control hasclear" placeholder="Search">
             <span class="clearer"><img src="/theme/publish/images/clear.png" alt="clear"></span>
           </div>
@@ -28,18 +28,15 @@
               <div role="tabpanel" class="tab-pane active" id="tab1">
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="tab1-hr1">
-                      <img src="/images/zko.jpg" alt="single_event 836x261">
+                      <img src="/images/storyroom-blog.png" alt="single_event 836x261">
                       <div class="full-event-info">
                         <div class="full-event-info-header">
-                          <h2>Zurich Chamber Orchestra</h2>
-                          <span class="ticket-left-info">18 Tickets Left</span>
+                          <h2>The Title Goes Here</h2>
                           <div class="clearfix"></div>
-                          <span class="event-date-info">Saturday, August 22, 2016 | 08:00 AM</span>
-                          <span class="event-venue-info">220 Morrissey Blvd. Zurich, SW 02125</span>
+                          <span class="event-date-info">by Luciano Pavarotti | Aug 22, 2016</span>
                         </div>
                         <div class="full-event-info-content">
                           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
-                          <a class="book-ticket" href="#">Book Ticket</a>
                         </div>
                       </div>
                     </div>
@@ -51,15 +48,28 @@
         <div class="col-md-1"></div>
         <div class="col-md-3">
           <div class="">
-            <h3 class="text-center">Related Events</h3>
-            @for ($i = 0; $i < 3; $i++)
+            <h3 class="text-center">Related Articles</h3>
+            @for ($i = 0; $i < 2; $i++)
             <div class="">
-              <img class="img-responsive m-t-20" src="/images/zko_violin.jpg" alt="Related photo">
-              <p class="m-t-5">Some Cool Concert</p>
+              <img class="img-responsive m-t-20" src="/images/trailer.png" alt="Popular photo">
+              <p class="m-t-5">The Blog Title</p>
             </div>
             @endfor
           </div>
           <a class="btn btn-md myBtn pull-right" href="#">More...</a>
+          <div class="p-t-30">
+            <h3 class="text-center">Categories</h3>
+            <ul style="list-style:none;">
+              <li>Travel</li>
+              <li>Conference</li>
+              <li>Party</li>
+              <li>Sports</li>
+              <li>Concert</li>
+              <li>Entertainment</li>
+              <li>Kids</li>
+              <li>Technology</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
