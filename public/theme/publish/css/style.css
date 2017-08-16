@@ -931,7 +931,8 @@ body{
 	position:absolute;
 	left:-25px;
 	top:4px;
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 }
 
 .section-upcoming-events .section-header p{
@@ -945,8 +946,10 @@ body{
 }
 
 .section-upcoming-events .section-header a{
-	color:#ff6600;
-	border:1px solid #ff6600;
+	/*color:#ff6600;*/
+  color:green;
+	/*border:1px solid #ff6600;*/
+  border:1px solid green;
 	background:#fff;
 	display:inline-block;
 	text-decoration:none;
@@ -960,7 +963,8 @@ body{
 }
 
 .section-upcoming-events .section-header a:hover{
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 	color:#fff
 }
 
@@ -1039,7 +1043,8 @@ body{
 	line-height: 12px;
 	color:#fff;
 	padding:10px 15px;
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 	text-transform:uppercase;
 	font-family: 'Open Sans', sans-serif;
 	border:none;
@@ -1053,7 +1058,8 @@ body{
 
 .section-upcoming-events .section-content .info .get-ticket:hover{
 	background:#fff;
-	color:#ff6600;
+	/*color:#ff6600;*/
+  color:green;
 }
 
 /*--------------------------------------------------------------
