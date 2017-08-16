@@ -34,7 +34,7 @@
                 </a>
               </div>
               <a href="#">
-                <img src="/theme/publish/images/upcoming-event-1.jpg" alt="image">
+                <img src="/images/zko.jpg" alt="image">
               </a>
               <div class="info">
                 <p>BMW Open Championship <span>San Francisco</span></p>
@@ -50,7 +50,7 @@
                 </a>
               </div>
               <a href="#">
-                <img src="/theme/publish/images/upcoming-event-2.jpg" alt="image">
+                <img src="/images/zko.jpg" alt="image">
               </a>
               <div class="info">
                 <p>Kiai Kanjeng Orchestra <span>San Francisco</span></p>
@@ -66,7 +66,7 @@
                 </a>
               </div>
               <a href="#">
-                <img src="/theme/publish/images/upcoming-event-3.jpg" alt="image">
+                <img src="/images/zko.jpg" alt="image">
               </a>
               <div class="info">
                 <p>Envato Author SF Meetup <span>San Francisco</span></p>
