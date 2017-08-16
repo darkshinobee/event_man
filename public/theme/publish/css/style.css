@@ -1237,7 +1237,8 @@ body{
 	line-height: 12px;
 	color:#fff;
 	padding:10px 15px;
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 	text-transform:uppercase;
 	font-family: 'Open Sans', sans-serif;
 	border:none;
@@ -1251,7 +1252,8 @@ body{
 
 .section-calendar-events .section-content .tab-content .info .get-ticket:hover{
 	background:#fff;
-	color:#ff6600;
+	/*color:#ff6600;*/
+  color:green;
 }
 
 /*--------------------------------------------------------------

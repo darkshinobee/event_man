@@ -29,3 +29,6 @@ Route::get('single_event', function () {
 Route::get('single_blog', function () {
     return view('pages.single_blog');
 });
+Route::get('upcoming_events', function () {
+    return view('events.upcoming');
+});
