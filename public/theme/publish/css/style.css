@@ -2152,11 +2152,13 @@ body{
 
 .section-refine-search input[type="submit"]{
 	width:100%;
-	border:2px solid #ff6600;
+	/*border:2px solid #ff6600;*/
+  border:2px solid green;
 	height:55px;
 	line-height:51px;
 	text-align:center;
-	color:#ff6600;
+	/*color:#ff6600;*/
+  color:green;
 	font-size:17px;
 	text-transform:uppercase;
 	font-family: "Montserrat-Regular";
@@ -2166,7 +2168,8 @@ body{
 }
 
 .section-refine-search input[type="submit"]:hover{
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 	color:#fff
 }
 
@@ -4751,7 +4754,8 @@ body{
 .section-full-events-schedule .section-content .tab-pane .full-event-info .ticket-left-info{
 	font-size:10px;
 	color:#fff;
-	background:#ff5700;
+	/*background:#ff5700;*/
+  background:green;
 	padding:5px 15px;
 	float:right;
 	display:inline-block;
@@ -4795,10 +4799,15 @@ body{
 	color:#fff;
 	padding:20px 70px;
 	text-transform:uppercase;
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 	border-radius:50px;
 	float:right;
 	margin:25px 0 0;
+}
+
+.section-full-events-schedule .section-content .tab-pane .full-event-info-content .book-ticket:hover{
+  color: greenyellow;
 }
 
 /*--------------------------------------------------------------

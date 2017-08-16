@@ -23,3 +23,6 @@ Route::get('gallery', function () {
 Route::get('blog', function () {
     return view('pages.blog');
 });
+Route::get('single_event', function () {
+    return view('events.single');
+});

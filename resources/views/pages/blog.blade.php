@@ -1,9 +1,26 @@
 @extends('main')
 @section('title', 'Blog')
 @section('content')
+
+  <section class="section-refine-search">
+    <div class="container">
+      <div class="row">
+        <form class="row">
+          <div class="keyword col-md-8">
+            <label>Search Article</label>
+            <input type="text" class="form-control hasclear" placeholder="Search">
+            <span class="clearer"><img src="/theme/publish/images/clear.png" alt="clear"></span>
+          </div>
+          <div class="col-md-4 p-t-10">
+            <input type="submit" value="Search">
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
 <div class="container">
   <div class="row" style="margin-top:30px;">
-    <h2 class="text-center">Event Man Blog</h2><hr><br>
     <div class="col-md-8">
       @for ($i = 0; $i < 3; $i++)
       <img class="" src="/images/storyroom-blog.png" alt="Blog Photo: 680x360">
@@ -22,7 +39,8 @@
         </div>
         @endfor
       </div>
-      <div class="">
+      <a class="btn btn-md myBtn pull-right" href="#">More...</a>
+      <div class="p-t-30">
         <h3 class="text-center">Categories</h3>
         <ul style="list-style:none;">
           <li>Travel</li>

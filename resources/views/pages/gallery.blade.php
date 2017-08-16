@@ -15,6 +15,7 @@
               <img src="/images/vector_party_man-wide.jpg" alt="image">
               <div class="gallery-lightbox-content">
                 <h3>MADISON SQUARE GARDEN: LIVE CONCERT</h3>
+                <p>New York | Sep 10, 2015</p>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
               </div>
             </div>
