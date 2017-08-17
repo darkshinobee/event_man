@@ -2369,13 +2369,16 @@ body{
 	font-size:16px;
 	font-family: "Montserrat-Regular";
 	padding:18px;
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 	border-radius:5px;
-	border:1px solid #ff6600
+	/*border:1px solid #ff6600;*/
+  border:1px solid green;
 }
 
 .section-search-content .search-result-item .search-result-item-price a:hover{
-	color:#ff6600;
+	/*color:#ff6600;*/
+  color:green;
 	background:#fff;
 }
 
@@ -4819,7 +4822,9 @@ body{
 }
 
 .section-full-events-schedule .section-content .tab-pane .full-event-info-content .book-ticket:hover{
-  color: greenyellow;
+  color: green;
+  background-color: white;
+  border: solid green 1px;
 }
 
 /*--------------------------------------------------------------

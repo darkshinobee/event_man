@@ -10,7 +10,9 @@
 }
 
 .myBtn:hover{
-  color: greenyellow;
+  color: green;
+  background-color: white;
+  border: solid green 1px;
 }
 
 #site-navigation .nav li a.myBtn:hover{
