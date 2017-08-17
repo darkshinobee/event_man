@@ -1287,7 +1287,8 @@ body{
 	position:absolute;
 	left:0;
 	top:4px;
-	background:#ff6600;
+	/*background:#ff6600;*/
+  background:green;
 }
 
 .section-event-category .section-content ul li{
