@@ -63,7 +63,7 @@
                 <li><a href="/blog">Blog</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a class="btn myBtn" href="#">CREATE EVENT</a></li>
-                <li class="cart"><a href="#">0</a></li>
+                {{-- <li class="cart"><a href="#">0</a></li> --}}
               </ul>
             </div>
           </nav><!-- #site-navigation -->
