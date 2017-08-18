@@ -4,7 +4,7 @@
 <meta name="description" content="">
 <meta name="IB DeV" content="">
 
-<title>EventMan - @yield('title')</title>
+<title>TicketRoom - @yield('title')</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">

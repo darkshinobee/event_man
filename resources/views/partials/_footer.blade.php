@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-4">
 
-          <p class="pull-right">&copy; 2017 EVENTMAN. ALL RIGHTS RESEVED</p>
+          <p class="pull-right">&copy; 2017 TICKETROOM. ALL RIGHTS RESEVED</p>
         </div>
       </div>
 
@@ -77,7 +77,7 @@
 
         <div class="footer-2 col-md-3">
           <div class="footer-dashboard">
-            <h3>EVENTMAN Dashboard</h3>
+            <h3>TICKETROOM Dashboard</h3>
             <ul>
               <li><a href="#">Organizer</a></li>
               <li><a href="#">Attendee</a></li>

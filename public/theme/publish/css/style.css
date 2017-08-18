@@ -2036,8 +2036,8 @@ body{
 	display:block;
 	font-size:16px;
 	color:#fff;
-	border:1px solid #ff6600;
-	background:#ff6600;
+	border:1px solid green;
+	background:green;
 	border-radius:50px;
 	text-align:center;
 	padding:20px;
@@ -2046,7 +2046,7 @@ body{
 }
 
 .primary-link:hover{
-	color:#ff6600;
+	color:green;
 	background:#fff;
 }
 
@@ -2054,8 +2054,8 @@ body{
 .secondary-link{
 	display:block;
 	font-size:16px;
-	border:1px solid #ff6600;
-	color:#ff6600;
+	border:1px solid green;
+	color:green;
 	background:#fff;
 	border-radius:50px;
 	text-align:center;
@@ -2067,7 +2067,7 @@ body{
 
 .secondary-link:hover{
 	color:#fff;
-	background:#ff6600;
+	background:green;
 	border:1px solid #fff;
 }
 
@@ -2962,14 +2962,16 @@ body{
 	border-right:1px solid #b3b3b3;
 	border-top:1px solid #b3b3b3;
 	border-bottom:1px solid #b3b3b3;
-	border-left:3px solid #ff6600;
+	/*border-left:3px solid #ff6600;*/
+  border-left:3px solid green;
 	border-radius:5px;
 	margin:0 0 40px
 }
 
 .section-order-details-event-info .venue-details-info p{
 	margin:0 0 10px;
-	color:#ff6600;
+	/*color:#ff6600;*/
+  color:green;
 	font-family: "Montserrat-Regular";
 	font-size:18px;
 	line-height:normal;
@@ -3069,8 +3071,8 @@ body{
 }
 
 .seat-details-info .table.number-tickets .qty-btn:hover{
-	border:1px solid #ff6600;
-	color:#ff6600
+	border:1px solid green;
+	color:green;
 }
 
 .seat-details-info .table.seat-row{
@@ -3103,7 +3105,8 @@ body{
 
 .seat-details-info-price .table td.price{
 	font-size:26px;
-	color:#ff6600;
+	/*color:#ff6600;*/
+  color:green;
 	text-align:center;
 }
 
@@ -3299,20 +3302,20 @@ body{
 }
 
 .section-order-review-pricing .table tfoot td.total-price{
-	color:#ff6600;
+	color:green;
 	font-size:23px;
 	text-align:right
 }
 
 .section-order-review-pricing .pricing{
 	padding:20px 30px;
-	border-right:1px solid #b3b3b3;
+	/*border-right:1px solid #b3b3b3;*/
 	border-top:none;
-	border-bottom:1px solid #b3b3b3;
-	border-left:1px solid #b3b3b3;
-	border-bottom-left-radius:5px;
-	border-bottom-right-radius:5px;
-	background:#f8f8f8;
+	/*border-bottom:1px solid #b3b3b3;*/
+	/*border-left:1px solid #b3b3b3;*/
+	/*border-bottom-left-radius:5px;*/
+	/*border-bottom-right-radius:5px;*/
+	background:white;
 	margin:0 0 40px
 }
 

@@ -13,7 +13,7 @@
             <li>
               <a href="">
                 <i class="fa fa-envelope-o"></i>
-                test@eventman.com
+                test@ticketroom.ng
               </a>
             </li>
           </ul>

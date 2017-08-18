@@ -32,3 +32,6 @@ Route::get('single_blog', function () {
 Route::get('upcoming_events', function () {
     return view('events.upcoming');
 });
+Route::get('checkout', function () {
+    return view('payment.checkout');
+});
