@@ -35,3 +35,17 @@ Route::get('upcoming_events', function () {
 Route::get('checkout', function () {
     return view('payment.checkout');
 });
+
+Route::group(['prefix' => 'customer'], function () {
+  Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');
+  Route::post('/login', 'CustomerAuth\LoginController@login');
+  Route::post('/logout', 'CustomerAuth\LoginController@logout');
+
+  Route::get('/register', 'CustomerAuth\RegisterController@showRegistrationForm');
+  Route::post('/register', 'CustomerAuth\RegisterController@register');
+
+  Route::post('/password/email', 'CustomerAuth\ForgotPasswordController@sendResetLinkEmail');
+  Route::post('/password/reset', 'CustomerAuth\ResetPasswordController@reset');
+  Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm');
+  Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
+});

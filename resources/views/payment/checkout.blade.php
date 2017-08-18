@@ -77,7 +77,7 @@
                 <a class="secondary-link" href="#">Back</a>
               </li>
               <li class="col-xs-6 col-sm-6">
-                <a class="primary-link" href="#" data-toggle="modal" data-target="#exampleModal">Proceed</a>
+                <a class="primary-link" href="#" data-toggle="modal" data-target="#paymentModal">Proceed</a>
               </li>
             </ul>
           </div>
@@ -87,11 +87,11 @@
   </section>
 
   <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-center" id="exampleModalLabel">ORDER SUMMARY</h5>
+        <h5 class="modal-title text-center" id="paymentModalLabel">ORDER SUMMARY</h5>
       </div>
       <div class="modal-body">
         <div class="section-order-review-pricing">
