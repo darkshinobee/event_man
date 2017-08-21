@@ -4,11 +4,20 @@
 <meta name="description" content="">
 <meta name="IB DeV" content="">
 
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- Scripts -->
+<script>
+    window.Laravel = <?php echo json_encode([
+        'csrfToken' => csrf_token(),
+    ]); ?>
+</script>
+
 <title>TicketRoom - @yield('title')</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-<link rel="stylesheet" href="/theme/publish/css/bootstrap.min.css">
+{{-- <link rel="stylesheet" href="/theme/publish/css/bootstrap.min.css"> --}}
 <link rel="stylesheet" href="/theme/publish/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="/theme/publish/css/bootstrap-slider.min.css">
 <link rel="stylesheet" href="/theme/publish/css/jquery.scrolling-tabs.min.css">
