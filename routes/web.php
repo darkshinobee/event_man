@@ -14,29 +14,29 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('contact', function () {
+Route::get('/contact', function () {
     return view('pages.contact');
 });
-Route::get('gallery', function () {
+Route::get('/gallery', function () {
     return view('pages.gallery');
 });
-Route::get('blog', function () {
+Route::get('/blog', function () {
     return view('pages.blog');
 });
-Route::get('single_event', function () {
+Route::get('/single_event', function () {
     return view('events.single');
 });
-Route::get('single_blog', function () {
+Route::get('/single_blog', function () {
     return view('pages.single_blog');
 });
-Route::get('upcoming_events', function () {
+Route::get('/upcoming_events', function () {
     return view('events.upcoming');
 });
-Route::get('checkout', function () {
+Route::get('/checkout', function () {
     return view('payment.checkout');
 });
 
-Route::group(['prefix' => 'customer'], function () {
+Route::group(['prefix' => '/customer'], function () {
   Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');
   Route::post('/login', 'CustomerAuth\LoginController@login');
   Route::post('/logout', 'CustomerAuth\LoginController@logout');
@@ -48,4 +48,18 @@ Route::group(['prefix' => 'customer'], function () {
   Route::post('/password/reset', 'CustomerAuth\ResetPasswordController@reset');
   Route::get('/password/reset', 'CustomerAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'CustomerAuth\ResetPasswordController@showResetForm');
+});
+
+Route::group(['prefix' => '/admin'], function () {
+  Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
+  Route::post('/login', 'AdminAuth\LoginController@login');
+  Route::post('/logout', 'AdminAuth\LoginController@logout');
+
+  Route::get('/register', 'AdminAuth\RegisterController@showRegistrationForm');
+  Route::post('/register', 'AdminAuth\RegisterController@register');
+
+  Route::post('/password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail');
+  Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset');
+  Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
+  Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 });

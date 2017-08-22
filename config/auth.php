@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
         'customer' => [
             'driver' => 'session',
             'provider' => 'customers',
@@ -70,6 +75,11 @@ return [
     */
 
     'providers' => [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
         'customers' => [
             'driver' => 'eloquent',
             'model' => App\Customer::class,
@@ -102,6 +112,12 @@ return [
     */
 
     'passwords' => [
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'admin_password_resets',
+            'expire' => 60,
+        ],
+
         'customers' => [
             'provider' => 'customers',
             'table' => 'customer_password_resets',
