@@ -36,3 +36,29 @@ $factory->define(App\Admin::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Event::class, function (Faker\Generator $faker) {
+
+    return [
+        'title' => $faker->company.' '.$faker->companySuffix,
+        'venue' => $faker->address,
+        'category' => $faker->word,
+        'organizer_id' => $faker->numberBetween($min = 1, $max = 20),
+        'event_type' => $faker->boolean($chanceOfGettingTrue = 50),
+        'regular_fee' => $faker->numberBetween($min = 1000, $max = 10000),
+        'hits' => $faker->numberBetween($min = 0, $max = 50),
+        'misses' => $faker->numberBetween($min = 0, $max = 20),
+        'slug' => $faker->unique()->word,
+        'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
+    ];
+});
+
+$factory->define(App\BookedEvent::class, function (Faker\Generator $faker) {
+    return [
+        'event_id' => $faker->numberBetween($min = 1, $max = 10),
+        'attendee_id' => $faker->numberBetween($min = 1, $max = 20),
+        'ticket_type' => $faker->word,
+        'amount' => $faker->numberBetween($min = 1000, $max = 10000),
+        'quantity' => $faker->numberBetween($min = 1, $max = 5),
+    ];
+});
