@@ -54,7 +54,7 @@
     <div class="container">
       <div class="row">
         <div class="site-branding col-md-3">
-          <h1 class="site-title"><a href="#" title="myticket" rel="home"><img src="/theme/publish/images/logo.png" alt="logo"></a></h1>
+          <h1 class="site-title"><a href="{{ route('home') }}" title="myticket" rel="home"><img src="/theme/publish/images/logo.png" alt="logo"></a></h1>
         </div>
 
         <div class="col-md-9">
@@ -76,11 +76,11 @@
               </button>
 
               <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/">Home</a></li>
-                <li><a href="/upcoming_events">Events</a></li>
-                <li><a href="/gallery">Gallery</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('upcoming_events') }}">Events</a></li>
+                <li><a href="{{ route('past_events') }}">Gallery</a></li>
+                <li><a href="{{ route('blog') }}">Blog</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
                 <li><a class="btn myBtn" href="#">CREATE EVENT</a></li>
                 {{-- <li class="cart"><a href="#">0</a></li> --}}
               </ul>

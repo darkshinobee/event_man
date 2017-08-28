@@ -11,37 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/contact', function () {
-    return view('pages.contact');
-});
-Route::get('/gallery', function () {
-    return view('pages.gallery');
-});
-Route::get('/blog', function () {
-    return view('pages.blog');
-});
-Route::get('/single_event', function () {
-    return view('events.single');
-});
-Route::get('/single_blog', function () {
-    return view('pages.single_blog');
-});
-Route::get('/upcoming_events', function () {
-    return view('events.upcoming');
-});
-Route::get('/checkout', function () {
-    return view('payment.checkout');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/gallery', 'HomeController@pastEvents')->name('past_events');
+Route::get('/upcoming_events', 'HomeController@upcomingEvents')->name('upcoming_events');
+Route::get('/single_event', 'HomeController@singleEvent')->name('singleEvent');
+Route::get('/blog', 'HomeController@blogs')->name('blog');
+Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
+Route::get('/checkout', 'HomeController@checkout')->name('checkout');
 
 Route::group(['prefix' => '/customer'], function () {
-  Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');
+  // Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');
   Route::post('/login', 'CustomerAuth\LoginController@login');
   Route::post('/logout', 'CustomerAuth\LoginController@logout');
 
-  Route::get('/register', 'CustomerAuth\RegisterController@showRegistrationForm');
+  // Route::get('/register', 'CustomerAuth\RegisterController@showRegistrationForm');
   Route::post('/register', 'CustomerAuth\RegisterController@register');
 
   Route::post('/password/email', 'CustomerAuth\ForgotPasswordController@sendResetLinkEmail');

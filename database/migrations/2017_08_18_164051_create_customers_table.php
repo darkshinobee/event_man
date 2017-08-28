@@ -18,6 +18,8 @@ class CreateCustomersTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('hits')->default(0);
+            $table->integer('misses')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
