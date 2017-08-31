@@ -81,7 +81,7 @@
                 <li><a href="{{ route('past_events') }}">Gallery</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
-                <li><a class="btn myBtn" href="#">CREATE EVENT</a></li>
+                <li><a class="btn myBtn" href="{{ route('events.create') }}">CREATE EVENT</a></li>
                 {{-- <li class="cart"><a href="#">0</a></li> --}}
               </ul>
             </div>

@@ -20,8 +20,8 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'last_name' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'hits' => rand(0,50),
-        'misses' => rand(0,20),
+        // 'hits' => rand(0,50),
+        // 'misses' => rand(0,20),
         'remember_token' => str_random(10),
     ];
 });
@@ -40,24 +40,31 @@ $factory->define(App\Admin::class, function (Faker\Generator $faker) {
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
 
     return [
-        'title' => $faker->company.' '.$faker->companySuffix,
+        'title' => 'Event Number '.$faker->unique()->numberBetween($min = 1, $max = 10),
         'venue' => $faker->address,
-        'category' => $faker->word,
-        'organizer_id' => $faker->numberBetween($min = 1, $max = 20),
+        'state' => 'Abuja',
+        'description' => $faker->text($maxNbChars = 200),
+        'category' => 'conference',
+        'organizer' => $faker->company,
+        'organizer_id' => $faker->numberBetween($min = 1, $max = 5),
         'event_type' => $faker->boolean($chanceOfGettingTrue = 50),
+        'ticket_count' => $faker->numberBetween($min = 50, $max = 200),
         'regular_fee' => $faker->numberBetween($min = 1000, $max = 10000),
-        'hits' => $faker->numberBetween($min = 0, $max = 50),
-        'misses' => $faker->numberBetween($min = 0, $max = 20),
+        // 'hits' => $faker->numberBetween($min = 0, $max = 50),
+        // 'misses' => $faker->numberBetween($min = 0, $max = 20),
         'slug' => $faker->unique()->word,
-        'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
+        'image_path' => '/images/defaults/conference.jpg',
+        // 'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
+        'event_start_date' => $faker->date($format = 'Y-m-d', $min = 'now'),
+        'event_start_time' => $faker->time($format = 'H:i'),
     ];
 });
 
 $factory->define(App\BookedEvent::class, function (Faker\Generator $faker) {
     return [
-        'event_id' => $faker->numberBetween($min = 1, $max = 10),
-        'attendee_id' => $faker->numberBetween($min = 1, $max = 20),
-        'ticket_type' => $faker->word,
+        'event_id' => $faker->numberBetween($min = 1, $max = 5),
+        'attendee_id' => $faker->numberBetween($min = 1, $max = 8),
+        'ticket_type' => 'paid',
         'amount' => $faker->numberBetween($min = 1000, $max = 10000),
         'quantity' => $faker->numberBetween($min = 1, $max = 5),
     ];

@@ -59,27 +59,27 @@
           <ul class="row clearfix">
             <li class="category-1 col-sm-4">
               <img src="/theme/publish/images/event-category-1.jpg" alt="image">
-              <a href="#"><span>Concerts</span></a>
+              <a href="{{ route('events.category', 'concert') }}"><span>Concerts</span></a>
             </li>
             <li class="category-2 col-sm-4">
               <img src="/theme/publish/images/event-category-2.jpg" alt="image">
-              <a href="#"><span>Sports</span></a>
+              <a href="{{ route('events.category', 'sports') }}"><span>Sports</span></a>
             </li>
             <li class="category-3 col-sm-4">
               <img src="/theme/publish/images/event-category-3.jpg" alt="image">
-              <a href="#"><span>Threaters</span></a>
+              <a href="{{ route('events.category', 'conference') }}"><span>Conference</span></a>
             </li>
             <li class="category-4 col-sm-4">
               <img src="/theme/publish/images/event-category-4.jpg" alt="image">
-              <a href="#"><span>Parties</span></a>
+              <a href="{{ route('events.category', 'parties') }}"><span>Parties</span></a>
             </li>
             <li class="category-5 col-sm-4">
               <img src="/theme/publish/images/event-category-5.jpg" alt="image">
-              <a href="#"><span>Communities</span></a>
+              <a href="{{ route('events.category', 'religion') }}"><span>Religion</span></a>
             </li>
             <li class="category-6 col-sm-4">
               <img src="/theme/publish/images/event-category-6.jpg" alt="image">
-              <a href="#"><span>Classes</span></a>
+              <a href="{{ route('events.category', 'classes') }}"><span>Classes</span></a>
             </li>
           </ul>
         </div>

@@ -15,10 +15,16 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/gallery', 'HomeController@pastEvents')->name('past_events');
 Route::get('/upcoming_events', 'HomeController@upcomingEvents')->name('upcoming_events');
-Route::get('/single_event', 'HomeController@singleEvent')->name('singleEvent');
+Route::get('/events/{slug}', 'HomeController@singleEvent')->name('single_event');
 Route::get('/blog', 'HomeController@blogs')->name('blog');
 Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
 Route::get('/checkout', 'HomeController@checkout')->name('checkout');
+
+Route::group(['prefix' => 'event'], function() {
+  Route::get('/create', 'EventController@create')->name('events.create');
+  Route::post('/store', 'EventController@store')->name('events.store');
+  Route::get('/{category}', 'EventController@eventCategories')->name('events.category');
+});
 
 Route::group(['prefix' => '/customer'], function () {
   // Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');

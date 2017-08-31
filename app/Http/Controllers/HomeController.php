@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Event;
 
 class HomeController extends Controller
 {
@@ -23,12 +25,21 @@ class HomeController extends Controller
 
     public function upcomingEvents()
     {
-      return view('events.upcoming');
+      $events = DB::table('events')->paginate(5);
+      return view('events.upcoming', compact('events'));
+      // return view('events.upcoming');
     }
 
-    public function singleEvent()
+    public function singleEvent($slug)
     {
-      return view('events.single');
+      $id = DB::table('events')->where('slug', $slug)->value('id');
+      $event = Event::find($id);
+      $related_events = DB::table('events')->where('category', $event->category)
+                                           ->take(3)
+                                           ->orderBy('hits', 'desc')
+                                           ->get();
+
+      return view('events.single', compact('event', 'related_events'));
     }
 
     public function blogs()

@@ -8,7 +8,7 @@
         <div class="gallery-list row">
           @for ($i = 0; $i <= 8; $i++)
           <div class="gallery-img col-sm-4">
-            <a href="#" data-featherlight="#content-1">
+            <a href="" data-featherlight="#content-1">
               <img src="/images/vector_party_man-wide.jpg" alt="image">
             </a>
             <div id="content-1" class="gallery-lightbox">

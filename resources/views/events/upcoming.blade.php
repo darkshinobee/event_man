@@ -27,49 +27,46 @@
 
           <div class="search-result-header">
             <div class="row">
-              <div class="col-sm-7">
-                <h2>All Upcoming Sports Events</h2>
-                <span>Showing 1-10 of 32 Results</span>
-              </div>
-              <div class="col-sm-5">
-                <label>Sort By</label>
-                <select class="selectpicker dropdown">
-                  <option>Price: Low-High</option>
-                  <option>Price: High-Low</option>
-                </select>
+              <div class="text-center">
+                <h2>Upcoming Events</h2>
+                {{-- <span>Showing 1-10 of 32 Results</span> --}}
               </div>
             </div>
           </div>
 
-          @for ($i = 0; $i < 5; $i++)
+          {{-- @for ($i = 0; $i < 5; $i++) --}}
+          @foreach ($events as $event)
           <div class="search-result-item">
             <div class="row">
               <div class="search-result-item-info col-sm-9">
-                <h3>UCI Road World Championships</h3>
+                <a href="{{ route('single_event', $event->slug) }}"><h3>{{ $event->title }}</h3></a>
                 <ul class="row">
                   <li class="col-sm-5 col-lg-6">
                     <span>Venue</span>
-                    Rose Bowl (Pasadena, CA)
+                    {{ $event->venue }}
                   </li>
                   <li class="col-sm-4 col-lg-3">
-                    <span>Saturday</span>
-                    August. 20th, 2016
+                    <span>{{ date_format(new DateTime($event->event_start_date), "l") }}</span>
+                    {{ date_format(new DateTime($event->event_start_date), "F jS, Y") }}
                   </li>
                   <li class="col-sm-3">
                     <span>Time</span>
-                    07:00 PM
+                    {{ date_format(new DateTime($event->event_start_time), "h:ia") }}
                   </li>
                 </ul>
               </div>
               <div class="search-result-item-price col-sm-3">
                 <span>Price</span>
-                <strong>N200</strong>
+                <strong>&#8358;{{ $event->regular_fee }}</strong>
                 <a href="#">Get Ticket</a>
               </div>
             </div>
           </div>
-          @endfor
-
+          {{-- @endfor --}}
+          @endforeach
+          <div class="text-center">
+						{!! $events->links() !!}
+					</div>
         </div>
       </div>
     </div>
