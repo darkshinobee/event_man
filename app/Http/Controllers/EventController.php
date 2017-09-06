@@ -28,7 +28,7 @@ class EventController extends Controller
         'category' => 'required',
         'event_type' => 'required',
         'ticket_count' => 'required',
-        'regular_fee' => 'required',
+        // 'regular_fee' => 'required',
         'event_start_date' => 'required',
         'event_start_time' => 'required'
       ));
@@ -49,13 +49,16 @@ class EventController extends Controller
       $event->organizer_id = $customer->id;
       $event->event_type = $request->event_type;
       $event->ticket_count = $request->ticket_count;
-      if ($request->has('early_bird')) {
+      if ($request->has('early_bird') && $event->event_type == 1) {
         $event->early_bird = $request->early_bird;
       }
-      if ($request->has('vip_fee')) {
+      if ($request->has('vip_fee') && $event->event_type == 1) {
         $event->vip_fee = $request->vip_fee;
       }
-      $event->regular_fee = $request->regular_fee;
+      if ($request->has('regular_fee') && $event->event_type == 1) {
+        $event->regular_fee = $request->regular_fee;
+      }
+
       $event->slug = $request->title.'_'.rand(100,10000);
       $event->hits = 0;
       $event->misses = 0;
@@ -80,7 +83,6 @@ class EventController extends Controller
       if ($request->has('event_end_time')) {
         $event->event_end_time = $request->event_end_time;
       }
-
       $event->save();
       Session::flash('success', 'Your Event Has Been Created!');
       return redirect()->route('home');

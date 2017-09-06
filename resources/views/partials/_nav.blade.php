@@ -77,8 +77,8 @@
 
               <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
-                <li><a href="{{ route('upcoming_events') }}">Events</a></li>
-                <li><a href="{{ route('past_events') }}">Gallery</a></li>
+                <li><a href="{{ route('upcoming_events') }}">Upcoming Events</a></li>
+                <li><a href="{{ route('past_events') }}">Past Events</a></li>
                 <li><a href="{{ route('blog') }}">Blog</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
                 <li><a class="btn myBtn" href="{{ route('events.create') }}">CREATE EVENT</a></li>

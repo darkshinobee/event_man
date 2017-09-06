@@ -36,10 +36,11 @@
 
           {{-- @for ($i = 0; $i < 5; $i++) --}}
           @foreach ($events as $event)
+            <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
           <div class="search-result-item">
             <div class="row">
               <div class="search-result-item-info col-sm-9">
-                <a href="{{ route('single_event', $event->slug) }}"><h3>{{ $event->title }}</h3></a>
+                <h3>{{ $event->title }}</h3>
                 <ul class="row">
                   <li class="col-sm-5 col-lg-6">
                     <span>Venue</span>
@@ -54,7 +55,7 @@
                     {{ date_format(new DateTime($event->event_start_time), "h:ia") }}
                   </li>
                 </ul>
-              </div>
+              </div></a>
               <div class="search-result-item-price col-sm-3">
                 <span>Price</span>
                 <strong>&#8358;{{ $event->regular_fee }}</strong>

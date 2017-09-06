@@ -20,12 +20,13 @@ class HomeController extends Controller
 
     public function pastEvents()
     {
-      return view('events.gallery');
+      $events = DB::table('events')->where('status', 1)->orderBy('hits', 'desc')->paginate(6);
+      return view('events.gallery', compact('events'));
     }
 
     public function upcomingEvents()
     {
-      $events = DB::table('events')->paginate(5);
+      $events = DB::table('events')->where('status', 0)->paginate(5);
       return view('events.upcoming', compact('events'));
       // return view('events.upcoming');
     }
@@ -35,6 +36,7 @@ class HomeController extends Controller
       $id = DB::table('events')->where('slug', $slug)->value('id');
       $event = Event::find($id);
       $related_events = DB::table('events')->where('category', $event->category)
+                                           ->where('status', 0)
                                            ->take(3)
                                            ->orderBy('hits', 'desc')
                                            ->get();
@@ -56,4 +58,21 @@ class HomeController extends Controller
     {
       return view('payment.checkout');
     }
+
+    public function search(Request $request)
+    {
+      if ($request->has('query')) {
+        $q = $request->input("query");
+        $query = DB::table('events')->select('title', 'category', 'regular_fee', 'image_path', 'slug')
+        ->where('title', 'like', '%'.$q.'%')
+        ->orWhere('category', 'like', '%'.$q.'%')
+        ->get();
+        if ($query->Count()) {
+          return $query;
+        }else {
+          return "no match";
+        }
+        }
+        return "empty";
+      }
 }

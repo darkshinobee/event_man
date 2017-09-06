@@ -49,66 +49,81 @@
               </div>
             </div>
             <div class="row">
-              <div class="form-group col-sm-6">
-                <label for="event_type">Event Type *</label>
-                <select class="form-control" name="event_type" required="">
-                  <option>--</option>
-                  <option value={{ 0 }}>Free</option>
-                  <option value={{ 1 }}>Paid</option>
-                </select>
-              </div>
-              <div class="form-group col-sm-6">
-                <label for="ticket_count">Max Number of Tickets *</label>
-                <input name="ticket_count" type="number" value="" class="form-control" required="">
-              </div>
+              {{-- <div class="form-group col-sm-6">
+              <label for="event_type">Event Type *</label>
+              <select class="form-control" name="event_type" required="">
+              <option>--</option>
+              <option value={{ 0 }}>Free</option>
+              <option value={{ 1 }}>Paid</option>
+            </select>
+          </div> --}}
+
+          <div class="col-sm-6">
+            <label>Event Type</label><br>
+            <div class="form-check form-check-inline m-t-10">
+              <label class="form-check-label">
+                <input name="event_type" type="radio" class="form-check-input" value={{ 1 }} data-toggle="collapse" data-target="#hideFees:not(.in)" required=""> Paid
+              </label>
+              <label class="form-check-label">
+                <input name="event_type" type="radio" class="form-check-input" value={{ 0 }} data-toggle="collapse" data-target="#hideFees.in" required="" checked> Free
+              </label>
             </div>
-            <div class="row">
-              <div class="form-group col-sm-4">
-                <label for="early_bird">Early bird fee (optional)</label>
-                <input name="early_bird" type="number" value="" class="form-control" placeholder="&#8358; 00.00">
-              </div>
-              <div class="form-group col-sm-4">
-                <label for="vip_fee">VIP fee (optional)</label>
-                <input name="vip_fee" type="number" value="" class="form-control" placeholder="&#8358; 00.00">
-              </div>
-              <div class="form-group col-sm-4">
-                <label for="regular_fee">Regular ticket fee *</label>
-                <input name="regular_fee" type="number" value="" class="form-control" required="" placeholder="&#8358; 00.00">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="image_path">Upload Event Photo (optional)</label>
-              <input type="file" name="image_path" value="" class="form-control">
-            </div>
-            <div class="row">
-              <div class="form-group col-sm-4">
-                <label for="event_start_date">Start Date</label>
-                <input type="date" name="event_start_date" value="" class="form-control" required="">
-              </div>
-              <div class="form-group col-sm-4">
-                <label for="event_start_time">Start Time</label>
-                <input type="time" name="event_start_time" value="" class="form-control" required="">
-              </div>
-              {{-- <div class="form-group col-sm-4 m-t-35">
-                <a data-toggle="collapse" href="#endTime" aria-expanded="false" aria-controls="endTime">+ Add End Time</a>
-              </div> --}}
-            </div>
-            {{-- <div class="collapse" id="endTime">
-              <div class="row">
-                <div class="form-group col-sm-4">
-                  <label for="event_end_date">End Date</label>
-                  <input type="date" name="event_end_date" value="" class="form-control">
-                </div>
-                <div class="form-group col-sm-4">
-                  <label for="event_end_time">End Time</label>
-                  <input type="time" name="event_end_time" value="" class="form-control">
-                </div>
-              </div>
-            </div> --}}
-            <button type="submit" class="btn btn-lg btn-block myBtn m-t-20">Submit</button>
-          </form>
+          </div>
+
+          <div class="form-group col-sm-6">
+            <label for="ticket_count">Max Number of Tickets *</label>
+            <input name="ticket_count" type="number" value="" class="form-control" required="">
+          </div>
         </div>
+        <div class="collapse" id="hideFees">
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label for="early_bird">Early bird fee (optional)</label>
+              <input name="early_bird" type="number" class="form-control" placeholder="&#8358; 00.00">
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="vip_fee">VIP fee (optional)</label>
+              <input name="vip_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="regular_fee">Regular ticket fee *</label>
+              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="image_path">Upload Event Photo (optional)</label>
+          <input type="file" name="image_path" value="" class="form-control">
+        </div>
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="event_start_date">Start Date</label>
+            <input type="date" name="event_start_date" value="" class="form-control" required="">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="event_start_time">Start Time</label>
+            <input type="time" name="event_start_time" value="" class="form-control" required="">
+          </div>
+          {{-- <div class="form-group col-sm-4 m-t-35">
+          <a data-toggle="collapse" href="#endTime" aria-expanded="false" aria-controls="endTime">+ Add End Time</a>
+        </div> --}}
       </div>
+      {{-- <div class="collapse" id="endTime">
+      <div class="row">
+      <div class="form-group col-sm-4">
+      <label for="event_end_date">End Date</label>
+      <input type="date" name="event_end_date" value="" class="form-control">
     </div>
-  </section>
+    <div class="form-group col-sm-4">
+    <label for="event_end_time">End Time</label>
+    <input type="time" name="event_end_time" value="" class="form-control">
+  </div>
+</div>
+</div> --}}
+<button type="submit" class="btn btn-lg btn-block myBtn m-t-20">Submit</button>
+</form>
+</div>
+</div>
+</div>
+</section>
 @endsection

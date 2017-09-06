@@ -1,8 +1,12 @@
 @extends('main')
 @section('title', $event->title)
 @section('content')
+  <div id="app">
+    <example></example>
+  </div>
+{{-- @include('partials._search') --}}
 
-  <section class="section-refine-search">
+  {{-- <section class="section-refine-search">
     <div class="container">
       <div class="row">
         <form class="row">
@@ -17,7 +21,7 @@
         </form>
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <section class="section-full-events-schedule">
     <div class="container">
@@ -32,7 +36,9 @@
                     <div class="full-event-info">
                       <div class="full-event-info-header">
                         <h2>{{ $event->title }}</h2>
+                        @if ($event->status == 0)
                         <span class="ticket-left-info">{{ $event->ticket_count }} Tickets Left</span>
+                        @endif
                         <div class="clearfix"></div>
                         <span class="event-date-info">{{ date_format(new DateTime($event->event_start_date), "l F j, Y ") }} | {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</span>
                         <span class="event-venue-info">{{ $event->venue }}</span>
@@ -40,13 +46,15 @@
                         <span class="event-venue-info">Organized by - {{ $event->organizer }}</span>
                         {{-- <h4>Organized by - {{ $event->organizer }}</h4> --}}
                         <div class="">
-                          <span class=""><i class="fa fa-2x fa-thumbs-up"></i></span>
-                          <span class="m-l-50"><i class="fa fa-2x fa-thumbs-down"></i></span>
+                          <span class=""><i class="fa fa-2x fa-thumbs-up">{{ $event->hits }}</i></span>
+                          <span class="m-l-50"><i class="fa fa-2x fa-thumbs-down">{{ $event->misses }}</i></span>
                         </div>
                       </div>
                       <div class="full-event-info-content">
                         <p>{{ $event->description }}</p>
-                        <a class="book-ticket" href="#">Buy Now @ &#8358;{{ $event->regular_fee }}</a>
+                        @if ($event->status == 0)
+                          <a class="book-ticket" href="#">Buy Now @ &#8358;{{ $event->regular_fee }}</a>
+                        @endif
                       </div>
                     </div>
                   </div>
