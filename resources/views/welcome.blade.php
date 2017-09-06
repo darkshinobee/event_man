@@ -7,8 +7,8 @@
         <div class="hero-content">
           <h1 class="hero-title">Make Your Dream Come True</h1>
           <p class="hero-caption">Meet your favorite artists, sport teams and parties</p>
-          <div class="hero-search">
-            <input type="text" placeholder="Seach Artist, Team, or Venue">
+          <div id="app">
+            <homesearch></homesearch>
           </div>
         </div>
       </div>
@@ -21,28 +21,28 @@
         <div class="section-header">
           <h2>Upcoming Events</h2>
           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.</p>
-          <a href="#">See all upcoming events</a>
+          <a href="{{ route('upcoming_events') }}">See all upcoming events</a>
         </div>
         <div class="section-content">
           <ul class="clearfix">
-            @for ($i = 0; $i < 6; $i++)
-            <li>
-              <div class="date">
-                <a href="#">
-                  <span class="day">27</span>
-                  <span class="month">August</span>
-                  <span class="year">2016</span>
+            @foreach ($events as $event)
+              <li>
+                <div class="date">
+                  <a href="{{ route('single_event', $event->slug) }}">
+                    <span class="day">{{ date_format(new DateTime($event->event_start_date), "j") }}</span>
+                    <span class="month">{{ date_format(new DateTime($event->event_start_date), "F") }}</span>
+                    <span class="year">{{ date_format(new DateTime($event->event_start_date), "Y") }}</span>
+                  </a>
+                </div>
+                <a href="{{ route('single_event', $event->slug) }}">
+                  <img src="{{ $event->image_path }}" alt="image">
                 </a>
-              </div>
-              <a href="#">
-                <img src="/images/zko.jpg" alt="image">
-              </a>
-              <div class="info">
-                <p>Envato Author SF Meetup <span>San Francisco</span></p>
-                <a href="#" class="get-ticket">Get Ticket</a>
-              </div>
-            </li>
-            @endfor
+                <div class="info">
+                  <p>{{ $event->title }} <span>{{ $event->venue }}</span></p>
+                  <a href="#" class="get-ticket">Get Ticket</a>
+                </div>
+              </li>
+            @endforeach
           </ul>
         </div>
       </div>

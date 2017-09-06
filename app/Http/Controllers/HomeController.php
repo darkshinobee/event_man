@@ -10,7 +10,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-      return view('welcome');
+      $events = DB::table('events')->where('status', 0)->orderBy('hits', 'desc')->take(6)->get();
+      return view('welcome', compact('events'));
     }
 
     public function contact()
@@ -28,7 +29,6 @@ class HomeController extends Controller
     {
       $events = DB::table('events')->where('status', 0)->paginate(5);
       return view('events.upcoming', compact('events'));
-      // return view('events.upcoming');
     }
 
     public function singleEvent($slug)
@@ -63,9 +63,10 @@ class HomeController extends Controller
     {
       if ($request->has('query')) {
         $q = $request->input("query");
-        $query = DB::table('events')->select('title', 'category', 'regular_fee', 'image_path', 'slug')
+        $query = DB::table('events')->select('title', 'category', 'organizer', 'regular_fee', 'image_path', 'slug', 'event_start_date', 'status')
         ->where('title', 'like', '%'.$q.'%')
         ->orWhere('category', 'like', '%'.$q.'%')
+        ->orWhere('organizer', 'like', '%'.$q.'%')
         ->get();
         if ($query->Count()) {
           return $query;

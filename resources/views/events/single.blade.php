@@ -1,27 +1,10 @@
 @extends('main')
 @section('title', $event->title)
 @section('content')
+  
   <div id="app">
-    <example></example>
+    <search></search>
   </div>
-{{-- @include('partials._search') --}}
-
-  {{-- <section class="section-refine-search">
-    <div class="container">
-      <div class="row">
-        <form class="row">
-          <div class="keyword col-md-8">
-            <label>Search Event</label>
-            <input type="text" class="form-control hasclear" placeholder="Search">
-            <span class="clearer"><img src="/theme/publish/images/clear.png" alt="clear"></span>
-          </div>
-          <div class="col-md-4 p-t-10">
-            <input type="submit" value="Search">
-          </div>
-        </form>
-      </div>
-    </div>
-  </section> --}}
 
   <section class="section-full-events-schedule">
     <div class="container">
