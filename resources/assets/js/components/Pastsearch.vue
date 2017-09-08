@@ -71,7 +71,7 @@ export default {
     search: _.debounce(function() {
       var obj = this;
       obj.search_loader = "Searching..."
-      axios.get('/search/0?query=' + obj.search_query)
+      axios.get('/search/1?query=' + obj.search_query)
       .then(function (content) {
         if (content.data == 'empty') {
           obj.search_loader = ""

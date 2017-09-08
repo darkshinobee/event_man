@@ -15,10 +15,10 @@
               <ul class="search_res result_name">
                 <li>{{ result.title }}</li>
                 <li>{{ result.organizer }}</li>
-                <li>{{ result.category }}</li>
+                <li>{{ (result.category).toUpperCase() }}</li>
                 <li>&#8358;{{ result.regular_fee }}</li>
-                <li v-if="result.status == 0">{{ result.event_start_date }}</li>
-                <li v-else>Expired</li>
+                <!-- <li v-if="result.status == 0">{{ result.event_start_date }}</li>
+                <li v-else>Expired</li> -->
               </ul>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default {
     search: _.debounce(function() {
       var obj = this;
       obj.search_loader = "Searching..."
-      axios.get('/search?query=' + obj.search_query)
+      axios.get('/search/0?query=' + obj.search_query)
       .then(function (content) {
         if (content.data == 'empty') {
           obj.search_loader = ""

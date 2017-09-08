@@ -8,6 +8,7 @@ use Auth;
 use Image;
 use Session;
 use App\Event;
+use App\BookedEvent;
 
 class EventController extends Controller
 {
@@ -93,5 +94,10 @@ class EventController extends Controller
     {
       $events = DB::table('events')->where('category', $category)->paginate(5);
       return view('events.upcoming', compact('events', 'category'));
+    }
+
+    public function checkout()
+    {
+      return view('payment.checkout');
     }
 }

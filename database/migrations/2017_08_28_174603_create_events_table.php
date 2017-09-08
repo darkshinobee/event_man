@@ -25,8 +25,11 @@ class CreateEventsTable extends Migration
             $table->boolean('event_type');
             $table->integer('ticket_count');
             $table->integer('early_bird')->unsigned()->nullable()->default(0);
+            $table->integer('early_max')->unsigned()->nullable();
             $table->integer('vip_fee')->unsigned()->nullable()->default(0);
+            $table->integer('vip_max')->unsigned()->nullable();
             $table->integer('regular_fee')->unsigned()->default(0);
+            $table->integer('regular_max')->unsigned()->nullable();
             $table->integer('hits')->unsigned()->default(0);
             $table->integer('misses')->unsigned()->default(0);
             $table->string('slug');

@@ -2,7 +2,7 @@
 @section('title', 'Past Events')
 @section('content')
   <div id="app">
-    <search></search>
+    <pastsearch></pastsearch>
   </div>
 
   <section class="section-search-content">

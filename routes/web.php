@@ -18,13 +18,13 @@ Route::get('/upcoming_events', 'HomeController@upcomingEvents')->name('upcoming_
 Route::get('/events/{slug}', 'HomeController@singleEvent')->name('single_event');
 Route::get('/blog', 'HomeController@blogs')->name('blog');
 Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
-Route::get('/checkout', 'HomeController@checkout')->name('checkout');
-Route::get('/search', 'HomeController@search');
+Route::get('/search/{key}', 'HomeController@search');
 
 Route::group(['prefix' => 'event'], function() {
   Route::get('/create', 'EventController@create')->name('events.create');
   Route::post('/store', 'EventController@store')->name('events.store');
   Route::get('/{category}', 'EventController@eventCategories')->name('events.category');
+  Route::get('/checkout', 'EventController@checkout')->name('checkout');
 });
 
 Route::group(['prefix' => '/customer'], function () {

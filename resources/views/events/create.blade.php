@@ -49,15 +49,6 @@
               </div>
             </div>
             <div class="row">
-              {{-- <div class="form-group col-sm-6">
-              <label for="event_type">Event Type *</label>
-              <select class="form-control" name="event_type" required="">
-              <option>--</option>
-              <option value={{ 0 }}>Free</option>
-              <option value={{ 1 }}>Paid</option>
-            </select>
-          </div> --}}
-
           <div class="col-sm-6">
             <label>Event Type</label><br>
             <div class="form-check form-check-inline m-t-10">
@@ -87,7 +78,22 @@
             </div>
             <div class="form-group col-sm-4">
               <label for="regular_fee">Regular ticket fee *</label>
-              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
+              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label for="early_bird">Early bird Qty</label>
+              <input name="early_bird_max" type="number" class="form-control" >
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="vip_fee">VIP Qty</label>
+              <input name="vip_fee_max" type="number" class="form-control" >
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="regular_fee">Regular ticket Qty *</label>
+              <input name="regular_fee_max" type="number" class="form-control" required>
             </div>
           </div>
         </div>

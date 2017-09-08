@@ -54,12 +54,7 @@ class HomeController extends Controller
       return view('pages.single_blog');
     }
 
-    public function checkout()
-    {
-      return view('payment.checkout');
-    }
-
-    public function search(Request $request)
+    public function search(Request $request, $key)
     {
       if ($request->has('query')) {
         $q = $request->input("query");
@@ -67,6 +62,7 @@ class HomeController extends Controller
         ->where('title', 'like', '%'.$q.'%')
         ->orWhere('category', 'like', '%'.$q.'%')
         ->orWhere('organizer', 'like', '%'.$q.'%')
+        ->where('status', $key)
         ->get();
         if ($query->Count()) {
           return $query;
