@@ -78,22 +78,22 @@
             </div>
             <div class="form-group col-sm-4">
               <label for="regular_fee">Regular ticket fee *</label>
-              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00" required>
+              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-sm-4">
               <label for="early_bird">Early bird Qty</label>
-              <input name="early_bird_max" type="number" class="form-control" >
+              <input name="early_max" type="number" class="form-control" >
             </div>
             <div class="form-group col-sm-4">
               <label for="vip_fee">VIP Qty</label>
-              <input name="vip_fee_max" type="number" class="form-control" >
+              <input name="vip_max" type="number" class="form-control" >
             </div>
             <div class="form-group col-sm-4">
               <label for="regular_fee">Regular ticket Qty *</label>
-              <input name="regular_fee_max" type="number" class="form-control" required>
+              <input name="regular_max" type="number" class="form-control">
             </div>
           </div>
         </div>

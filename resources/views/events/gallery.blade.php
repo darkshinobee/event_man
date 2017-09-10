@@ -15,7 +15,7 @@
           <div class="search-result-header">
             <div class="row">
               <div class="text-center">
-                <h2>Past Events</h2>
+                <h1>PAST EVENTS</h1>
               </div>
             </div>
           </div>

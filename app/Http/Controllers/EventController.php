@@ -50,14 +50,17 @@ class EventController extends Controller
       $event->organizer_id = $customer->id;
       $event->event_type = $request->event_type;
       $event->ticket_count = $request->ticket_count;
-      if ($request->has('early_bird') && $event->event_type == 1) {
+      if ($request->has('early_bird') && $request->has('early_max') && $event->event_type == 1) {
         $event->early_bird = $request->early_bird;
+        $event->early_max = $request->early_max;
       }
-      if ($request->has('vip_fee') && $event->event_type == 1) {
+      if ($request->has('vip_fee') && $request->has('vip_max') && $event->event_type == 1) {
         $event->vip_fee = $request->vip_fee;
+        $event->vip_max = $request->vip_max;
       }
-      if ($request->has('regular_fee') && $event->event_type == 1) {
+      if ($request->has('regular_fee') && $request->has('regular_max') && $event->event_type == 1) {
         $event->regular_fee = $request->regular_fee;
+        $event->regular_max = $request->regular_max;
       }
 
       $event->slug = $request->title.'_'.rand(100,10000);

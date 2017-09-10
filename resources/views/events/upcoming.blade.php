@@ -15,13 +15,12 @@
           <div class="search-result-header">
             <div class="row">
               <div class="text-center">
-                <h2>Upcoming Events</h2>
+                <h1>UPCOMING EVENTS</h1>
                 {{-- <span>Showing 1-10 of 32 Results</span> --}}
               </div>
             </div>
           </div>
-
-          {{-- @for ($i = 0; $i < 5; $i++) --}}
+          
           @foreach ($events as $event)
             <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
           <div class="search-result-item">
@@ -45,12 +44,15 @@
               </div></a>
               <div class="search-result-item-price col-sm-3">
                 <span>Price</span>
-                <strong>&#8358;{{ $event->regular_fee }}</strong>
+                @if ($event->event_type == 0)
+                  <strong>FREE</strong>
+                @else
+                  <strong>&#8358;{{ $event->regular_fee }}</strong>
+                @endif
                 <a href="#">Get Ticket</a>
               </div>
             </div>
           </div>
-          {{-- @endfor --}}
           @endforeach
           <div class="text-center">
 						{!! $events->links() !!}

@@ -157,7 +157,7 @@ body{
 }
 
 .top-header .top-right ul li{
-	border-left:2px solid #b3b3b3;
+	/*border-left:2px solid #b3b3b3;*/
 }
 
 .top-header .top-right ul li:first-child{
@@ -166,28 +166,23 @@ body{
 
 .top-header .top-right ul li:first-child a{
   /*color: #ff6600;*/
-	color:greenyellow;
+	/*color:greenyellow;*/
 	font-weight:700;
 }
 
 .top-header .top-right ul li:first-child a:hover{
-  color: green;
+  color: greenyellow;
 }
 
 .top-header .top-right ul li a{
-	color:#b3b3b3;
-	font-size:12px;
-	line-height:12px;
+	color:green;
 	text-decoration:none;
 	text-transform:uppercase;
-	padding:0 10px;
-	display:block;
 	font-family: 'Open Sans', sans-serif;
-	background:none;
 }
 
 .top-header .top-right ul li a:hover{
-  color: greenyellow;
+  /*color: green;*/
 }
 
 .main-header{
