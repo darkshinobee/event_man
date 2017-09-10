@@ -8,6 +8,8 @@
     </div>
   </section>
 
+  {{ $request->input('fee_type') }}
+
   <section class="section-page-content">
     <div class="container">
       <div class="row">

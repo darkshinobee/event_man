@@ -20,7 +20,7 @@
               </div>
             </div>
           </div>
-          
+
           @foreach ($events as $event)
             <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
           <div class="search-result-item">
@@ -49,7 +49,7 @@
                 @else
                   <strong>&#8358;{{ $event->regular_fee }}</strong>
                 @endif
-                <a href="#">Get Ticket</a>
+                <a href="{{ route('single_event', $event->slug) }}">View Details</a>
               </div>
             </div>
           </div>

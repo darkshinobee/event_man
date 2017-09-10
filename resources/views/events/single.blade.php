@@ -61,7 +61,8 @@
 
                               @else
                                 <div class="col-sm-6">
-
+                                  <form action="{{ route('checkout', $event->slug) }}" method="post" id="checkout_form">
+                                    {{ csrf_field() }}
                                   <div class="form-check">
                                     <label class="form-check-label">
                                       @if ($event->early_max == null)
@@ -106,11 +107,14 @@
                                       @endif
                                     </label>
                                   </div>
+                                </form>
                                 </div>
 
                                 @if ($event->ticket_count > 0)
                                   <div class="col-sm-6">
-                                    <a v-if="radio" class="book-ticket" href="#">Get Ticket</a>
+                                    {{-- <a v-if="radio" class="book-ticket" type="submit" form="checkout_form">Get Ticket</a> --}}
+                                    {{-- <input v-if="radio" type="submit" class="book-ticket" name="" value="">Get Ticket --}}
+                                    <button v-if="radio" type="submit" class="book-ticket" form="checkout_form">Get Ticket</button>
                                     <h1></h1>
                                   </div>
                                 @else

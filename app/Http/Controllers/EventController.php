@@ -99,8 +99,11 @@ class EventController extends Controller
       return view('events.upcoming', compact('events', 'category'));
     }
 
-    public function checkout()
+    public function checkout(Request $request, $slug)
     {
-      return view('payment.checkout');
+      // dd($request->input('fee_type'));
+      $id = DB::table('events')->where('slug', $slug)->value('id');
+      $event = Event::find($id);
+      return view('payment.checkout', compact('request', 'event'));
     }
 }

@@ -20,11 +20,11 @@ Route::get('/blog', 'HomeController@blogs')->name('blog');
 Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
 Route::get('/search/{key}', 'HomeController@search');
 
-Route::group(['prefix' => 'event'], function() {
+Route::group(['prefix' => '/event'], function() {
   Route::get('/create', 'EventController@create')->name('events.create');
   Route::post('/store', 'EventController@store')->name('events.store');
-  Route::get('/{category}', 'EventController@eventCategories')->name('events.category');
-  Route::get('/checkout', 'EventController@checkout')->name('checkout');
+  Route::get('/category/{category}', 'EventController@eventCategories')->name('events.category');
+  Route::post('/checkout/{slug}', 'EventController@checkout')->name('checkout');
 });
 
 Route::group(['prefix' => '/customer'], function () {
