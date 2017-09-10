@@ -5,7 +5,7 @@
   <div id="app">
     <search></search>
   </div>
-  <div id="checkout">
+  <div id="single">
 
 
     <section class="section-full-events-schedule">
@@ -66,13 +66,13 @@
                                   <div class="form-check">
                                     <label class="form-check-label">
                                       @if ($event->early_max == null)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early_bird" disabled>
+                                        <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
                                         <small>Early Bird</small> - Not Applicable
                                       @elseif ($event->early_max > 0)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early_bird" v-model="radio">
+                                        <input class="form-check-input" type="radio" name="fee_type" value="early" v-model="radio">
                                         <small>Early Bird</small> - &#8358;{{ $event->early_bird }}
                                       @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early_bird">
+                                        <input class="form-check-input" type="radio" name="fee_type" value="early">
                                         <small>Early Bird</small> - Sold Out
                                       @endif
                                     </label>
@@ -157,7 +157,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script>
   <script>
   new Vue({
-    el: '#checkout',
+    el: '#single',
     data: {
       radio: ''
     }

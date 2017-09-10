@@ -101,9 +101,12 @@ class EventController extends Controller
 
     public function checkout(Request $request, $slug)
     {
-      // dd($request->input('fee_type'));
+      $radio_value = $request->input('fee_type');
+      $new_radio_value = $radio_value.'_max';
       $id = DB::table('events')->where('slug', $slug)->value('id');
       $event = Event::find($id);
-      return view('payment.checkout', compact('request', 'event'));
+      $tickets_left = DB::table('events')->where('id', $id)->value($new_radio_value);
+
+      return view('payment.checkout', compact('request', 'event', 'tickets_left', 'radio_value'));
     }
 }
