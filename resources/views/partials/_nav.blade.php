@@ -43,7 +43,7 @@
                 <a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a>
               </li>
               <li>
-                <a href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
+                <a href="#" class="p-l-5" data-toggle="modal" data-target="#signUpModal">Sign Up</a>
               </li>
             @endif
           </ul>

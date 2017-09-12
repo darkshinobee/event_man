@@ -40,48 +40,67 @@
                         <th>Instant Download</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>Number of Tickets</td>
-                        <td>
-                          <div class="qty-select">
-                            <div class="qty-minus">
-                              <a class="qty-btn" v-if="qty > 1" @click="minus">-</a>
-                            </div>
-                            <div class="qty-input">
-                              @if ($tickets_left > 4)
-                                <input type="text" class="quantity-input" :value="qty" v-model.number="qty" min="1" max="5" readonly/>
+                    @if($event->event_type == 0)
+                      <tbody>
+                        <tr>
+                          <td>Number of Tickets</td>
+                          <td>
+                            <div class="qty-select">
+                              <div class="qty-input">
+                                <input type="text" class="quantity-input" :value="qty" v-model.number="qty" min="1" max="1" readonly/>
                               </div>
-                              <div class="qty-plus">
-                                <a class="qty-btn" v-if="qty < 5" @click="add">+</a>
-                              </div>
-                            @else
-                              <input type="text" class="quantity-input" :value="qty" v-model.number="qty" min="1" max="{{ $tickets_left }}" readonly/>
+                          </div>
+                        </td>
+                      </tr>
+                        <tr>
+                          <td><h4>FREE TICKET</h4></td>
+                          <td><h4>&#8358;0.00</h4></td>
+                        </tr>
+                      </tbody>
+                      @else
+                        <tbody>
+                          <tr>
+                            <td>Number of Tickets</td>
+                            <td>
+                              <div class="qty-select">
+                                <div class="qty-minus">
+                                  <a class="qty-btn" v-if="qty > 1" @click="minus">-</a>
+                                </div>
+                                <div class="qty-input">
+                                  @if ($tickets_left > 4)
+                                    <input type="text" class="quantity-input" :value="qty" v-model.number="qty" min="1" max="5" readonly/>
+                                  </div>
+                                  <div class="qty-plus">
+                                    <a class="qty-btn" v-if="qty < 5" @click="add">+</a>
+                                  </div>
+                                @else
+                                  <input type="text" class="quantity-input" :value="qty" v-model.number="qty" min="1" max="{{ $tickets_left }}" readonly/>
+                                </div>
+                                <div class="qty-plus">
+                                  <a class="qty-btn" v-if="qty < {{$tickets_left}}" @click="add">+</a>
+                                </div>
+                              @endif
                             </div>
-                            <div class="qty-plus">
-                              <a class="qty-btn" v-if="qty < {{$tickets_left}}" @click="add">+</a>
-                            </div>
+                          </td>
+                        </tr>
+                        @if ($radio_value == 'early')
+                          <tr>
+                            <td><h4>EARLY BIRD TICKET</h4></td>
+                            <td><h4 v-model="v_price = {{ $event->early_bird }}">&#8358;{{ $event->early_bird }}</h4></td>
+                          </tr>
+                        @elseif ($radio_value == 'regular')
+                          <tr>
+                            <td><h4>REGULAR TICKET</h4></td>
+                            <td><h4 v-model="v_price = {{ $event->regular_fee }}">&#8358;{{ $event->regular_fee }}</h4></td>
+                          </tr>
+                        @else
+                          <tr>
+                            <td><h4>VIP TICKET</h4></td>
+                            <td><h4 v-model="v_price = {{ $event->vip_fee }}">&#8358;{{ $event->vip_fee }}</h4></td>
+                          </tr>
                           @endif
-                        </div>
-                      </td>
-                    </tr>
-                    @if ($radio_value == 'early')
-                      <tr>
-                        <td><h4>EARLY BIRD TICKET</h4></td>
-                        <td><h4 v-model="v_price = {{ $event->early_bird }}">&#8358;{{ $event->early_bird }}</h4></td>
-                      </tr>
-                    @elseif ($radio_value == 'regular')
-                      <tr>
-                        <td><h4>REGULAR TICKET</h4></td>
-                        <td><h4 v-model="v_price = {{ $event->regular_fee }}">&#8358;{{ $event->regular_fee }}</h4></td>
-                      </tr>
-                    @else
-                      <tr>
-                        <td><h4>VIP TICKET</h4></td>
-                        <td><h4 v-model="v_price = {{ $event->vip_fee }}">&#8358;{{ $event->vip_fee }}</h4></td>
-                      </tr>
-                      @endif
-                    </tbody>
+                        </tbody>
+                    @endif
                   </table>
                 </div>
                 <div class="seat-details-info-price">
@@ -126,17 +145,21 @@
                     <tbody>
                       <tr>
                         <td>Ticket Price</td>
-                        <td>N100.00</td>
+                        @if ($event->event_type == 0)
+                          <td>FREE</td>
+                        @else
+                        <td>&#8358;@{{ v_price }}</td>
+                        @endif
                       </tr>
                       <tr>
                         <td>Quantity</td>
-                        <td>x2</td>
+                        <td>@{{ qty }}</td>
                       </tr>
                     </tbody>
                     <tfoot>
                       <tr>
                         <td>Total Price</td>
-                        <td class="total-price">55</td>
+                        <td class="total-price">&#8358;@{{ v_total }}</td>
                       </tr>
                     </tfoot>
                   </table>
@@ -153,7 +176,8 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script>
+  {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script> --}}
+  <script type="text/javascript" src="/js/vue.js"></script>
   <script>
   var v_checkout = new Vue({
     el: '#checkout',

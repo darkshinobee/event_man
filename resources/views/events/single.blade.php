@@ -50,7 +50,11 @@
 
                                 @if ($event->ticket_count > 0)
                                   <div class="col-sm-6">
-                                    <a class="book-ticket" href="#">Get Ticket</a>
+                                    {{-- <a class="book-ticket" href="#">Get Ticket</a> --}}
+                                    <form action="{{ route('checkout', $event->slug) }}" method="post">
+                                      {{ csrf_field() }}
+                                    <button type="submit" class="book-ticket">Get Ticket</button>
+                                  </form>
                                     <h1></h1>
                                   </div>
                                 @else
@@ -72,7 +76,7 @@
                                         <input class="form-check-input" type="radio" name="fee_type" value="early" v-model="radio">
                                         <small>Early Bird</small> - &#8358;{{ $event->early_bird }}
                                       @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early">
+                                        <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
                                         <small>Early Bird</small> - Sold Out
                                       @endif
                                     </label>
@@ -87,7 +91,7 @@
                                         <input class="form-check-input" type="radio" name="fee_type" value="regular" v-model="radio">
                                         <small>Regular</small> - &#8358;{{ $event->regular_fee }}
                                       @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="regular">
+                                        <input class="form-check-input" type="radio" name="fee_type" value="regular" disabled>
                                         <small>Regular</small> - Sold Out
                                       @endif
                                     </label>
@@ -102,7 +106,7 @@
                                         <input class="form-check-input" type="radio" name="fee_type" value="vip" v-model="radio">
                                         <small>VIP</small> - &#8358;{{ $event->vip_fee }}
                                       @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="vip">
+                                        <input class="form-check-input" type="radio" name="fee_type" value="vip" disabled>
                                         <small>VIP</small> - Sold Out
                                       @endif
                                     </label>
