@@ -17,9 +17,11 @@ class CreateBookedEventsTable extends Migration
             $table->increments('id');
             $table->integer('event_id')->unsigned();
             $table->integer('attendee_id')->unsigned();
-            $table->string('ticket_type');
+            $table->integer('ticket_type')->unsigned();
             $table->integer('amount')->unsigned();
             $table->integer('quantity')->unsigned();
+            $table->string('reference');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

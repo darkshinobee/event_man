@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', function()
+{
+  return view('events.order_success');
+});
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
@@ -19,6 +23,9 @@ Route::get('/events/{slug}', 'HomeController@singleEvent')->name('single_event')
 Route::get('/blog', 'HomeController@blogs')->name('blog');
 Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
 Route::get('/search/{key}', 'HomeController@search');
+
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 Route::group(['prefix' => '/event'], function() {
   Route::get('/create', 'EventController@create')->name('events.create');
