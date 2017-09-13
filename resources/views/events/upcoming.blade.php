@@ -16,7 +16,6 @@
             <div class="row">
               <div class="text-center">
                 <h1>UPCOMING EVENTS</h1>
-                {{-- <span>Showing 1-10 of 32 Results</span> --}}
               </div>
             </div>
           </div>
@@ -47,7 +46,7 @@
                 @if ($event->event_type == 0)
                   <strong>FREE</strong>
                 @else
-                  <strong>&#8358;{{ $event->regular_fee }}</strong>
+                  <strong>&#8358;{{ number_format($event->regular_fee,2) }}</strong>
                 @endif
                 <a href="{{ route('single_event', $event->slug) }}">View Details</a>
               </div>

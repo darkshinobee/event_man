@@ -50,7 +50,6 @@
 
                                 @if ($event->ticket_count > 0)
                                   <div class="col-sm-6">
-                                    {{-- <a class="book-ticket" href="#">Get Ticket</a> --}}
                                     <form action="{{ route('checkout', $event->slug) }}" method="post">
                                       {{ csrf_field() }}
                                     <button type="submit" class="book-ticket">Get Ticket</button>
@@ -74,7 +73,7 @@
                                         <small>Early Bird</small> - Not Applicable
                                       @elseif ($event->early_max > 0)
                                         <input class="form-check-input" type="radio" name="fee_type" value="early" v-model="radio">
-                                        <small>Early Bird</small> - &#8358;{{ $event->early_bird }}
+                                        <small>Early Bird</small> - &#8358;{{ number_format($event->early_bird,2) }}
                                       @else
                                         <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
                                         <small>Early Bird</small> - Sold Out
@@ -89,7 +88,7 @@
                                         <small>Regular</small> - Not Applicable
                                       @elseif ($event->regular_max > 0)
                                         <input class="form-check-input" type="radio" name="fee_type" value="regular" v-model="radio">
-                                        <small>Regular</small> - &#8358;{{ $event->regular_fee }}
+                                        <small>Regular</small> - &#8358;{{ number_format($event->regular_fee,2) }}
                                       @else
                                         <input class="form-check-input" type="radio" name="fee_type" value="regular" disabled>
                                         <small>Regular</small> - Sold Out
@@ -104,7 +103,7 @@
                                         <small>VIP</small> - Not Applicable
                                       @elseif ($event->vip_max > 0)
                                         <input class="form-check-input" type="radio" name="fee_type" value="vip" v-model="radio">
-                                        <small>VIP</small> - &#8358;{{ $event->vip_fee }}
+                                        <small>VIP</small> - &#8358;{{ number_format($event->vip_fee,2) }}
                                       @else
                                         <input class="form-check-input" type="radio" name="fee_type" value="vip" disabled>
                                         <small>VIP</small> - Sold Out
@@ -116,8 +115,6 @@
 
                                 @if ($event->ticket_count > 0)
                                   <div class="col-sm-6">
-                                    {{-- <a v-if="radio" class="book-ticket" type="submit" form="checkout_form">Get Ticket</a> --}}
-                                    {{-- <input v-if="radio" type="submit" class="book-ticket" name="" value="">Get Ticket --}}
                                     <button v-if="radio" type="submit" class="book-ticket" form="checkout_form">Get Ticket</button>
                                     <h1></h1>
                                   </div>

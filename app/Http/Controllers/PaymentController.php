@@ -28,6 +28,7 @@ class PaymentController extends Controller
       $event = Event::find($request->event_id);
       DB::table('events')->where('id', $event->id)
         ->update(['ticket_count' => $event->ticket_count - $request->quantity]);
+        return redirect()->route('order_success', $request->reference);
     }else {
       $book->status = 0;
       $book->save();
@@ -41,28 +42,27 @@ class PaymentController extends Controller
     if ($paymentDetails['data']['status'] == "success") {
       DB::table('booked_events')->where('reference', $paymentDetails['data']['reference'])
         ->update(['status' => 1]);
-      $book_id = DB::table('booked_events')->where('reference', $paymentDetails['data']['reference'])
-        ->value('id');
-      $book = BookedEvent::find($book_id);
+      $book = DB::table('booked_events')->where('reference', $paymentDetails['data']['reference'])
+        ->first();
 
-      $event_id = DB::table('booked_events')->where('reference', $paymentDetails['data']['reference'])
-        ->value('event_id');
-      $event = Event::find($event_id);
+      $event = DB::table('events')->where('id', $book->event_id)
+        ->first();
 
       if ($book->ticket_type == 1) {
-        DB::table('events')->where('id', $event_id)
+        DB::table('events')->where('id', $event->id)
           ->update(['ticket_count' => $event->ticket_count - $book->quantity,
        'early_max' => $event->early_max - $book->quantity]);
       }
       elseif ($book->ticket_type == 2) {
-        DB::table('events')->where('id', $event_id)
+        DB::table('events')->where('id', $event->id)
           ->update(['ticket_count' => $event->ticket_count - $book->quantity,
        'regular_max' => $event->regular_max - $book->quantity]);
      }else {
-       DB::table('events')->where('id', $event_id)
+       DB::table('events')->where('id', $event->id)
         ->update(['ticket_count' => $event->ticket_count - $book->quantity,
       'vip_max' => $event->vip_max - $book->quantity]);
      }
+     return redirect()->route('order_success', $book->reference);
     }else {
       dd('Transaction Failed!');;
     }

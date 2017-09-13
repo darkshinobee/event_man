@@ -42,7 +42,7 @@
               </div>
               <div class="search-result-item-price col-sm-3">
                 <span>Price</span>
-                <strong>&#8358;{{ $event->regular_fee }}</strong>
+                <strong>&#8358;{{ number_format($event->regular_fee,2) }}</strong>
                 <a href="{{ route('single_event', $event->slug) }}">View Event</a>
               </div>
             </div>

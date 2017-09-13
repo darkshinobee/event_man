@@ -86,17 +86,17 @@
                       @if ($radio_value == 'early')
                         <tr>
                           <td><h4>EARLY BIRD TICKET</h4></td>
-                          <td><h4 v-model="v_price = {{ $event->early_bird }}">&#8358;{{ $event->early_bird }}</h4></td>
+                          <td><h4 v-model="v_price = {{ $event->early_bird }}">&#8358;{{ number_format($event->early_bird,2) }}</h4></td>
                         </tr>
                       @elseif ($radio_value == 'regular')
                         <tr>
                           <td><h4>REGULAR TICKET</h4></td>
-                          <td><h4 v-model="v_price = {{ $event->regular_fee }}">&#8358;{{ $event->regular_fee }}</h4></td>
+                          <td><h4 v-model="v_price = {{ $event->regular_fee }}">&#8358;{{ number_format($event->regular_fee,2) }}</h4></td>
                         </tr>
                       @else
                         <tr>
                           <td><h4>VIP TICKET</h4></td>
-                          <td><h4 v-model="v_price = {{ $event->vip_fee }}">&#8358;{{ $event->vip_fee }}</h4></td>
+                          <td><h4 v-model="v_price = {{ $event->vip_fee }}">&#8358;{{ number_format($event->vip_fee,2) }}</h4></td>
                         </tr>
                       @endif
                     </tbody>

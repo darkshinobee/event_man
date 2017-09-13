@@ -113,9 +113,11 @@ class EventController extends Controller
       return view('payment.checkout', compact('request', 'event', 'tickets_left', 'radio_value', 'attendee_email'));
     }
 
-    public function orderSuccess($value='')
+    public function orderSuccess($reference)
     {
-      # code...
+      $book = DB::table('booked_events')->where('reference', $reference)->first();
+      $event = DB::table('events')->where('id', $book->event_id)->first();
+      return view('events.order_success', compact('book', 'event'));
     }
 
     public function orderFail($value='')
