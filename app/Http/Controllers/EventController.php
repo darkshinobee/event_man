@@ -120,8 +120,10 @@ class EventController extends Controller
       return view('events.order_success', compact('book', 'event'));
     }
 
-    public function orderFail($value='')
+    public function orderFail($reference)
     {
-      # code...
+      $book = DB::table('booked_events')->where('reference', $reference)->first();
+      $event = DB::table('events')->where('id', $book->event_id)->first();
+      return view('events.order_fail', compact('book', 'event'));
     }
 }

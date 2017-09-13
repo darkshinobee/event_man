@@ -64,7 +64,7 @@ class PaymentController extends Controller
      }
      return redirect()->route('order_success', $book->reference);
     }else {
-      dd('Transaction Failed!');;
+      return redirect()->route('order_fail', $request->reference);
     }
   }
 }
