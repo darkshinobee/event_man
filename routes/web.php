@@ -12,7 +12,7 @@
 */
 Route::get('/test', function()
 {
-  return view('events.order_fail');
+  dd("nothing");
 });
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -34,6 +34,8 @@ Route::group(['prefix' => '/event'], function() {
   Route::post('/checkout/{slug}', 'EventController@checkout')->name('checkout');
   Route::get('/order_success/{reference}', 'EventController@orderSuccess')->name('order_success');
   Route::get('/order_fail/{reference}', 'EventController@orderFail')->name('order_fail');
+  Route::post('/hit/{event_id}/{customer_id}', 'EventController@eventHit')->name('event_hit');
+  Route::post('/miss/{event_id}/{customer_id}', 'EventController@eventMiss')->name('event_miss');
 });
 
 Route::group(['prefix' => '/customer'], function () {

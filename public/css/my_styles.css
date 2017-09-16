@@ -5,16 +5,16 @@
 }
 
 .myBtn{
-	background-color: green;
+	background-color: #ff6600;
   color: white;
 }
 
 .myBtn:hover{
-  color: green;
+  color: #ff6600;
   background-color: white;
-  border: solid green 1px;
+  border: solid #ff6600 1px;
 }
 
 #site-navigation .nav li a.myBtn:hover{
-  color: greenyellow;
+  color: #ff6600;
 }

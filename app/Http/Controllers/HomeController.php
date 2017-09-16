@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Event;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,8 @@ class HomeController extends Controller
 
     public function singleEvent($slug)
     {
+      $customer = Auth::guard('customer')->user();
+
       $id = DB::table('events')->where('slug', $slug)->value('id');
       $event = Event::find($id);
       $related_events = DB::table('events')->where('category', $event->category)
@@ -40,8 +43,13 @@ class HomeController extends Controller
                                            ->take(3)
                                            ->orderBy('hits', 'desc')
                                            ->get();
+      if (Auth::guard('customer')->check()) {
+        $customer_id = $customer->id;
+        return view('events.single', compact('event', 'related_events', 'customer_id'));
+      }else {
+        return view('events.single', compact('event', 'related_events'));
+      }
 
-      return view('events.single', compact('event', 'related_events'));
     }
 
     public function blogs()

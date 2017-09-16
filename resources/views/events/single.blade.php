@@ -34,8 +34,8 @@
                           <div class="clearfix"></div>
                           <span class="event-venue-info">Organized by - {{ $event->organizer }}</span>
                           <div class="">
-                            <span class=""><i class="fa fa-2x fa-thumbs-up">{{ $event->hits }}</i></span>
-                            <span class="m-l-50"><i class="fa fa-2x fa-thumbs-down">{{ $event->misses }}</i></span>
+                            <a style="cursor:pointer; text-decoration:none;" @click="hit" class="fa fa-2x fa-thumbs-up" v-model="hits">@{{ hits }}</a>
+                            <a style="cursor:pointer; text-decoration:none;" @click="miss" class="fa fa-2x fa-thumbs-down m-l-50">@{{ misses }}</a>
                           </div>
                         </div>
                         <div class="full-event-info-content">
@@ -52,8 +52,8 @@
                                   <div class="col-sm-6">
                                     <form action="{{ route('checkout', $event->slug) }}" method="post">
                                       {{ csrf_field() }}
-                                    <button type="submit" class="book-ticket">Get Ticket</button>
-                                  </form>
+                                      <button type="submit" class="book-ticket">Get Ticket</button>
+                                    </form>
                                     <h1></h1>
                                   </div>
                                 @else
@@ -66,51 +66,51 @@
                                 <div class="col-sm-6">
                                   <form action="{{ route('checkout', $event->slug) }}" method="post" id="checkout_form">
                                     {{ csrf_field() }}
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      @if ($event->early_max == null)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
-                                        <small>Early Bird</small> - Not Applicable
-                                      @elseif ($event->early_max > 0)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early" v-model="radio">
-                                        <small>Early Bird</small> - &#8358;{{ number_format($event->early_bird,2) }}
-                                      @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
-                                        <small>Early Bird</small> - Sold Out
-                                      @endif
-                                    </label>
-                                  </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        @if ($event->early_max == null)
+                                          <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
+                                          <small>Early Bird</small> - Not Applicable
+                                        @elseif ($event->early_max > 0)
+                                          <input class="form-check-input" type="radio" name="fee_type" value="early" v-model="radio">
+                                          <small>Early Bird</small> - &#8358;{{ number_format($event->early_bird,2) }}
+                                        @else
+                                          <input class="form-check-input" type="radio" name="fee_type" value="early" disabled>
+                                          <small>Early Bird</small> - Sold Out
+                                        @endif
+                                      </label>
+                                    </div>
 
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      @if ($event->regular_max == null)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="regular" disabled>
-                                        <small>Regular</small> - Not Applicable
-                                      @elseif ($event->regular_max > 0)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="regular" v-model="radio">
-                                        <small>Regular</small> - &#8358;{{ number_format($event->regular_fee,2) }}
-                                      @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="regular" disabled>
-                                        <small>Regular</small> - Sold Out
-                                      @endif
-                                    </label>
-                                  </div>
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        @if ($event->regular_max == null)
+                                          <input class="form-check-input" type="radio" name="fee_type" value="regular" disabled>
+                                          <small>Regular</small> - Not Applicable
+                                        @elseif ($event->regular_max > 0)
+                                          <input class="form-check-input" type="radio" name="fee_type" value="regular" v-model="radio">
+                                          <small>Regular</small> - &#8358;{{ number_format($event->regular_fee,2) }}
+                                        @else
+                                          <input class="form-check-input" type="radio" name="fee_type" value="regular" disabled>
+                                          <small>Regular</small> - Sold Out
+                                        @endif
+                                      </label>
+                                    </div>
 
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      @if ($event->vip_max == null)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="vip" disabled>
-                                        <small>VIP</small> - Not Applicable
-                                      @elseif ($event->vip_max > 0)
-                                        <input class="form-check-input" type="radio" name="fee_type" value="vip" v-model="radio">
-                                        <small>VIP</small> - &#8358;{{ number_format($event->vip_fee,2) }}
-                                      @else
-                                        <input class="form-check-input" type="radio" name="fee_type" value="vip" disabled>
-                                        <small>VIP</small> - Sold Out
-                                      @endif
-                                    </label>
-                                  </div>
-                                </form>
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        @if ($event->vip_max == null)
+                                          <input class="form-check-input" type="radio" name="fee_type" value="vip" disabled>
+                                          <small>VIP</small> - Not Applicable
+                                        @elseif ($event->vip_max > 0)
+                                          <input class="form-check-input" type="radio" name="fee_type" value="vip" v-model="radio">
+                                          <small>VIP</small> - &#8358;{{ number_format($event->vip_fee,2) }}
+                                        @else
+                                          <input class="form-check-input" type="radio" name="fee_type" value="vip" disabled>
+                                          <small>VIP</small> - Sold Out
+                                        @endif
+                                      </label>
+                                    </div>
+                                  </form>
                                 </div>
 
                                 @if ($event->ticket_count > 0)
@@ -155,12 +155,32 @@
       </div>
     </section>
   </div>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.27/vue.js"></script>
+  <script type="text/javascript" src="/js/vue.js"></script>
   <script>
   new Vue({
     el: '#single',
     data: {
-      radio: ''
+      radio: '',
+      hits: {!! json_encode($event->hits) !!},
+      misses: {!! json_encode($event->misses) !!},
+      v_event_id: {!! json_encode($event->id) !!},
+      @if (Auth::guard('customer')->check())
+        v_customer_id: {!! json_encode($customer_id) !!}
+      @endif
+    },
+    methods: {
+      hit: function() {
+        axios.post('/event/hit/'+this.v_event_id+'/'+this.v_customer_id)
+        .then(function (response) {
+          this.hits = response.data
+        });
+      },
+      miss: function() {
+        axios.post('/event/miss/'+this.v_event_id+'/'+this.v_customer_id)
+        .then(function (response) {
+          this.misses = response.data
+        });
+      }
     }
   });
   </script>

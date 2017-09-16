@@ -30,6 +30,7 @@
 
 <link rel="stylesheet" href="/css/app.css">
 <link rel="stylesheet" href="/css/my_styles.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <!-- Custom styles for this template -->
 <link rel="stylesheet" href="/theme/publish/css/style.css" >

@@ -9,6 +9,8 @@ use Image;
 use Session;
 use App\Event;
 use App\BookedEvent;
+use App\EventHit;
+use App\EventMiss;
 
 class EventController extends Controller
 {
@@ -125,5 +127,79 @@ class EventController extends Controller
       $book = DB::table('booked_events')->where('reference', $reference)->first();
       $event = DB::table('events')->where('id', $book->event_id)->first();
       return view('events.order_fail', compact('book', 'event'));
+    }
+
+    public function eventHit($event_id, $customer_id)
+    {
+      $hit = DB::table('event_hits')->where('event_id', $event_id)->where('customer_id', $customer_id)->first();
+      if ($hit == null) {
+        $hits = new EventHit;
+        $hits->event_id = $event_id;
+        $hits->customer_id = $customer_id;
+        $hits->status = 1;
+        $hits->save();
+
+        $event = Event::find($event_id);
+        $event->hits = $event->hits + 1;
+        $event->save();
+        return $event->hits;
+      }else {
+        if ($hit->status == 0) {
+          $hits = EventHit::find($hit->id);
+          $hits->status = 1;
+          $hits->save();
+
+          $event = Event::find($event_id);
+          $event->hits = $event->hits + 1;
+          $event->save();
+          return $event->hits;
+        }else {
+          $hits = EventHit::find($hit->id);
+          $hits->status = 0;
+          $hits->save();
+
+          $event = Event::find($event_id);
+          $event->hits = $event->hits - 1;
+          $event->save();
+          return $event->hits;
+        }
+      }
+    }
+
+    public function eventMiss($event_id, $customer_id)
+    {
+      $miss = DB::table('event_misses')->where('event_id', $event_id)->where('customer_id', $customer_id)->first();
+      if ($miss == null) {
+        $misses = new EventMiss;
+        $misses->event_id = $event_id;
+        $misses->customer_id = $customer_id;
+        $misses->status = 1;
+        $misses->save();
+
+        $event = Event::find($event_id);
+        $event->misses = $event->misses + 1;
+        $event->save();
+        return $event->misses;
+      }else {
+        if ($miss->status == 0) {
+          $misses = EventMiss::find($miss->id);
+          $misses->status = 1;
+          $misses->save();
+
+          $event = Event::find($event_id);
+          $event->misses = $event->misses + 1;
+          $event->save();
+          return $event->misses;
+        }else {
+          $misses = EventMiss::find($miss->id);
+          $misses->status = 0;
+          $misses->save();
+
+          $event = Event::find($event_id);
+          $event->misses = $event->misses - 1;
+          $event->save();
+          return $event->misses;
+        }
+      }
     }
 }
