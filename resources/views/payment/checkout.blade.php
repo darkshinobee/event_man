@@ -141,7 +141,6 @@
         <div class="modal-body">
           <div class="section-order-review-pricing">
             <div class="pricing-coupon">
-              <div class="pricing">
                 <table class="table pricing-review">
                   <tbody>
                     <tr>
@@ -165,7 +164,6 @@
                     </tr>
                   </tfoot>
                 </table>
-              </div>
             </div>
           </div>
         </div>

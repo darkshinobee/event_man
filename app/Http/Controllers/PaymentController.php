@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Paystack;
 use Auth;
 use App\BookedEvent;
 use App\Event;
+use App\Mail\BookingSuccess;
+use App\Mail\SaleSuccess;
 
 class PaymentController extends Controller
 {
@@ -26,8 +29,12 @@ class PaymentController extends Controller
       $book->status = 1;
       $book->save();
       $event = Event::find($request->event_id);
+      $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
+
       DB::table('events')->where('id', $event->id)
         ->update(['ticket_count' => $event->ticket_count - $request->quantity]);
+        Mail::to($customer->email)->send(new BookingSuccess($event, $book, $customer));
+        Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $customer, $organizer));
         return redirect()->route('order_success', $request->reference);
     }else {
       $book->status = 0;
@@ -38,6 +45,7 @@ class PaymentController extends Controller
 
   public function handleGatewayCallback()
   {
+    $customer = Auth::guard('customer')->user();
     $paymentDetails = Paystack::getPaymentData();
     if ($paymentDetails['data']['status'] == "success") {
       DB::table('booked_events')->where('reference', $paymentDetails['data']['reference'])
@@ -45,8 +53,8 @@ class PaymentController extends Controller
       $book = DB::table('booked_events')->where('reference', $paymentDetails['data']['reference'])
         ->first();
 
-      $event = DB::table('events')->where('id', $book->event_id)
-        ->first();
+      $event = DB::table('events')->where('id', $book->event_id)->first();
+      $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
       if ($book->ticket_type == 1) {
         DB::table('events')->where('id', $event->id)
@@ -62,6 +70,8 @@ class PaymentController extends Controller
         ->update(['ticket_count' => $event->ticket_count - $book->quantity,
       'vip_max' => $event->vip_max - $book->quantity]);
      }
+     Mail::to($customer->email)->send(new BookingSuccess($event, $book, $customer));
+     Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $customer, $organizer));
      return redirect()->route('order_success', $book->reference);
     }else {
       return redirect()->route('order_fail', $request->reference);

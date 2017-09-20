@@ -12,7 +12,8 @@
 */
 Route::get('/test', function()
 {
-  dd("nothing");
+  return new App\Mail\TestMail;
+  // Mail::to('testmail@me.com')->send(new App\Mail\TestMail);
 });
 
 Route::get('/', 'HomeController@index')->name('home');

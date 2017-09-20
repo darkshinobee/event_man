@@ -100,9 +100,12 @@
         <h3 class="modal-title text-center" id="signUpModalLabel">SIGN UP</h3>
       </div>
       <div class="modal-body">
-        <div class="section-page-content">
+
           <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
+              <div class="text-center">
+                <img src="/images/ticket_room_logo_final.png" width="300px" height="150px" alt="">
+              </div>
               <form class="" id="register_form" role="form" method="POST" action="{{ url('/customer/register') }}">
                 {{ csrf_field() }}
 
@@ -150,7 +153,6 @@
               </form>
             </div>
           </div>
-        </div>
       </div>
       <div class="modal-footer">
         {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Go To Login</button> --}}
@@ -170,9 +172,11 @@
         <h3 class="modal-title text-center" id="signInModalLabel">SIGN IN</h3>
       </div>
       <div class="modal-body">
-        <div class="section-page-content">
           <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
+              <div class="text-center">
+                <img src="/images/ticket_room_logo_final.png" width="300px" height="150px" alt="">
+              </div>
               <form class="" id="login_form" role="form" method="POST" action="{{ url('/customer/login') }}">
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -202,7 +206,6 @@
               </form>
             </div>
           </div>
-        </div>
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn myBtn" form="login_form">Sign In</button>
