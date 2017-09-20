@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Paystack;
 use Auth;
 use App\BookedEvent;
 use App\Event;
-use App\Mail\BookingSuccess;
-use App\Mail\SaleSuccess;
 
 class PaymentController extends Controller
 {
@@ -33,9 +30,9 @@ class PaymentController extends Controller
 
       DB::table('events')->where('id', $event->id)
         ->update(['ticket_count' => $event->ticket_count - $request->quantity]);
-        Mail::to($customer->email)->send(new BookingSuccess($event, $book, $customer));
-        Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $customer, $organizer));
-        return redirect()->route('order_success', $request->reference);
+
+        return redirect()->action('EventController@orderSuccess', $request->reference);
+
     }else {
       $book->status = 0;
       $book->save();
@@ -70,9 +67,7 @@ class PaymentController extends Controller
         ->update(['ticket_count' => $event->ticket_count - $book->quantity,
       'vip_max' => $event->vip_max - $book->quantity]);
      }
-     Mail::to($customer->email)->send(new BookingSuccess($event, $book, $customer));
-     Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $customer, $organizer));
-     return redirect()->route('order_success', $book->reference);
+     return redirect()->action('EventController@orderSuccess', $book->reference);
     }else {
       return redirect()->route('order_fail', $request->reference);
     }

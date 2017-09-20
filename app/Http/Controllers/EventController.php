@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Auth;
 use Image;
 use Session;
@@ -11,6 +12,8 @@ use App\Event;
 use App\BookedEvent;
 use App\EventHit;
 use App\EventMiss;
+use App\Mail\BookingSuccess;
+use App\Mail\SaleSuccess;
 
 class EventController extends Controller
 {
@@ -119,6 +122,12 @@ class EventController extends Controller
     {
       $book = DB::table('booked_events')->where('reference', $reference)->first();
       $event = DB::table('events')->where('id', $book->event_id)->first();
+      $customer = DB::table('customers')->where('id', $book->attendee_id)->first();
+      $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
+
+      Mail::to($customer->email)->send(new BookingSuccess($event, $book, $customer));
+      Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $customer, $organizer));
+
       return view('events.order_success', compact('book', 'event'));
     }
 
