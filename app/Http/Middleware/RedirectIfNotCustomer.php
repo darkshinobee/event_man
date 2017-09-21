@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class RedirectIfNotCustomer
 {
@@ -18,6 +19,7 @@ class RedirectIfNotCustomer
 	public function handle($request, Closure $next, $guard = 'customer')
 	{
 	    if (!Auth::guard($guard)->check()) {
+				Session::flash('success', 'You Need To Be Logged In');
 	        return redirect('/');
 	    }
 

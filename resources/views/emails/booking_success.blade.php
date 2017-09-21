@@ -6,7 +6,7 @@ Hi {{ $customer->first_name }}, this is your booking confirmation for {{ $event-
 @component('mail::table')
 |       |         |
 | :------------- |:-------------|
-| Order Number     | {{ $book->reference }}   |
+| Order Number     | {{ $tran->reference }}   |
 | Event Name      |{{ $event->title }} |
 | Venue      | {{ $event->venue }} |
 | Date      | {{ date_format(new DateTime($event->event_start_date), "l F j, Y ") }} |

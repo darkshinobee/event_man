@@ -1,6 +1,8 @@
-@extends('customer.layout.auth')
+@extends('main')
+@section('title', 'Password Reset')
 
 @section('content')
+<br><br>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -17,7 +19,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" autofocus>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $email or old('email') }}" autofocus required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -31,7 +33,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                                <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -44,7 +46,7 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -56,7 +58,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn myBtn">
                                     Reset Password
                                 </button>
                             </div>

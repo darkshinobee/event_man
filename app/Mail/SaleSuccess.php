@@ -16,12 +16,13 @@ class SaleSuccess extends Mailable
      *
      * @return void
      */
-     public function __construct($event, $book, $customer, $organizer)
+     public function __construct($event, $book, $customer, $organizer, $tran)
      {
          $this->event = $event;
          $this->book = $book;
          $this->customer = $customer;
          $this->organizer = $organizer;
+         $this->tran = $tran;
      }
 
     /**
@@ -36,7 +37,8 @@ class SaleSuccess extends Mailable
                        'event' => $this->event,
                        'book' => $this->book,
                        'customer' => $this->customer,
-                       'organizer' => $this->organizer
+                       'organizer' => $this->organizer,
+                       'tran' => $this->tran
                      ])
                      ->from('no-reply@ticketroom.ng', 'TicketRoom')
                      ->subject('Ticket Booked For Your Event');

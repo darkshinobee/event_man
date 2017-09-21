@@ -13,7 +13,7 @@
             <li>
               <a href="">
                 <i class="fa fa-envelope-o"></i>
-                test@ticketroom.ng
+                info@ticketroom.ng
               </a>
             </li>
           </ul>
@@ -26,8 +26,8 @@
                   {{ Auth::guard('customer')->user()->first_name.' '.Auth::guard('customer')->user()->last_name }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">My Events</a></li>
-                  <li><a href="#">My Tickets</a></li>
+                  <li><a href="{{ route('my_events') }}">My Events</a></li>
+                  <li><a href="{{ route('my_tickets') }}">My Tickets</a></li>
                   <li><a href="#">My Account</a></li>
                   <li><a href="{{ url('/customer/logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Logout</a>
@@ -53,8 +53,8 @@
   <div class="main-header main-header-bg">
     <div class="container">
       <div class="row">
-        <div class="site-branding col-md-3">
-          <h1 class="site-title"><a href="{{ route('home') }}" title="myticket" rel="home"><img src="/theme/publish/images/logo.png" alt="logo"></a></h1>
+        <div class="site-branding col-md-3 m-b-8">
+          <h1 class="site-title"><a href="{{ route('home') }}" title="myticket" rel="home"><img src="/images/t_logo2.png" alt="logo"></a></h1>
         </div>
 
         <div class="col-md-9">
@@ -79,7 +79,7 @@
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('upcoming_events') }}">Upcoming Events</a></li>
                 <li><a href="{{ route('past_events') }}">Past Events</a></li>
-                <li><a href="{{ route('blog') }}">Blog</a></li>
+                {{-- <li><a href="{{ route('blog') }}">Blog</a></li> --}}
                 <li><a href="{{ route('contact') }}">Contact</a></li>
                 <li><a class="btn myBtn" href="{{ route('events.create') }}">CREATE EVENT</a></li>
                 {{-- <li class="cart"><a href="#">0</a></li> --}}
@@ -104,8 +104,8 @@
           <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
               <div class="text-center">
-                <img src="/images/ticket_room_logo_final.png" width="300px" height="150px" alt="">
-              </div>
+                <img src="/images/t_logo.png" alt="">
+              </div><br>
               <form class="" id="register_form" role="form" method="POST" action="{{ url('/customer/register') }}">
                 {{ csrf_field() }}
 
@@ -175,8 +175,8 @@
           <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
               <div class="text-center">
-                <img src="/images/ticket_room_logo_final.png" width="300px" height="150px" alt="">
-              </div>
+                <img src="/images/t_logo.png" alt="">
+              </div><br>
               <form class="" id="login_form" role="form" method="POST" action="{{ url('/customer/login') }}">
                 {{ csrf_field() }}
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

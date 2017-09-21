@@ -14,9 +14,11 @@
             <div class="col-sm-8">
               <ul class="search_res result_name">
                 <li>{{ result.title }}</li>
+                <li>{{ result.venue }}</li>
+                <li>{{ result.state }}</li>
                 <li>{{ result.organizer }}</li>
                 <li>{{ (result.category).toUpperCase() }}</li>
-                <li>&#8358;{{ result.regular_fee }}</li>
+                <!-- <li>&#8358;{{ result.regular_fee }}</li> -->
                 <!-- <li v-if="result.status == 0">{{ result.event_start_date }}</li>
                 <li v-else>Expired</li> -->
               </ul>

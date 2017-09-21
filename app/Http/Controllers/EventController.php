@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Mail;
 use Auth;
 use Image;
 use Session;
+use PDF;
 use App\Event;
 use App\BookedEvent;
+use App\EventOrganizer;
 use App\EventHit;
 use App\EventMiss;
 use App\Mail\BookingSuccess;
 use App\Mail\SaleSuccess;
+use App\Mail\EventCreated;
 
 class EventController extends Controller
 {
@@ -93,6 +96,14 @@ class EventController extends Controller
         $event->event_end_time = $request->event_end_time;
       }
       $event->save();
+
+      $ev_org = new EventOrganizer;
+      $ev_org->event_id = $event->id;
+      $ev_org->organizer_id = $customer->id;
+      $ev_org->save();
+
+      Mail::to($customer->email)->send(new EventCreated($event, $customer));
+
       Session::flash('success', 'Your Event Has Been Created!');
       return redirect()->route('home');
 
@@ -120,22 +131,24 @@ class EventController extends Controller
 
     public function orderSuccess($reference)
     {
-      $book = DB::table('booked_events')->where('reference', $reference)->first();
-      $event = DB::table('events')->where('id', $book->event_id)->first();
-      $customer = DB::table('customers')->where('id', $book->attendee_id)->first();
+      $tran = DB::table('transactions')->where('reference', $reference)->first();
+      $book = DB::table('booked_events')->where('transaction_id', $tran->id)->first();
+      $event = DB::table('events')->where('id', $tran->event_id)->first();
+      $attendee = DB::table('customers')->where('id', $tran->attendee_id)->first();
       $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
-      Mail::to($customer->email)->send(new BookingSuccess($event, $book, $customer));
-      Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $customer, $organizer));
+      Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran));
+      Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $attendee, $organizer, $tran));
 
-      return view('events.order_success', compact('book', 'event'));
+      return view('events.order_success', compact('book', 'event', 'tran'));
     }
 
     public function orderFail($reference)
     {
-      $book = DB::table('booked_events')->where('reference', $reference)->first();
-      $event = DB::table('events')->where('id', $book->event_id)->first();
-      return view('events.order_fail', compact('book', 'event'));
+      $tran = DB::table('transactions')->where('reference', $reference)->first();
+      $book = DB::table('booked_events')->where('transaction_id', $tran->id)->first();
+      $event = DB::table('events')->where('id', $tran->event_id)->first();
+      return view('events.order_fail', compact('book', 'event', 'tran'));
     }
 
     public function eventHit($event_id, $customer_id)
@@ -211,4 +224,34 @@ class EventController extends Controller
         }
       }
     }
+
+    public function viewList($event_id)
+    {
+      $organizer = Auth::guard('customer')->user();
+      $title = DB::table('events')->where('id', $event_id)->value('title');
+      $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name', 'transactions.reference')
+                ->join('transactions', 'customers.id', '=', 'transactions.attendee_id')
+                ->join('events', 'transactions.event_id', '=', 'events.id')
+                ->where('events.organizer_id', $organizer->id)
+                ->where('events.id', $event_id)
+                ->orderBy('transactions.created_at', 'asc')
+                ->get();
+                // dd();
+                return view('events.guest_list', compact('title','guests'));
+    }
+
+    // public function downloadList($event_id)
+    // {
+    //   $organizer = Auth::guard('customer')->user();
+    //   $title = DB::table('events')->where('id', $event_id)->value('title');
+    //   $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name', 'transactions.reference')
+    //             ->join('transactions', 'customers.id', '=', 'transactions.attendee_id')
+    //             ->join('events', 'transactions.event_id', '=', 'events.id')
+    //             ->where('events.organizer_id', $organizer->id)
+    //             ->where('events.id', $event_id)
+    //             ->orderBy('transactions.created_at', 'asc')
+    //             ->get();
+    //   $pdf = PDF::loadView('events.guest_list', compact('title', 'guests'));
+    //   return $pdf->download($title.'_'.'guest list.pdf');
+    // }
 }

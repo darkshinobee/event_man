@@ -44,9 +44,9 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
         'venue' => $faker->address,
         'state' => 'Abuja',
         'description' => $faker->text($maxNbChars = 200),
-        'category' => 'concerts',
+        'category' => 'party',
         'organizer' => $faker->company,
-        'organizer_id' => $faker->numberBetween($min = 1, $max = 5),
+        'organizer_id' => 1,
         'event_type' => 1,
         'ticket_count' => $faker->numberBetween($min = 50, $max = 200),
         'early_bird' => 2500,
@@ -58,7 +58,7 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
         // 'hits' => $faker->numberBetween($min = 0, $max = 50),
         // 'misses' => $faker->numberBetween($min = 0, $max = 20),
         'slug' => $faker->unique()->word,
-        'image_path' => '/images/defaults/concerts.jpg',
+        'image_path' => '/images/defaults/party.jpg',
         // 'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
         'event_start_date' => $faker->date($format = 'Y-m-d', $min = 'now'),
         'event_start_time' => $faker->time($format = 'H:i'),
@@ -72,5 +72,12 @@ $factory->define(App\BookedEvent::class, function (Faker\Generator $faker) {
         'ticket_type' => 'paid',
         'amount' => $faker->numberBetween($min = 1000, $max = 10000),
         'quantity' => $faker->numberBetween($min = 1, $max = 5),
+    ];
+});
+
+$factory->define(App\EventOrganizer::class, function (Faker\Generator $faker) {
+    return [
+        'event_id' => 4,
+        'organizer_id' => 1,
     ];
 });

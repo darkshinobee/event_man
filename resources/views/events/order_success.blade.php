@@ -13,7 +13,7 @@
           <div class="text-center">
             <h1>Thank you.</h1>
             <h3>Your order was completed successfully.</h3>
-            <h4>ORDER NUMBER: {{ $book->reference }}</h4><br>
+            <h4>ORDER NUMBER: {{ $tran->reference }}</h4><br>
             <p>An email receipt including the details of your order has been sent to your email address.</p>
             <p>You can download your ticket by clicking on this link <i><a href="#">here</a></i> or by visiting the <i><a href="#">My Tickets</a></i> page anytime.</p>
             <h3>ORDER SUMMARY</h3>

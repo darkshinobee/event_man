@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookedEventsTable extends Migration
+class CreateTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateBookedEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('booked_events', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('transaction_id')->unsigned();
-            $table->integer('ticket_type')->unsigned();
-            $table->integer('amount')->unsigned();
-            $table->integer('quantity')->unsigned();
-            $table->boolean('booking_status')->default(0);
+            $table->integer('event_id')->unsigned();
+            $table->integer('attendee_id')->unsigned();
+            $table->string('reference');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateBookedEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booked_events');
+        Schema::dropIfExists('transactions');
     }
 }

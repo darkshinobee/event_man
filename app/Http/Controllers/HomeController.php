@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-      $events = DB::table('events')->where('status', 0)->orderBy('hits', 'desc')->take(6)->get();
+      $events = DB::table('events')->where('status', 0)->orderBy('events.event_start_date', 'desc')->take(6)->get();
       return view('welcome', compact('events'));
     }
 
@@ -22,13 +22,13 @@ class HomeController extends Controller
 
     public function pastEvents()
     {
-      $events = DB::table('events')->where('status', 1)->orderBy('hits', 'desc')->paginate(6);
+      $events = DB::table('events')->where('status', 1)->orderBy('events.event_start_date', 'desc')->simplePaginate(6);
       return view('events.gallery', compact('events'));
     }
 
     public function upcomingEvents()
     {
-      $events = DB::table('events')->where('status', 0)->paginate(5);
+      $events = DB::table('events')->where('status', 0)->orderBy('events.event_start_date', 'desc')->simplePaginate(3);
       return view('events.upcoming', compact('events'));
     }
 
@@ -41,7 +41,7 @@ class HomeController extends Controller
       $related_events = DB::table('events')->where('category', $event->category)
                                            ->where('status', 0)
                                            ->take(3)
-                                           ->orderBy('hits', 'desc')
+                                           ->orderBy('events.event_start_date', 'desc')
                                            ->get();
       if (Auth::guard('customer')->check()) {
         $customer_id = $customer->id;
@@ -66,7 +66,7 @@ class HomeController extends Controller
     {
       if ($request->has('query')) {
         $q = $request->input("query");
-        $query = DB::table('events')->select('title', 'category', 'organizer', 'regular_fee', 'image_path', 'slug', 'event_start_date', 'status')
+        $query = DB::table('events')->select('title', 'category', 'venue', 'state', 'organizer', 'regular_fee', 'image_path', 'slug', 'event_start_date', 'status')
         ->where('title', 'like', '%'.$q.'%')
         ->orWhere('category', 'like', '%'.$q.'%')
         ->orWhere('organizer', 'like', '%'.$q.'%')
@@ -79,5 +79,34 @@ class HomeController extends Controller
         }
         }
         return "empty";
+      }
+
+      public function myTickets()
+      {
+        $attendee = Auth::guard('customer')->user();
+        $tickets = DB::table('events')
+                  ->join('transactions', 'events.id', '=', 'transactions.event_id')
+                  ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
+                  ->where('transactions.attendee_id', $attendee->id)
+                  ->where('booked_events.booking_status', 1)
+                  ->orderBy('events.event_start_date', 'desc')
+                  ->simplePaginate(5);
+                  // dd($tickets);
+        return view('attendee.my_tickets', compact('tickets'));
+      }
+
+      public function myEvents()
+      {
+        $organizer = Auth::guard('customer')->user();
+        $events = DB::table('events')
+                  ->join('event_organizers', 'events.id', '=', 'event_organizers.event_id')
+                  ->join('transactions', 'event_organizers.event_id', '=', 'transactions.event_id')
+                  ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
+                  ->where('event_organizers.organizer_id', $organizer->id)
+                  ->orderBy('events.event_start_date', 'desc')
+                  ->get()
+                  ->unique('event_id');
+                  // dd($events);
+        return view('organizer.my_events', compact('events'));
       }
 }

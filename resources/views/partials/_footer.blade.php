@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-md-8">
-          <a href="#"><img src="/theme/publish/images/logo.png" alt="logo"></a>
+        <div class="site-branding col-md-8">
+          {{-- <a href="#"><img src="/images/t_logo2.png" alt="logo"></a> --}}
         </div>
         <div class="col-md-4">
 
@@ -34,7 +34,7 @@
             <h3>Support and Contact</h3>
             <ul>
               <li><a href="#">Customer Support Contacts</a></li>
-              <li><a href="#">Help</a></li>
+              {{-- <li><a href="#">Help</a></li> --}}
             </ul>
           </div>
 
@@ -42,31 +42,31 @@
             <h3>Stay Connected</h3>
             <ul>
               <li class="facebook">
-                <a href="#">
+                <a href="https://www.facebook.com/">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                   Facebook
                 </a>
               </li>
               <li class="twitter">
-                <a href="#">
+                <a href="https://twitter.com/">
                   <i class="fa fa-twitter" aria-hidden="true"></i>
                   Twitter
                 </a>
               </li>
               <li class="linkedin">
-                <a href="#">
+                <a href="https://www.linkedin.com/">
                   <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                   LinkedIn
                 </a>
               </li>
               <li class="google">
-                <a href="#">
+                <a href="https://plus.google.com">
                   <i class="fa fa-google-plus-square" aria-hidden="true"></i>
                   Google+
                 </a>
               </li>
               <li class="rss">
-                <a href="#">
+                <a href="https://www.instagram.com/">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
                   Instagram
                 </a>
@@ -79,8 +79,8 @@
           <div class="footer-dashboard">
             <h3>TICKETROOM Dashboard</h3>
             <ul>
-              <li><a href="#">Organizer</a></li>
-              <li><a href="#">Attendee</a></li>
+              <li><a href="{{ route('my_events') }}">Organizer</a></li>
+              <li><a href="{{ route('my_tickets') }}">Attendee</a></li>
             </ul>
           </div>
         </div>

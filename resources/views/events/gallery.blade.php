@@ -19,7 +19,7 @@
               </div>
             </div>
           </div>
-
+          @if ($events->Count())
           @foreach ($events as $event)
           <div class="search-result-item">
             <div class="row">
@@ -48,6 +48,11 @@
             </div>
           </div>
           @endforeach
+        @else
+          <div class="img-responsive text-center">
+            <img src="/images/no_ticket.png" alt="no ticket">
+          </div>
+        @endif
           <div class="text-center">
 						{!! $events->links() !!}
 					</div>

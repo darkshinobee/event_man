@@ -1,7 +1,13 @@
-@extends('customer.layout.auth')
+@extends('main')
+@section('title', 'Password Reset')
 
 <!-- Main Content -->
 @section('content')
+  <section class="section-page-header">
+    <div class="container">
+      <h1 class="entry-title">PASSWORD RESET</h1>
+    </div>
+  </section><br>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -21,7 +27,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -33,7 +39,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn myBtn">
                                     Send Password Reset Link
                                 </button>
                             </div>

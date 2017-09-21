@@ -33,10 +33,10 @@
                           <span class="event-venue-info">{{ $event->venue }}</span>
                           <div class="clearfix"></div>
                           <span class="event-venue-info">Organized by - {{ $event->organizer }}</span>
-                          <div class="">
+                          {{-- <div class="">
                             <a style="cursor:pointer; text-decoration:none;" @click="hit" class="fa fa-2x fa-thumbs-up" v-model="hits">@{{ hits }}</a>
                             <a style="cursor:pointer; text-decoration:none;" @click="miss" class="fa fa-2x fa-thumbs-down m-l-50">@{{ misses }}</a>
-                          </div>
+                          </div> --}}
                         </div>
                         <div class="full-event-info-content">
                           <p>{{ $event->description }}</p>

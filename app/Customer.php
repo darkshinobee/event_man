@@ -38,4 +38,9 @@ class Customer extends Authenticatable
     {
         $this->notify(new CustomerResetPassword($token));
     }
+
+    public function transactions()
+    {
+      return $this->hasMany('App\Transaction');
+    }
 }

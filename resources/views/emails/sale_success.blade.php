@@ -6,7 +6,7 @@ Hi {{ $organizer->first_name }}, this is a booking notification for {{ $event->t
 @component('mail::table')
 |       |         |
 | :------------- |:-------------|
-| Order Number     | {{ $book->reference }}   |
+| Order Number     | {{ $tran->reference }}   |
 | Event Name      |{{ $event->title }} |
 | Attendee      |{{ $customer->first_name.' '.$customer->last_name }} |
 | Quantity      | {{ $book->quantity }} |

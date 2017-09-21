@@ -13,7 +13,7 @@
           <div class="text-center">
             <h1>Sorry.</h1>
             <h3>Your order could not be processed.</h3>
-            <h4>ORDER NUMBER: {{ $book->reference }}</h4><br>
+            <h4>ORDER NUMBER: {{ $tran->reference }}</h4><br>
             <p class="lead">Please try again.</p>
             <a href="{{ route('single_event', $event->slug) }}" class="btn btn-lg myBtn">Go Back</a>
           </div>

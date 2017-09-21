@@ -10,34 +10,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', function()
-{
-  return new App\Mail\TestMail;
-  // Mail::to('testmail@me.com')->send(new App\Mail\TestMail);
-});
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/gallery', 'HomeController@pastEvents')->name('past_events');
 Route::get('/upcoming_events', 'HomeController@upcomingEvents')->name('upcoming_events');
 Route::get('/events/{slug}', 'HomeController@singleEvent')->name('single_event');
-Route::get('/blog', 'HomeController@blogs')->name('blog');
-Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
+// Route::get('/blog', 'HomeController@blogs')->name('blog');
+// Route::get('/single_blog', 'HomeController@singleBlog')->name('single_blog');
 Route::get('/search/{key}', 'HomeController@search');
+
+Route::get('/my_tickets', 'HomeController@myTickets')->name('my_tickets')->middleware('customer');
+Route::get('/my_events', 'HomeController@myEvents')->name('my_events')->middleware('customer');
 
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
-Route::group(['prefix' => '/event'], function() {
+Route::group(['prefix' => '/event', 'middleware' => 'customer'], function() {
   Route::get('/create', 'EventController@create')->name('events.create');
   Route::post('/store', 'EventController@store')->name('events.store');
-  Route::get('/category/{category}', 'EventController@eventCategories')->name('events.category');
   Route::post('/checkout/{slug}', 'EventController@checkout')->name('checkout');
   Route::get('/order_success/{reference}', 'EventController@orderSuccess')->name('order_success');
   Route::get('/order_fail/{reference}', 'EventController@orderFail')->name('order_fail');
-  Route::post('/hit/{event_id}/{customer_id}', 'EventController@eventHit')->name('event_hit');
-  Route::post('/miss/{event_id}/{customer_id}', 'EventController@eventMiss')->name('event_miss');
+  Route::get('/view_list/{event_id}', 'EventController@viewList')->name('view_list');
+  // Route::get('/download_list/{event_id}', 'EventController@downloadList')->name('download_list');
+  // Route::post('/hit/{event_id}/{customer_id}', 'EventController@eventHit')->name('event_hit');
+  // Route::post('/miss/{event_id}/{customer_id}', 'EventController@eventMiss')->name('event_miss');
 });
+Route::get('/category/{category}', 'EventController@eventCategories')->name('events.category');
 
 Route::group(['prefix' => '/customer'], function () {
   // Route::get('/login', 'CustomerAuth\LoginController@showLoginForm');

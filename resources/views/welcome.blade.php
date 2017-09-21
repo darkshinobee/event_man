@@ -15,7 +15,7 @@
     </div>
   </section>
 
-  <section class="section-upcoming-events">
+  {{-- <section class="section-upcoming-events">
     <div class="container">
       <div class="row">
         <div class="section-header">
@@ -26,7 +26,7 @@
         <div class="section-content">
           <ul class="clearfix">
             @foreach ($events as $event)
-              <li>
+              <li class="col-sm-4">
                 <div class="date">
                   <a href="{{ route('single_event', $event->slug) }}">
                     <span class="day">{{ date_format(new DateTime($event->event_start_date), "j") }}</span>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <section class="section-event-category">
     <div class="container">
@@ -63,7 +63,7 @@
             </li>
             <li class="category-2 col-sm-4">
               <img src="/theme/publish/images/event-category-2.jpg" alt="image">
-              <a href="{{ route('events.category', 'sports') }}"><span>Sports</span></a>
+              <a href="{{ route('events.category', 'sport') }}"><span>Sports</span></a>
             </li>
             <li class="category-3 col-sm-4">
               <img src="/theme/publish/images/event-category-3.jpg" alt="image">
@@ -71,7 +71,7 @@
             </li>
             <li class="category-4 col-sm-4">
               <img src="/theme/publish/images/event-category-4.jpg" alt="image">
-              <a href="{{ route('events.category', 'parties') }}"><span>Parties</span></a>
+              <a href="{{ route('events.category', 'party') }}"><span>Parties</span></a>
             </li>
             <li class="category-5 col-sm-4">
               <img src="/theme/publish/images/event-category-5.jpg" alt="image">
@@ -79,7 +79,7 @@
             </li>
             <li class="category-6 col-sm-4">
               <img src="/theme/publish/images/event-category-6.jpg" alt="image">
-              <a href="{{ route('events.category', 'classes') }}"><span>Classes</span></a>
+              <a href="{{ route('events.category', 'class') }}"><span>Classes</span></a>
             </li>
           </ul>
         </div>

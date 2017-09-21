@@ -16,11 +16,12 @@ class BookingSuccess extends Mailable
      *
      * @return void
      */
-    public function __construct($event, $book, $customer)
+    public function __construct($event, $book, $customer, $tran)
     {
         $this->event = $event;
         $this->book = $book;
         $this->customer = $customer;
+        $this->tran = $tran;
     }
 
     /**
@@ -34,7 +35,8 @@ class BookingSuccess extends Mailable
                     ->with([
                       'event' => $this->event,
                       'book' => $this->book,
-                      'customer' => $this->customer
+                      'customer' => $this->customer,
+                      'tran' => $this->tran
                     ])
                     ->from('no-reply@ticketroom.ng', 'TicketRoom')
                     ->subject('You Have Successfully Booked Your Ticket');
