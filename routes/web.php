@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/contact', 'HomeController@contactMail')->name('contact_mail');
 Route::get('/gallery', 'HomeController@pastEvents')->name('past_events');
 Route::get('/upcoming_events', 'HomeController@upcomingEvents')->name('upcoming_events');
 Route::get('/events/{slug}', 'HomeController@singleEvent')->name('single_event');

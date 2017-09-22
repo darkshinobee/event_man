@@ -11,7 +11,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          {!! Form::open([]) !!}
+          <form action="{{ route('contact_mail') }}" method="post">
           {{ csrf_field() }}
           <div class="row">
             <div class="col-sm-6">
@@ -32,17 +32,17 @@
                 <div class="row">
                   <div class="col-sm-12">
                     {{ Form::text('subject', null, array('class' => 'form-control', 'required' => '',
-                      'placeholder' => 'Keywords that describe your problem', 'maxlength' => '255')) }}
+                      'placeholder' => 'Subject', 'maxlength' => '255')) }}
                     </div>
                   </div><br>
                   <div class="row">
                     <div class="col-sm-12">
                       {{ Form::textarea('message', null, array('class' => 'form-control', 'required' => '',
-                        'placeholder' => 'Your Message', 'maxlength' => '255')) }}
+                        'placeholder' => 'Your Message')) }}
                       </div>
                     </div><br>
                     {{ Form::submit('Send', array('class' => 'btn btn-lg myBtn btn-block', 'style' => 'margin-top: 10px')) }}
-                    {!! Form::close() !!}
+                  </form>
                   </div>
                 </div>
               </div>

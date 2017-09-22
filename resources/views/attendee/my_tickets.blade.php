@@ -32,6 +32,7 @@
                   @else
                   <li class="list-group-item">VIP - &#8358;{{ number_format($ticket->amount,2) }}</li>
                   @endif
+                  <li class="list-group-item">Quantity - {{ $ticket->quantity }}</li>
                   @if ($ticket->status == 0)
                     <li class="list-group-item">Due {{ date_format(new DateTime($ticket->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($ticket->event_start_time), "h:ia") }} </li>
                     @else

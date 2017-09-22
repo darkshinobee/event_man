@@ -28,7 +28,7 @@
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="{{ route('my_events') }}">My Events</a></li>
                   <li><a href="{{ route('my_tickets') }}">My Tickets</a></li>
-                  <li><a href="#">My Account</a></li>
+                  {{-- <li><a href="#">My Account</a></li> --}}
                   <li><a href="{{ url('/customer/logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ url('/customer/logout') }}" method="POST" style="display: none;">
@@ -53,11 +53,11 @@
   <div class="main-header main-header-bg">
     <div class="container">
       <div class="row">
-        <div class="site-branding col-md-3 m-b-8">
+        <div class="site-branding col-sm-3 m-b-8">
           <h1 class="site-title"><a href="{{ route('home') }}" title="myticket" rel="home"><img src="/images/t_logo2.png" alt="logo"></a></h1>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-sm-9">
           <nav id="site-navigation" class="navbar">
             <!-- toggle get grouped for better mobile display -->
             <div class="navbar-header">

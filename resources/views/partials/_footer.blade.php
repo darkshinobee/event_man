@@ -22,7 +22,7 @@
           <div class="about clearfix">
             <h3>About</h3>
             <ul>
-              <li><a href="#">Our Company</a></li>
+              <li><a href="#">The Company</a></li>
               {{-- <li><a href="#">Careers</a></li> --}}
               {{-- <li><a href="#">Advertising</a></li> --}}
               <li><a href="#">Terms of Service</a></li>
@@ -33,7 +33,7 @@
           <div class="support clearfix">
             <h3>Support and Contact</h3>
             <ul>
-              <li><a href="#">Customer Support Contacts</a></li>
+              <li><a href="{{ route('contact') }}">Customer Support Contacts</a></li>
               {{-- <li><a href="#">Help</a></li> --}}
             </ul>
           </div>

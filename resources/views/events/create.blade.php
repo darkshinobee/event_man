@@ -35,12 +35,12 @@
                 <label for="category">Category *</label>
                 <select class="form-control" name="category" required="">
                   <option>--</option>
-                  <option value="concerts">Concerts</option>
-                  <option value="sports">Sports</option>
-                  <option value="parties">Parties</option>
+                  <option value="concert">Concerts</option>
+                  <option value="sport">Sports</option>
+                  <option value="party">Parties</option>
                   <option value="conference">Conference</option>
                   <option value="religion">Religion</option>
-                  <option value="classes">Classes</option>
+                  <option value="class">Classes</option>
                 </select>
               </div>
               <div class="form-group col-sm-6">
@@ -104,7 +104,7 @@
         <div class="row">
           <div class="form-group col-sm-4">
             <label for="event_start_date">Start Date</label>
-            <input type="date" name="event_start_date" value="" class="form-control" required="">
+            <input type="date" name="event_start_date" value="" min="{{ date("Y-m-d") }}" class="form-control" required="">
           </div>
           <div class="form-group col-sm-4">
             <label for="event_start_time">Start Time</label>

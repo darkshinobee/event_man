@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contact;
 use App\Event;
 use Auth;
+use Session;
 
 class HomeController extends Controller
 {
@@ -18,6 +21,13 @@ class HomeController extends Controller
     public function contact()
     {
       return view('pages.contact');
+    }
+
+    public function contactMail(Request $request)
+    {
+      Mail::to('help@ticketroom.ng')->send(new Contact($request));
+      Session::flash('success', 'Message Sent');
+      return redirect()->action('HomeController@index');
     }
 
     public function pastEvents()
@@ -70,6 +80,7 @@ class HomeController extends Controller
         ->where('title', 'like', '%'.$q.'%')
         ->orWhere('category', 'like', '%'.$q.'%')
         ->orWhere('organizer', 'like', '%'.$q.'%')
+        ->orWhere('state', 'like', '%'.$q.'%')
         ->where('status', $key)
         ->get();
         if ($query->Count()) {

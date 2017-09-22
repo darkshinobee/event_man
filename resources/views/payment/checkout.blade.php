@@ -168,8 +168,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-
           <form action="{{ route('pay') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="event_id" value="{{ $event->id }}">
@@ -188,7 +186,7 @@
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
             <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}">
             {{-- <input type="hidden" name="event_type" value="{{ $event->event_type }}"> --}}
-
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           @if ($event->event_type == 0)
             <input type="hidden" name="ticket_type" value="{{ 0 }}">
             <button type="submit" class="btn myBtn">Download Ticket</button>
