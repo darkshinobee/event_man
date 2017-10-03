@@ -27,7 +27,7 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-      dd($request);
+      // dd($request);
       $customer = Auth::guard('customer')->user();
       // Validation
       $this -> validate($request, array(
@@ -112,7 +112,7 @@ class EventController extends Controller
 
     public function eventCategories($category)
     {
-      $events = DB::table('events')->where('category', $category)->paginate(5);
+      $events = DB::table('events')->where('category', $category)->where('status', 0)->orderBy('events.event_start_date', 'desc')->simplePaginate(5);
       return view('events.upcoming', compact('events', 'category'));
     }
 

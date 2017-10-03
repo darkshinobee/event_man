@@ -82,7 +82,11 @@
               <a href="{{ route('events.category', 'class') }}"><span>Classes</span></a>
             </li>
           </ul>
-        </div>
+        </div><br>
+        <div class="visible-print text-center">
+    {!! QrCode::size(100)->generate(Request::url()); !!}
+    <p>Scan me to return to the original page.</p>
+</div>
       </div>
     </div>
   </section>
