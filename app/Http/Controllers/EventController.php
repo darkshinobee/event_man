@@ -10,12 +10,14 @@ use Image;
 use Session;
 use PDF;
 use App\Event;
+use App\Customer;
 use App\BookedEvent;
 use App\EventOrganizer;
 use App\EventHit;
 use App\EventMiss;
 use App\Mail\BookingSuccess;
-use App\Mail\SaleSuccess;
+use App\Mail\ContactOrganizer;
+// use App\Mail\SaleSuccess;
 use App\Mail\EventCreated;
 
 class EventController extends Controller
@@ -37,8 +39,6 @@ class EventController extends Controller
         'description' => 'required',
         'category' => 'required',
         'event_type' => 'required',
-        'ticket_count' => 'required',
-        // 'regular_fee' => 'required',
         'event_start_date' => 'required',
         'event_start_time' => 'required'
       ));
@@ -51,23 +51,33 @@ class EventController extends Controller
       $event->state = $request->state;
       $event->description = $request->description;
       $event->category = $request->category;
-      if ($request->has('organizer')) {
+      if ($request->organizer) {
         $event->organizer = $request->organizer;
       } else {
         $event->organizer = $customer->first_name.' '.$customer->last_name;
       }
       $event->organizer_id = $customer->id;
       $event->event_type = $request->event_type;
-      $event->ticket_count = $request->ticket_count;
-      if ($request->has('early_bird') && $request->has('early_max') && $event->event_type == 1) {
+      if ($request->ticket_count) {
+        $event->ticket_count = $request->ticket_count;
+      }else {
+        if ($request->early_max && $request->vip_max && $request->regular_max) {
+          $event->ticket_count = $request->early_max + $request->vip_max + $request->regular_max;
+        }elseif ($request->regular_max && $request->vip_max && !$request->early_max) {
+          $event->ticket_count = $request->regular_max + $request->vip_max;
+        }elseif ($request->regular_max && $request->early_max && !$request->vip_max) {
+          $event->ticket_count = $request->regular_max + $request->early_max;
+        }
+      }
+      if ($request->early_bird && $request->early_max && $event->event_type == 1) {
         $event->early_bird = $request->early_bird;
         $event->early_max = $request->early_max;
       }
-      if ($request->has('vip_fee') && $request->has('vip_max') && $event->event_type == 1) {
+      if ($request->vip_fee && $request->vip_max && $event->event_type == 1) {
         $event->vip_fee = $request->vip_fee;
         $event->vip_max = $request->vip_max;
       }
-      if ($request->has('regular_fee') && $request->has('regular_max') && $event->event_type == 1) {
+      if ($request->regular_fee && $request->regular_max && $event->event_type == 1) {
         $event->regular_fee = $request->regular_fee;
         $event->regular_max = $request->regular_max;
       }
@@ -83,7 +93,7 @@ class EventController extends Controller
         $image = $request->file('image_path');
         $image_name = $event->slug. '.' .$image->getClientOriginalExtension();
         $destination = public_path('images/categories/'.$event->category.'/'.$image_name);
-        Image::make($image)->save($destination);
+        Image::make($image)->resize(680, 360)->save($destination);
         $event->image_path = '/images/categories/'.$event->category.'/'.$image_name;
       } else {
         $event->image_path = '/images/defaults/'.$event->category.'.jpg';
@@ -116,6 +126,15 @@ class EventController extends Controller
       return view('events.upcoming', compact('events', 'category'));
     }
 
+    public function contactOrganizer(Request $request)
+    {
+      $event = Event::find($request->event_id);
+      $organizer = Customer::find($event->organizer_id);
+      Mail::to($organizer->email)->send(new ContactOrganizer($request, $event));
+      Session::flash('success', 'Message Sent');
+      return back();
+    }
+
     public function checkout(Request $request, $slug)
     {
       $customer = Auth::guard('customer')->user();
@@ -139,7 +158,7 @@ class EventController extends Controller
       $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
       Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran));
-      Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $attendee, $organizer, $tran));
+      // Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $attendee, $organizer, $tran));
 
       return view('events.order_success', compact('book', 'event', 'tran'));
     }

@@ -35,7 +35,7 @@ class PaymentController extends Controller
       $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
       DB::table('events')->where('id', $event->id)
-        ->update(['ticket_count' => $event->ticket_count - $request->quantity]);
+        ->update(['ticket_bought' => $event->ticket_bought + $request->quantity]);
 
         return redirect()->action('EventController@orderSuccess', $request->reference);
 
@@ -62,17 +62,17 @@ class PaymentController extends Controller
 
       if ($book->ticket_type == 1) {
         DB::table('events')->where('id', $event->id)
-          ->update(['ticket_count' => $event->ticket_count - $book->quantity,
-       'early_max' => $event->early_max - $book->quantity]);
+          ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
+       'early_bought' => $event->early_bought + $book->quantity]);
       }
       elseif ($book->ticket_type == 2) {
         DB::table('events')->where('id', $event->id)
-          ->update(['ticket_count' => $event->ticket_count - $book->quantity,
-       'regular_max' => $event->regular_max - $book->quantity]);
+          ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
+       'regular_bought' => $event->regular_bought + $book->quantity]);
      }else {
        DB::table('events')->where('id', $event->id)
-        ->update(['ticket_count' => $event->ticket_count - $book->quantity,
-      'vip_max' => $event->vip_max - $book->quantity]);
+        ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
+      'vip_bought' => $event->vip_bought + $book->quantity]);
      }
      return redirect()->action('EventController@orderSuccess', $reference);
     }else {

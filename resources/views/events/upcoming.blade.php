@@ -20,47 +20,34 @@
             </div>
           </div>
           @if ($events->Count())
-          @foreach ($events as $event)
-            <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
-          <div class="search-result-item">
             <div class="row">
-              <div class="search-result-item-info col-sm-9">
-                <h3>{{ $event->title }}</h3>
-                <ul class="row">
-                  <li class="col-sm-5 col-lg-6">
-                    <span>Venue</span>
-                    {{ $event->venue }}
-                  </li>
-                  <li class="col-sm-4 col-lg-3">
-                    <span>{{ date_format(new DateTime($event->event_start_date), "l") }}</span>
-                    {{ date_format(new DateTime($event->event_start_date), "F jS, Y") }}
-                  </li>
-                  <li class="col-sm-3">
-                    <span>Time</span>
-                    {{ date_format(new DateTime($event->event_start_time), "h:ia") }}
-                  </li>
-                </ul>
-              </div></a>
-              <div class="search-result-item-price col-sm-3">
-                <span>Price</span>
-                @if ($event->event_type == 0)
-                  <strong>FREE</strong>
-                @else
-                  <strong>&#8358;{{ number_format($event->regular_fee,2) }}</strong>
-                @endif
-                <a href="{{ route('single_event', $event->slug) }}">View Details</a>
-              </div>
+              @foreach ($events as $event)
+                <div class="col-sm-4 m-t-10">
+                  <div class="card" style="">
+                    <div style="height:200px">
+                      <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
+                        <img class="card-img-top" src="{{ $event->image_path }}" alt="Card image cap">
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h4 class="card-title">{{ $event->title }}</h4>
+                      <p style="height:35px; overflow-x: scroll;" class="card-text">Venue - {{ $event->venue.', '.$event->state }}</p>
+                      <p class="card-text">Date - {{ date_format(new DateTime($event->event_start_date), "l, F jS, Y") }}</p>
+                      <p class="card-text">Time - {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</p>
+                      <a href="{{ route('single_event', $event->slug) }}" class="btn btn-block myBtn">View Event</a>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
             </div>
-          </div>
-          @endforeach
-        @else
-          <div class="img-responsive text-center">
-            <img src="/images/no_ticket.png" alt="no ticket">
-          </div>
-        @endif
+          @else
+            <div class="img-responsive text-center">
+              <img src="/images/no_ticket.png" alt="no ticket">
+            </div>
+          @endif
           <div class="text-center">
-						{!! $events->links() !!}
-					</div>
+            {!! $events->links() !!}
+          </div>
         </div>
       </div>
     </div>

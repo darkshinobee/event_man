@@ -8,7 +8,7 @@
     </div>
   </section>
 
-  <section class="section-page-content">
+  <section class="section-page-content" id="create">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -53,23 +53,23 @@
             <label>Event Type</label><br>
             <div class="form-check form-check-inline m-t-10">
               <label class="form-check-label">
-                <input name="event_type" type="radio" class="form-check-input" value={{ 1 }} data-toggle="collapse" data-target="#hideFees:not(.in)" required=""> Paid
+                <input name="event_type" type="radio" class="form-check-input" value={{ 1 }} required="" @click="paid"> Paid
               </label>
               <label class="form-check-label">
-                <input name="event_type" type="radio" class="form-check-input" value={{ 0 }} data-toggle="collapse" data-target="#hideFees.in" required="" checked> Free
+                <input name="event_type" type="radio" class="form-check-input" value={{ 0 }} required="" checked @click="free"> Free
               </label>
             </div>
           </div>
 
-          <div class="form-group col-sm-6">
+          <div class="form-group col-sm-6" :hidden="isFree">
             <label for="ticket_count">Max Number of Tickets *</label>
-            <input name="ticket_count" type="number" value="" class="form-control" required="">
+            <input name="ticket_count" type="number" value="" class="form-control" :required="isPaid">
           </div>
         </div>
-        <div class="collapse" id="hideFees">
+        <div class="" id="" :hidden="isPaid">
           <div class="row">
             <div class="form-group col-sm-4">
-              <label for="early_bird">Early bird fee (optional)</label>
+              <label for="early_bird">Early bird (optional)</label>
               <input name="early_bird" type="number" class="form-control" placeholder="&#8358; 00.00">
             </div>
             <div class="form-group col-sm-4">
@@ -77,8 +77,8 @@
               <input name="vip_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
             </div>
             <div class="form-group col-sm-4">
-              <label for="regular_fee">Regular ticket fee *</label>
-              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
+              <label for="regular_fee">Regular fee *</label>
+              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00" :required="isFree">
             </div>
           </div>
 
@@ -92,8 +92,8 @@
               <input name="vip_max" type="number" class="form-control" >
             </div>
             <div class="form-group col-sm-4">
-              <label for="regular_fee">Regular ticket Qty *</label>
-              <input name="regular_max" type="number" class="form-control">
+              <label for="regular_fee">Regular Qty *</label>
+              <input name="regular_max" type="number" class="form-control" :required="isFree">
             </div>
           </div>
         </div>
@@ -132,4 +132,24 @@
 </div>
 </div>
 </section>
+<script type="text/javascript" src="/js/vue.js"></script>
+<script>
+var v_create = new Vue({
+  el: '#create',
+  data: {
+    isFree: false,
+    isPaid: true
+  },
+  methods: {
+    free: function() {
+      this.isFree = false;
+      this.isPaid = true
+    },
+    paid: function() {
+      this.isFree = true;
+      this.isPaid = false
+    }
+  }
+});
+</script>
 @endsection

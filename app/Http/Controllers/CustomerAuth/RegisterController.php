@@ -4,9 +4,12 @@ namespace App\Http\Controllers\CustomerAuth;
 
 use App\Customer;
 use Validator;
+use Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcome;
 
 class RegisterController extends Controller
 {
@@ -64,14 +67,18 @@ class RegisterController extends Controller
   */
   protected function create(array $data)
   {
-    return Customer::create([
+    $user = Customer::create([
       'first_name' => $data['first_name'],
       'last_name' => $data['last_name'],
       'email' => $data['email'],
       'password' => bcrypt($data['password']),
       'hits' => 0,
-      'misses' => 0,
+      'misses' => 0
     ]);
+
+    Mail::to($data['email'])->send(new Welcome($data['first_name']));
+    Session::flash('success', 'Welcome '.$data['first_name']);
+    return $user;
   }
 
   /**
