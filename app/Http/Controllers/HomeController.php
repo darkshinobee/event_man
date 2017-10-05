@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Contact;
+use App\Mail\InquiryReceived;
 use App\Event;
 use App\Customer;
 use Auth;
@@ -24,9 +25,15 @@ class HomeController extends Controller
       return view('pages.contact');
     }
 
+    public function pricing()
+    {
+      return view('pages.pricing');
+    }
+
     public function contactMail(Request $request)
     {
       Mail::to('help@ticketroom.ng')->send(new Contact($request));
+      Mail::to($request->email)->send(new InquiryReceived);
       Session::flash('success', 'Message Sent');
       return redirect()->action('HomeController@index');
     }

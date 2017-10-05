@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row">
         <div class="hero-content">
-          <h1 class="hero-title">Make Your Dream Come True</h1>
+          <h1 class="hero-title">Discover Your City One Event At A Time</h1>
           <p class="hero-caption">Meet your favorite artists, sport teams and parties</p>
           <div id="app">
             <homesearch></homesearch>
@@ -14,40 +14,6 @@
       </div>
     </div>
   </section>
-
-  {{-- <section class="section-upcoming-events">
-    <div class="container">
-      <div class="row">
-        <div class="section-header">
-          <h2>Upcoming Events</h2>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.</p>
-          <a href="{{ route('upcoming_events') }}">See all upcoming events</a>
-        </div>
-        <div class="section-content">
-          <ul class="clearfix">
-            @foreach ($events as $event)
-              <li class="col-sm-4">
-                <div class="date">
-                  <a href="{{ route('single_event', $event->slug) }}">
-                    <span class="day">{{ date_format(new DateTime($event->event_start_date), "j") }}</span>
-                    <span class="month">{{ date_format(new DateTime($event->event_start_date), "F") }}</span>
-                    <span class="year">{{ date_format(new DateTime($event->event_start_date), "Y") }}</span>
-                  </a>
-                </div>
-                <a href="{{ route('single_event', $event->slug) }}">
-                  <img src="{{ $event->image_path }}" alt="image">
-                </a>
-                <div class="info">
-                  <p>{{ $event->title }} <span>{{ $event->venue }}</span></p>
-                  <a href="#" class="get-ticket">Get Ticket</a>
-                </div>
-              </li>
-            @endforeach
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section> --}}
 
   <section class="section-event-category">
     <div class="container">

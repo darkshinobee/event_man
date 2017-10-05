@@ -1,8 +1,10 @@
 @component('mail::message')
 # Ticket Booked Successfully
 
-Hi {{ $customer->first_name }}, this is your booking confirmation for {{ $event->title }}.
-# Order Summary
+Hi {{ $customer->first_name }},<br>
+Thank you for choosing Ticketroom, here is your ticket. You have been added to the guest list. Awesome! On the day of the event, simply give your name and ticket number at the admission gate to check-in. Simple!
+
+# Ticket Information
 @component('mail::table')
 |       |         |
 | :------------- |:-------------|
@@ -24,11 +26,14 @@ Hi {{ $customer->first_name }}, this is your booking confirmation for {{ $event-
 @endcomponent
 
 @component('mail::panel')
-For more information about your booking contact us @:<br>
-T: 0801 234 5678<br>
-E: bookings@ticketroom.ng
+If you have any questions about the event contact the organizer @:<br>
+E: {{ $organizer }}
 @endcomponent
 
-Thanks,<br>
+Do enjoy your event. Feel free to provide a feedback afterwards. All feedbacks are anonymous and would be sent to the organizer directly. This would enable them provide a better service for you the next time around.
+<br>Got feedback for us? Shoot us a quick email at help@ticketroom.ng <br>
+<a href="http://ticketroom.dev/category/{{ $event->category }}">Check out these events, you might like them too</a>
+
+Cheers,<br>
 {{ config('app.name') }}
 @endcomponent

@@ -157,7 +157,7 @@ class EventController extends Controller
       $attendee = DB::table('customers')->where('id', $tran->attendee_id)->first();
       $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
-      Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran));
+      Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran, $organizer->email));
       // Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $attendee, $organizer, $tran));
 
       return view('events.order_success', compact('book', 'event', 'tran'));

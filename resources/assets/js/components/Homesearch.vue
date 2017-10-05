@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="dropdown">
     <div class="hero-search dropdown-toggle" data-toggle="dropdown">
-      <input type="text" placeholder="Seach Artist, Team, or Venue"
+      <input type="text" placeholder="Seach Event or Venue"
       v-model="search_query" @keyup.enter="search()">
     </div>
     <ul class="search_res dropdown-menu search_ddown" v-if="search_query.length">
@@ -17,7 +17,7 @@
                 <li>{{ result.venue }}</li>
                 <li>{{ result.state }}</li>
                 <li>{{ result.organizer }}</li>
-                <li>{{ (result.category).toUpperCase() }}</li>
+                <!-- <li>{{ (result.category).toUpperCase() }}</li> -->
                 <!-- <li>&#8358;{{ result.regular_fee }}</li> -->
                 <!-- <li v-if="result.status == 0">{{ result.event_start_date }}</li>
                 <li v-else>Expired</li> -->

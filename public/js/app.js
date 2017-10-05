@@ -42586,7 +42586,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "col-sm-8"
     }, [_c('ul', {
       staticClass: "search_res result_name"
-    }, [_c('li', [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.venue))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.state))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.organizer))]), _vm._v(" "), _c('li', [_vm._v(_vm._s((result.category).toUpperCase()))])])])])])])
+    }, [_c('li', [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.venue))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.state))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.organizer))])])])])])])
   }), _vm._v(" "), (_vm.search_loader) ? _c('li', {
     staticClass: "single_search_result text-center"
   }, [_vm._v(_vm._s(_vm.search_loader))]) : _vm._e(), _vm._v(" "), (_vm.errors) ? _c('li', {
@@ -42794,7 +42794,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     attrs: {
       "type": "text",
-      "placeholder": "Seach Artist, Team, or Venue"
+      "placeholder": "Seach Event or Venue"
     },
     domProps: {
       "value": (_vm.search_query)
@@ -42832,7 +42832,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "col-sm-8"
     }, [_c('ul', {
       staticClass: "search_res result_name"
-    }, [_c('li', [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.venue))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.state))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.organizer))]), _vm._v(" "), _c('li', [_vm._v(_vm._s((result.category).toUpperCase()))])])])])])])
+    }, [_c('li', [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.venue))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.state))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.organizer))])])])])])])
   }), _vm._v(" "), (_vm.search_loader) ? _c('li', {
     staticClass: "single_search_result text-center"
   }, [_vm._v(_vm._s(_vm.search_loader))]) : _vm._e(), _vm._v(" "), (_vm.errors) ? _c('li', {
@@ -43116,7 +43116,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "col-sm-8"
     }, [_c('ul', {
       staticClass: "search_res result_name"
-    }, [_c('li', [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.venue))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.state))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.organizer))]), _vm._v(" "), _c('li', [_vm._v(_vm._s((result.category).toUpperCase()))])])])])])])
+    }, [_c('li', [_vm._v(_vm._s(result.title))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.venue))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.state))]), _vm._v(" "), _c('li', [_vm._v(_vm._s(result.organizer))])])])])])])
   }), _vm._v(" "), (_vm.search_loader) ? _c('li', {
     staticClass: "single_search_result text-center"
   }, [_vm._v(_vm._s(_vm.search_loader))]) : _vm._e(), _vm._v(" "), (_vm.errors) ? _c('li', {

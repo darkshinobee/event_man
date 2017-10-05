@@ -11,11 +11,19 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <div class="text-center">
-            <p class="lead">We're ready to assist you get to your event.</p>
-            <p class="lead">If you have questions about an event, kindly contact the event organizer. You can find their contact information on their event page.</p>
-            <p class="lead">If you have any questions about TicketRoom or difficulty processing a payment, kindly fill the form below and give as much details as possible.</p>
-          </div><br>
+          <div class="row">
+            <div class="col-sm-7">
+              <p class="">We're ready to assist you get to your event.</p>
+              <p class="">If you have questions about an event, kindly contact the event organizer. You can find their contact information on their event page.</p>
+              <p class="">If you have any questions about TicketRoom or difficulty processing a payment, kindly fill the form below and give as much details as possible.</p>
+            </div>
+            <div class="col-sm-5">
+              <p class="">Phone: +2347038191374</p>
+              <p class="">Email: help@ticketroom.ng</p>
+              <p class="">Address: 2nd Floor Machima Plaza, Mambolo Close Zone 2, Abuja.</p>
+            </div>
+          </div>
+          <br>
           <form action="{{ route('contact_mail') }}" method="post">
           {{ csrf_field() }}
           <div class="row">
@@ -62,5 +70,4 @@
                 </div>
               </div>
             </section>
-            <br>
           @endsection
