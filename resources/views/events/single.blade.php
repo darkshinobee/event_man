@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-sm-4">
                               <p><span class="">Organized by - {{ $event->organizer ?: $organizer->first_name.' '.$organizer->last_name }}</span></p>
-                              <p><a style="cursor:pointer" data-toggle="modal" data-target="#contactModal">Contact Organizer</a></p>
+                              <p><a style="cursor:pointer; color:#ff5700" data-toggle="modal" data-target="#contactModal">Contact Organizer</a></p>
                             </div>
                           </div>
                           <div class="clearfix"></div>
@@ -195,7 +195,7 @@
         <div class="modal-footer">
           <div v-if="isDormant">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="submit" class="btn myBtn" form="contact" @click="loa">Send</button>
+            <button type="submit" class="btn myBtn" form="contact" @click="">Send</button>
           </div>
           <button v-else class="loader"></button>
         </div>

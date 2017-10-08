@@ -36,10 +36,10 @@
                 <select class="form-control" name="category" required="">
                   <option>--</option>
                   <option value="concert">Concerts</option>
-                  <option value="sport">Sports</option>
-                  <option value="party">Parties</option>
+                  <option value="sport & wellness">Sports &amp; Wellness</option>
+                  <option value="networking">Networking</option>
                   <option value="conference">Conference</option>
-                  <option value="religion">Religion</option>
+                  <option value="food & drink">Food &amp; Drink</option>
                   <option value="class">Classes</option>
                 </select>
               </div>

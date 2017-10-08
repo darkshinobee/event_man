@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Welcome extends Mailable
+class AdminEventRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +16,9 @@ class Welcome extends Mailable
      *
      * @return void
      */
-    public function __construct($first_name)
+    public function __construct()
     {
-        $this->first_name = $first_name;
+        //
     }
 
     /**
@@ -28,9 +28,8 @@ class Welcome extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome_mail')
-        ->with('first_name', $this->first_name)
+        return $this->markdown('emails.admin_event_request')
         ->from('no-reply@ticketroom.ng', 'TicketRoom')
-        ->subject('Welcome on Board');
+        ->subject('Event Request Available');
     }
 }

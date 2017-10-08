@@ -188,9 +188,6 @@ return [
 
         // DomPDF
         Barryvdh\DomPDF\ServiceProvider::class,
-
-        // Simple QR_Code
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
     ],
 
     /*
@@ -244,7 +241,6 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
     ],
 

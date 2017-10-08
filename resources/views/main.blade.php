@@ -4,7 +4,7 @@
     @include('partials._meta')
   </head>
   <body>
-    <div class="col-md-8 col-md-offset-2 text-center">
+    <div class="col-sm-8 col-sm-offset-2 text-center">
   		@include('partials._prompts')
   	</div>
     @include('partials._nav')

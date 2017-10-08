@@ -16,7 +16,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-      $events = DB::table('events')->where('status', 0)->orderBy('events.event_start_date', 'desc')->take(6)->get();
+      $events = DB::table('events')->where('status', 0)->where('approval', 1)
+      ->orderBy('events.event_start_date', 'desc')
+      ->take(6)->get();
       return view('welcome', compact('events'));
     }
 
@@ -40,13 +42,15 @@ class HomeController extends Controller
 
     public function pastEvents()
     {
-      $events = DB::table('events')->where('status', 1)->orderBy('events.event_start_date', 'desc')->simplePaginate(6);
+      $events = DB::table('events')->where('status', 1)->where('approval', 1)
+      ->orderBy('events.event_start_date', 'desc')->simplePaginate(6);
       return view('events.gallery', compact('events'));
     }
 
     public function upcomingEvents()
     {
-      $events = DB::table('events')->where('status', 0)->orderBy('events.event_start_date', 'asc')->simplePaginate(6);
+      $events = DB::table('events')->where('status', 0)->where('approval', 1)
+      ->orderBy('events.event_start_date', 'asc')->simplePaginate(6);
       return view('events.upcoming', compact('events'));
     }
 
@@ -60,18 +64,11 @@ class HomeController extends Controller
       $event = Event::find($id);
       $related_events = DB::table('events')->where('category', $event->category)
                                            ->where('status', 0)
+                                           ->where('approval', 1)
                                            ->take(3)
                                            ->orderBy('events.event_start_date', 'desc')
                                            ->get();
-                                          //  dd($organizer);
       return view('events.single', compact('event', 'related_events', 'organizer'));
-      // if (Auth::guard('customer')->check()) {
-      //   $customer_id = $customer->id;
-      //   return view('events.single', compact('event', 'related_events', 'customer_id'));
-      // }else {
-      //   return view('events.single', compact('event', 'related_events'));
-      // }
-
     }
 
     public function blogs()
@@ -89,12 +86,15 @@ class HomeController extends Controller
       if ($request->has('query')) {
         $q = $request->input("query");
         $query = DB::table('events')->select('title', 'category', 'venue', 'state', 'organizer', 'regular_fee', 'image_path', 'slug', 'event_start_date', 'status')
-        ->where('title', 'like', '%'.$q.'%')
-        ->orWhere('category', 'like', '%'.$q.'%')
-        ->orWhere('organizer', 'like', '%'.$q.'%')
-        ->orWhere('state', 'like', '%'.$q.'%')
         ->where('status', $key)
-        ->get();
+        ->where('approval', 1)
+        ->where(function ($ww) use ($q){
+              $ww->where('title', 'like', '%'.$q.'%')
+                    ->orWhere('category', 'like', '%'.$q.'%')
+                    ->orWhere('organizer', 'like', '%'.$q.'%')
+                    ->orWhere('state', 'like', '%'.$q.'%');
+          })
+          ->get();
         if ($query->Count()) {
           return $query;
         }else {
@@ -113,6 +113,7 @@ class HomeController extends Controller
                   ->where('transactions.attendee_id', $attendee->id)
                   ->where('booked_events.booking_status', 1)
                   ->where('status', 1)
+                  ->where('approval', 1)
                   ->orderBy('events.event_start_date', 'asc')
                   ->get();
 
@@ -122,30 +123,24 @@ class HomeController extends Controller
                   ->where('transactions.attendee_id', $attendee->id)
                   ->where('booked_events.booking_status', 1)
                   ->where('status', 0)
+                  ->where('approval', 1)
                   ->orderBy('events.event_start_date', 'asc')
                   ->get();
-                  // dd($tickets);
         return view('attendee.my_tickets', compact('p_tickets', 'u_tickets'));
       }
 
       public function myEvents()
       {
         $organizer = Auth::guard('customer')->user();
-        // $events = DB::table('events')
-        //           ->join('event_organizers', 'events.id', '=', 'event_organizers.event_id')
-        //           ->join('transactions', 'event_organizers.event_id', '=', 'transactions.event_id')
-        //           ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
-        //           ->where('event_organizers.organizer_id', $organizer->id)
-        //           ->orderBy('events.event_start_date', 'desc')
-        //           ->get()
-        //           ->unique('event_id');
         $u_events = DB::table('events')
         ->where('status', 0)
+        ->where('approval', 1)
         ->where('organizer_id', $organizer->id)
         ->get();
 
         $p_events = DB::table('events')
         ->where('status', 1)
+        ->where('approval', 1)
         ->where('organizer_id', $organizer->id)
         ->get();
 

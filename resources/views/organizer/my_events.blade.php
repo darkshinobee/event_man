@@ -41,7 +41,24 @@
         <div class="col-md-6">
           <h2 class="text-center m-t-15">PAST EVENTS</h2>
           @if ($p_events->Count())
-
+            <table class="table table-hover table-striped">
+              <thead>
+                <th>#</th>
+                <th>Event</th>
+                <th>Actions</th>
+              </thead>
+              <tbody>
+                @php $i=0; @endphp
+                @foreach ($p_events as $p_event)
+                  @php $i++; @endphp
+                  <tr>
+                    <td>{{ $i }}</td>
+                    <td>{{ $p_event->title }}</td>
+                    <td><a href="{{ route('my_events_single', $p_event->slug) }}" class="btn btn-sm myBtn">View Details</a></td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
           @else
             <div class="img-responsive text-center">
               <img src="/images/no_ticket.png" alt="no ticket">

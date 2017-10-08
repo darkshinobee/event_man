@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/test', function () {
+//     $event = App\Event::find(1);
+//     $som = App\Customer::find(1);
+//
+//     return new App\Mail\Welcome('mike');
+// });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
@@ -72,4 +78,18 @@ Route::group(['prefix' => '/admin'], function () {
   Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset');
   Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
   Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+
+  Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard')->middleware('admin');
+  Route::get('/event_request', 'AdminController@eventRequest')->name('event_request')->middleware('admin');
+  Route::get('/single_event/{event_id}', 'AdminController@singleEvent')->name('admin_single_event')->middleware('admin');
+  Route::get('/event_info/{event_id}', 'AdminController@eventInfo')->name('event_info')->middleware('admin');
+  // Route::get('/organizer_info/{organizer_id}', 'AdminController@organizerInfo')->name('organizer_info')->middleware('admin');
+  Route::get('/search_event_page', 'AdminController@searchEventPage')->name('search_event_page')->middleware('admin');
+  Route::get('/search_event', 'AdminController@searchEvent')->name('search_event')->middleware('admin');
+  Route::get('/search_organizer_page', 'AdminController@searchOrganizerPage')->name('search_organizer_page')->middleware('admin');
+  Route::get('/search_organizer', 'AdminController@searchOrganizer')->name('search_organizer')->middleware('admin');
+  Route::get('/organizer_events/{id}', 'AdminController@organizerEvents')->name('organizer_events')->middleware('admin');
+  Route::get('approve/{event_id}', 'AdminController@approve')->name('approve')->middleware('admin');
+  Route::get('reject/{event_id}', 'AdminController@reject')->name('reject')->middleware('admin');
+  Route::post('contact_organizer', 'AdminController@contactOrganizer')->name('admin_contact_organizer')->middleware('admin');
 });

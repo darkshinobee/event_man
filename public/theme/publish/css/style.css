@@ -344,7 +344,7 @@ body{
 
 .hero-1{
 	position:relative;
-	background:url("theme/publish/images/hero-1-img.jpg") no-repeat center center;
+	background:url("theme/publish/images/hero-1-img.jpg") no-repeat center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

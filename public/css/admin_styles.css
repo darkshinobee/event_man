@@ -1,0 +1,154 @@
+body {
+	background-color: rgb(220,220,220);
+	padding: 0;
+	margin: 0;
+	font-size: 16px;
+	font-family: sans-serif;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	width: 0;
+	clear: both;
+}
+.admin-panel {
+	width: 990px;
+	margin: 50px auto;
+}
+/*slidebar侧边栏*/
+.slidebar {
+	width: 20%;
+	/*min-height:%;*/
+	height: 853px;
+	float: left;
+	border-right: 1px solid rgb(235,235,235);
+	background-color: rgb(247,247,247);
+}
+.slidebar .logo {
+	height: 145px;
+	border-bottom: 1px solid rgb(235,235,235);
+}
+.slidebar ul {
+	padding: 0;
+	margin:0;
+}
+.slidebar li {
+	list-style-type: none;
+	margin: 0;
+	position: relative;
+}
+
+.slidebar ul a {
+	color: rgb(140,140,140);
+	text-decoration: none;
+	font:16px/40px helvetica,verdana,sans-serif;
+	box-sizing:border-box;
+	border-bottom: 1px solid rgb(235,235,235);
+	display: block;
+	box-shadow:inset 0 1px 0 rgb(255,255,255);
+	text-indent: 20px;
+	text-transform: capitalize;
+}
+.slidebar li:hover a {
+	background-color: rgb(255,255,255);
+	box-shadow: 1px 0 0 rgb(255,255,255),inset 5px 0 0 -1px rgb(234,83,63);
+}
+/*main*/
+.main {
+	float: left;
+	width: 79%;
+	height: 853px;
+	background-color: rgb(255,255,255);
+	position: relative;
+	font-family: helvetica,verdana,sans-serif;
+}
+.main .topbar {
+	border-bottom: 1px solid rgb(235,235,235);
+	margin: 0;
+	padding: 0;
+}
+/*topbar顶部按钮栏*/
+.topbar .dropdown{
+	float: right;
+	list-style: none;
+	border-left: 1px solid rgb(235,235,235);
+	width: auto;
+	padding: 10px;
+}
+.topbar a {
+	font-family: 'icomoon';
+	/*display: inline-block;*/
+	line-height: 50px;
+	/*width: 50px;*/
+	text-align: center;
+	text-decoration: none;
+	color: rgb(102,102,102);
+	/*border-left: 1px solid rgb(235,235,235);*/
+}
+.topbar a:hover {
+	background-color: rgb(247,247,247);
+}
+
+.mainContent>div {
+	/*position: relative;*/
+	/*opacity: 0;*/
+	-webkit-transition:opacity 200ms linear;
+	-moz-transition:opacity 200ms linear;
+	-ms-transition:opacity 200ms linear;
+	transition:opacity 200ms linear;
+	width: auto;
+	height: 100%;
+}
+/*logo*/
+.logo a {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	margin: -45px 0 0 -55px;
+	background:url("/images/t_logo3.png") no-repeat center;
+}
+/*statusbar底部功能按钮*/
+.statusbar {
+	position: absolute;
+	bottom: 0;
+	border-top: 1px solid rgb(235,235,235);
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+.statusbar li {
+	list-style: none;
+}
+.statusbar a {
+	color: rgb(102,102,102);
+	text-decoration: none;
+	text-align: center;
+	display: block;
+}
+.statusbar a:hover {
+	background-color: rgb(247,247,247);
+}
+.statusbar .profiles-setting, .statusbar .logout {
+	float: right;
+}
+.statusbar .profiles-setting a, .statusbar .logout a {
+	font-family: 'icomoon';
+	width: 49px;
+	height: 49px;
+	line-height: 50px;
+	border-left: 1px solid rgb(235,235,235);
+}
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+	url('fonts/icomoon.woff') format('woff'),
+	url('fonts/icomoon.ttf') format('truetype'),
+	url('fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

@@ -39,6 +39,7 @@ class CreateEventsTable extends Migration
             $table->string('slug');
             $table->string('image_path')->nullable();
             $table->boolean('status')->default(0);
+            $table->boolean('approval')->nullable();
             $table->date('event_start_date');
             $table->time('event_start_time');
             // $table->date('event_end_date')->nullable();

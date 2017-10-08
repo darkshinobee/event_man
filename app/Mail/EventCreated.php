@@ -34,6 +34,6 @@ class EventCreated extends Mailable
           'event' => $this->event,
           'organizer' => $this->organizer])
         ->from('no-reply@ticketroom.ng', 'TicketRoom')
-        ->subject('Congratulations! Your Event Has Been Created');
+        ->subject('Your Event Request');
     }
 }

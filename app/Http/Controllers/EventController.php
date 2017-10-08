@@ -17,6 +17,7 @@ use App\EventHit;
 use App\EventMiss;
 use App\Mail\BookingSuccess;
 use App\Mail\ContactOrganizer;
+use App\Mail\AdminEventRequest;
 // use App\Mail\SaleSuccess;
 use App\Mail\EventCreated;
 
@@ -114,15 +115,18 @@ class EventController extends Controller
       $ev_org->save();
 
       Mail::to($customer->email)->send(new EventCreated($event, $customer));
+      Mail::to('admin@ticketroom.ng')->send(new AdminEventRequest);
 
-      Session::flash('success', 'Your Event Has Been Created!');
+      Session::flash('success', 'Event Created. Check Email for Details');
       return redirect()->route('home');
 
     }
 
     public function eventCategories($category)
     {
-      $events = DB::table('events')->where('category', $category)->where('status', 0)->orderBy('events.event_start_date', 'desc')->simplePaginate(5);
+      $events = DB::table('events')->where('category', $category)
+      ->where('status', 0)->where('approval', 1)
+      ->orderBy('events.event_start_date', 'desc')->simplePaginate(6);
       return view('events.upcoming', compact('events', 'category'));
     }
 
