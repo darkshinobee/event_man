@@ -11,6 +11,7 @@ use Session;
 use PDF;
 use App\Event;
 use App\Customer;
+use App\GuestList;
 use App\BookedEvent;
 use App\EventOrganizer;
 use App\EventHit;
@@ -160,6 +161,11 @@ class EventController extends Controller
       $event = DB::table('events')->where('id', $tran->event_id)->first();
       $attendee = DB::table('customers')->where('id', $tran->attendee_id)->first();
       $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
+
+      $guest = new GuestList;
+      $guest->event_id = $event->id;
+      $guest->attendee_id = $attendee->id;
+      $guest->save();
 
       Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran, $organizer->email));
       // Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $attendee, $organizer, $tran));

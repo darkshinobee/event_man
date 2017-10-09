@@ -18,7 +18,7 @@ class TestMail extends Mailable
      */
     public function __construct()
     {
-        $this->img = '/images/ticket_room_logo_final.png';
+        $this->ib = 'mee';
     }
 
     /**
@@ -29,7 +29,7 @@ class TestMail extends Mailable
     public function build()
     {
         return $this->markdown('emails.testMail')
-                    ->with('img', $this->img)
+                    ->with('bn', $this->ib)
                     ->from('yo@me.com', 'yoyoyo')
                     ->subject('Test Subject');
     }

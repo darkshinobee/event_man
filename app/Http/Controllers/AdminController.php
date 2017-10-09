@@ -25,7 +25,6 @@ class AdminController extends Controller
     ->where('approval', null)->where('status', 0)
     ->orderBy('event_start_date', 'desc')
     ->paginate(4);
-    // dd($events);
     return view('admin.event_request', compact('events'));
   }
 
@@ -42,13 +41,6 @@ class AdminController extends Controller
     $organizer = Customer::find($event->organizer_id);
     return view('admin.event_info', compact('event', 'organizer'));
   }
-
-  // public function organizerInfo($organizer_id)
-  // {
-  //   $events = DB::table('events')->where('organizer_id', $organizer_id)->get();
-  //   $organizer = Customer::find($organizer_id);
-  //   return view('admin.event_info', compact('events', 'organizer'));
-  // }
 
   public function organizerEvents($organizer_id)
   {

@@ -9,6 +9,7 @@ use App\Mail\Contact;
 use App\Mail\InquiryReceived;
 use App\Event;
 use App\Customer;
+use App\GuestList;
 use Auth;
 use Session;
 
@@ -30,6 +31,36 @@ class HomeController extends Controller
     public function pricing()
     {
       return view('pages.pricing');
+    }
+
+    public function attendance($event_id, $attendee_id)
+    {
+      $attendee = Customer::find($attendee_id);
+      $event = Event::find($event_id);
+
+      $guest = DB::table('guest_lists')
+      ->where('event_id', $event_id)
+      ->where('attendee_id', $attendee_id)
+      ->first();
+
+      $tran = DB::table('transactions')
+      ->where('event_id', $event_id)
+      ->where('attendee_id', $attendee_id)
+      ->first();
+
+      $book = DB::table('booked_events')
+      ->where('transaction_id', $tran->id)
+      ->first();
+
+      if ($guest->attendance == 0) {
+        DB::table('guest_lists')->where('id', $guest->id)
+        ->update(['attendance' => 1]);
+        return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
+      }elseif ($guest->attendance == 1) {
+        return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
+      }else {
+        return view('events.attendance');
+      }
     }
 
     public function contactMail(Request $request)

@@ -25,6 +25,10 @@ Thank you for choosing Ticketroom, here is your ticket. You have been added to t
 @endif
 @endcomponent
 
+<p style="text-align:center">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$event->id}}/{{$customer->id}}&amp;size=100x100"/>
+</p>
+
 @component('mail::panel')
 If you have any questions about the event contact the organizer @:<br>
 E: {{ $organizer }}
