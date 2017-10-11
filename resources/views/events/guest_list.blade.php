@@ -11,21 +11,21 @@
   <div class="container">
     <div class="row">
       <div class="text-center">
-        <img src="/images/t_logo.png" alt="TicketRoom Logo">
+        <img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo">
       </div>
     </div>
-    {{-- <div class="clearfix"></div> --}}
     <div class="row">
       <h2 class="text-center">{{ $title }} - Guest List</h2><br>
       <div class="col-md-8 col-md-offset-2">
-        {{-- <a href="{{ route('download_list') }}">Download List</a> --}}
         <table class="table">
           <thead style="color:red">
             <tr>
               <th>#</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Reference</th>
+              <th>Ticket Type</th>
+              <th>Quantity</th>
+              <td></td>
             </tr>
           </thead>
           <tbody>
@@ -36,7 +36,17 @@
                 <td>{{ $i }}</td>
                 <td>{{ $guest->first_name }}</td>
                 <td>{{ $guest->last_name }}</td>
-                <td>{{ $guest->reference }}</td>
+                @if ($guest->ticket_type == 0)
+                  <td>Free</td>
+                @elseif ($guest->ticket_type == 1)
+                  <td>Early Bird</td>
+                @elseif ($guest->ticket_type == 2)
+                  <td>Regular</td>
+                  @else
+                    <td>VIP</td>
+                @endif
+                <td>{{ $guest->quantity }}</td>
+                <td><input type="checkbox"></td>
               </tr>
             @endforeach
           </tbody>

@@ -9,7 +9,7 @@
       <div class="col-sm-6">
         <div class="card p-b-10" style="">
           <a href="{{ route('admin_single_event', $event->id) }}">
-            <img class="card-img-top img-responsive" src="{{ $event->image_path }}" alt="Card image cap">
+            <img class="card-img-top img-responsive" src="{{ asset($event->image_path) }}" alt="Card image cap">
           </a>
           <div class="card-body p-t-10" style="height:120px; overflow-x: scroll;">
             <ul class="list-group list-group-flush">
@@ -25,7 +25,7 @@
     @endforeach
     @else
     <div class="img-responsive text-center">
-      <img src="/images/no_ticket.png" alt="no ticket">
+      <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
     </div>
     </div>
   @endif

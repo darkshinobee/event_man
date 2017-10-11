@@ -259,14 +259,17 @@ class EventController extends Controller
     {
       $organizer = Auth::guard('customer')->user();
       $title = DB::table('events')->where('id', $event_id)->value('title');
-      $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name', 'transactions.reference')
+      $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name',
+      'booked_events.ticket_type', 'booked_events.amount', 'booked_events.quantity')
                 ->join('transactions', 'customers.id', '=', 'transactions.attendee_id')
+                ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
                 ->join('events', 'transactions.event_id', '=', 'events.id')
                 ->where('events.organizer_id', $organizer->id)
                 ->where('events.id', $event_id)
+                ->where('booking_status', 1)
                 ->orderBy('transactions.created_at', 'asc')
                 ->get();
-                // dd();
+                // dd($guests);
                 return view('events.guest_list', compact('title','guests'));
     }
 

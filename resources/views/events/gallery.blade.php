@@ -23,9 +23,9 @@
           @foreach ($events as $event)
             <div class="col-sm-4 m-t-10">
               <div class="card" style="">
-                <div style="height:200px">
+                <div class="cat_img" style="height:200px">
                   <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
-                    <img class="card-img-top" src="{{ $event->image_path }}" alt="Card image cap">
+                    <img class="card-img-top image_cat" src="{{ asset($event->image_path) }}" alt="Card image cap">
                   </a>
                 </div>
                 <div class="card-body">
@@ -40,7 +40,7 @@
           @endforeach
         @else
           <div class="img-responsive text-center">
-            <img src="/images/no_ticket.png" alt="no ticket">
+            <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
           </div>
         @endif
           <div class="text-center">

@@ -19,10 +19,10 @@ $factory->define(App\Customer::class, function (Faker\Generator $faker) {
         'first_name' => $faker->firstNameMale,
         'last_name' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = bcrypt('123456'),
         // 'hits' => rand(0,50),
         // 'misses' => rand(0,20),
-        'remember_token' => str_random(10),
+        // 'remember_token' => str_random(10),
     ];
 });
 
@@ -67,11 +67,19 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
 
 $factory->define(App\BookedEvent::class, function (Faker\Generator $faker) {
     return [
-        'event_id' => $faker->numberBetween($min = 1, $max = 5),
-        'attendee_id' => $faker->numberBetween($min = 1, $max = 8),
-        'ticket_type' => 'paid',
-        'amount' => $faker->numberBetween($min = 1000, $max = 10000),
+        'transaction_id' => 3,
+        'ticket_type' => $faker->numberBetween($min = 0, $max = 3),
+        'amount' => $faker->numberBetween($min = 1000, $max = 100000),
         'quantity' => $faker->numberBetween($min = 1, $max = 5),
+        'booking_status' => 1,
+    ];
+});
+
+$factory->define(App\Transaction::class, function (Faker\Generator $faker) {
+    return [
+        'event_id' => 12,
+        'attendee_id' => $faker->numberBetween($min = 1, $max = 10),
+        'reference' => $faker->md5,
     ];
 });
 

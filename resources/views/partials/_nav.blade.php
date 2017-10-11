@@ -75,7 +75,7 @@
                 <i class="fa fa-times fa-2x" aria-hidden="true"></i>
               </button>
 
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right m-t-15">
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('upcoming_events') }}">Upcoming Events</a></li>
                 <li><a href="{{ route('past_events') }}">Past Events</a></li>

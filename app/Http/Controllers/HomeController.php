@@ -167,13 +167,13 @@ class HomeController extends Controller
         ->where('status', 0)
         ->where('approval', 1)
         ->where('organizer_id', $organizer->id)
-        ->get();
+        ->simplePaginate(10);
 
         $p_events = DB::table('events')
         ->where('status', 1)
         ->where('approval', 1)
         ->where('organizer_id', $organizer->id)
-        ->get();
+        ->simplePaginate(10);
 
         return view('organizer.my_events', compact('u_events', 'p_events'));
       }

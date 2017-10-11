@@ -10,14 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/test', function () {
-//     $guest = App\GuestList::find(2);
-//     $attendee = App\Customer::find(3);
-//     $event = App\Event::find(11);
-//     $tran = App\Transaction::find(2);
-//     $book = App\BookedEvent::find(2);
-//     return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
-// });
+Route::get('/test', function () {
+    $guest = App\GuestList::find(2);
+    $attendee = App\Customer::find(3);
+    $event = App\Event::find(11);
+    $tran = App\Transaction::find(2);
+    $book = App\BookedEvent::find(2);
+    return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
+});
 
 // Route::get('/test', function () {
 //     Mail::to('test@t.com')->send(new App\Mail\TestMail);

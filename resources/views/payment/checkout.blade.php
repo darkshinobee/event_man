@@ -16,7 +16,7 @@
           <div id="primary" class="col-md-6">
             <div class="section-order-details-event-title">
               <h2 class="event-title text-center"><strong>{{ $event->title }}</strong></h2>
-              <img class="event-img" src="{{ $event->image_path }}" alt="image">
+              <img class="event-img" src="{{ asset($event->image_path) }}" alt="image">
             </div>
           </div>
 
@@ -36,14 +36,20 @@
                   <table class="table number-tickets">
                     <thead>
                       <tr>
-                        <th>Delivery</th>
-                        <th>Instant Download</th>
+                        <th>Ticket Type</th>
+                        @if ($event->event_type == 0)
+                          <th>Delivery</th>
+                          @else
+                            <th>Price</th>
+                        @endif
+                        <th>Quantity</th>
                       </tr>
                     </thead>
                     @if($event->event_type == 0)
                       <tbody>
                         <tr>
-                          <td>Number of Tickets</td>
+                          <td>Free</td>
+                          <td>By Email</td>
                           <td>
                             <div class="qty-select">
                               <div class="qty-input">
@@ -52,15 +58,21 @@
                             </div>
                           </td>
                         </tr>
-                        <tr>
-                          <td><h4>FREE TICKET</h4></td>
-                          <td><h4>&#8358;0.00</h4></td>
-                        </tr>
                       </tbody>
                     @else
                       <tbody>
                         <tr>
-                          <td>Number of Tickets</td>
+                          @if ($radio_value == 'early')
+                              <td><h4>Early Bird</h4></td>
+                              <td><h4 v-model="v_price = {{ $event->early_bird }}">&#8358;{{ number_format($event->early_bird,2) }}</h4></td>
+                          @elseif ($radio_value == 'regular')
+                              <td><h4>Regular</h4></td>
+                              <td><h4 v-model="v_price = {{ $event->regular_fee }}">&#8358;{{ number_format($event->regular_fee,2) }}</h4></td>
+                          @else
+                            <tr>
+                              <td><h4>VIP</h4></td>
+                              <td><h4 v-model="v_price = {{ $event->vip_fee }}">&#8358;{{ number_format($event->vip_fee,2) }}</h4></td>
+                          @endif
                           <td>
                             <div class="qty-select">
                               <div class="qty-minus">
@@ -83,22 +95,6 @@
                           </div>
                         </td>
                       </tr>
-                      @if ($radio_value == 'early')
-                        <tr>
-                          <td><h4>EARLY BIRD TICKET</h4></td>
-                          <td><h4 v-model="v_price = {{ $event->early_bird }}">&#8358;{{ number_format($event->early_bird,2) }}</h4></td>
-                        </tr>
-                      @elseif ($radio_value == 'regular')
-                        <tr>
-                          <td><h4>REGULAR TICKET</h4></td>
-                          <td><h4 v-model="v_price = {{ $event->regular_fee }}">&#8358;{{ number_format($event->regular_fee,2) }}</h4></td>
-                        </tr>
-                      @else
-                        <tr>
-                          <td><h4>VIP TICKET</h4></td>
-                          <td><h4 v-model="v_price = {{ $event->vip_fee }}">&#8358;{{ number_format($event->vip_fee,2) }}</h4></td>
-                        </tr>
-                      @endif
                     </tbody>
                   @endif
                 </table>
@@ -108,8 +104,8 @@
                   <tbody>
                     <tr>
                       <td>Total Price</td>
-                      <td class="price" v-if="qty == 1">&#8358;@{{ v_price }}</td>
-                      <td class="price" v-else v-model="v_price">&#8358;@{{ v_total }}</td>
+                      <td class="price" v-if="qty == 1">&#8358;@{{ v_price.toFixed(2) }}</td>
+                      <td class="price" v-else v-model="v_price">&#8358;@{{ v_total.toFixed(2) }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -148,7 +144,7 @@
                       @if ($event->event_type == 0)
                         <td>FREE</td>
                       @else
-                        <td>&#8358;@{{ v_price }}</td>
+                        <td>&#8358;@{{ v_price.toFixed(2) }}</td>
                       @endif
                     </tr>
                     <tr>
@@ -159,8 +155,8 @@
                   <tfoot>
                     <tr>
                       <td>Total Price</td>
-                      <td class="total-price" v-if="qty == 1">&#8358;@{{ v_price }}</td>
-                      <td class="total-price" v-else>&#8358;@{{ v_total }}</td>
+                      <td class="total-price" v-if="qty == 1">&#8358;@{{ v_price.toFixed(2) }}</td>
+                      <td class="total-price" v-else>&#8358;@{{ v_total.toFixed(2) }}</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -189,7 +185,7 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           @if ($event->event_type == 0)
             <input type="hidden" name="ticket_type" value="{{ 0 }}">
-            <button type="submit" class="btn myBtn">Download Ticket</button>
+            <button type="submit" class="btn myBtn">Confirm Purchase</button>
           @else
             <button type="submit" class="btn myBtn">Proceed To Payment</button>
           @endif

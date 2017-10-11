@@ -13,12 +13,13 @@
         <div class="col-sm-5">
           <div class="card" style="">
             <a href="{{ route('single_event', $event->slug) }}">
-              <img class="card-img-top" src="{{ $event->image_path }}" alt="Card image cap">
+              <img class="card-img-top" src="{{ asset($event->image_path) }}" alt="Card image cap">
             </a>
             <div class="card-body p-t-10">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Event Name - {{ $event->title }}</li>
                 <li class="list-group-item">Date - {{ date_format(new DateTime($event->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($event->event_start_time), "h:ia") }} </li>
+                <li class="list-group-item text-center"><a class="btn btn-md myBtn" href="{{ route('view_list', $event->id) }}">Guest List</a></li>
               </ul>
             </div>
           </div>

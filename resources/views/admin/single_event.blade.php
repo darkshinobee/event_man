@@ -3,7 +3,7 @@
 @section('content')
       <div class="row" style="height:753px; overflow-x: scroll;">
           {{-- <div class="card" style=""> --}}
-              <img class="img-responsive" src="{{ $event->image_path }}" alt="Card image cap">
+              <img class="img-responsive" src="{{ asset($event->image_path) }}" alt="Card image cap">
               <h3 class="text-center">{{ $event->title }}</h3><br>
               <div class="row">
                 <div class="col-sm-7">

@@ -16,14 +16,14 @@
                 <h2 class="text-center m-t-15">UPCOMING EVENTS</h2>
                 @if (!$u_tickets->Count())
                   <div class="img-responsive text-center">
-                    <img src="/images/no_ticket.png" alt="no ticket">
+                    <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
                   </div>
                   @else
                     @foreach ($u_tickets as $u_ticket)
 
                   <div class="card" style="">
                     <a href="{{ route('single_event', $u_ticket->slug) }}">
-                      <img class="card-img-top" src="{{ $u_ticket->image_path }}" alt="Card image cap">
+                      <img class="card-img-top" src="{{ asset($u_ticket->image_path) }}" alt="Card image cap">
                     </a>
                     <div class="card-body p-t-10">
                       <ul class="list-group list-group-flush">
@@ -55,14 +55,14 @@
                 <h2 class="text-center m-t-15">PAST EVENTS</h2>
                 @if (!$p_tickets->Count())
                   <div class="img-responsive text-center">
-                    <img src="/images/no_ticket.png" alt="no ticket">
+                    <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
                   </div>
                   @else
                 @foreach ($p_tickets as $p_ticket)
 
                   <div class="card" style="">
                     <a href="{{ route('single_event', $p_ticket->slug) }}">
-                      <img class="card-img-top" src="{{ $p_ticket->image_path }}" alt="Card image cap">
+                      <img class="card-img-top" src="{{ asset($p_ticket->image_path) }}" alt="Card image cap">
                     </a>
                     <div class="card-body p-t-10">
                       <ul class="list-group list-group-flush">
@@ -92,7 +92,7 @@
             </div>
           @else
             <div class="img-responsive text-center">
-              <img src="/images/no_ticket.png" alt="no ticket">
+              <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
             </div>
           @endif
         </div>

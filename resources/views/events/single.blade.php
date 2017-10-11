@@ -17,7 +17,7 @@
                 <div role="tabpanel" class="tab-pane active" id="tab1">
                   <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="tab1-hr1">
-                      <img src="{{ $event->image_path }}" alt="single_event 836x261">
+                      <img src="{{ asset($event->image_path) }}" alt="single_event 836x261">
                       <div class="full-event-info">
                         <div class="full-event-info-header">
                           <h2>{{ $event->title }}</h2>
@@ -134,7 +134,7 @@
             @foreach ($related_events as $related)
               <div class="">
                 <a class="" href="{{ route('single_event', $related->slug) }}">
-                  <img class="img-responsive m-t-20" src="{{ $related->image_path }}" alt="Related photo">
+                  <img class="img-responsive m-t-20" src="{{ asset($related->image_path) }}" alt="Related photo">
                 </a>
                 <p class="m-t-5">{{ $related->title }}</p>
               </div>

@@ -181,7 +181,7 @@ body{
 }
 
 .main-header{
-	padding:20px 0;
+	/*padding:10px 0;*/
 	position:relative;
 	z-index:99999;
 }
@@ -204,7 +204,7 @@ body{
 .main-header-bg{
 	/*background:#242424;*/
   background: #565454;
-	padding:20px 0;
+	padding:10px;
 	-webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.46);
 	-moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.46);
 	box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.46);
@@ -344,7 +344,7 @@ body{
 
 .hero-1{
 	position:relative;
-	background:url("theme/publish/images/hero-1-img.jpg") no-repeat center;
+	background:url("/images/home_page.jpg") no-repeat center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -359,10 +359,10 @@ body{
 	right:0;
 	top:0;
 	bottom:0;
-	background: rgba(217,30,24,.9);
+	/*background: rgba(217,30,24,.9);
 	background: -moz-linear-gradient(-45deg,  rgba(217,30,24,.9) 0%, rgba(255,102,0,.9) 100%);
 	background: -webkit-linear-gradient(-45deg,  rgba(217,30,24,.9) 0%,rgba(255,102,0,.9) 100%);
-	background: linear-gradient(135deg,  rgba(217,30,24,.9) 0%,rgba(255,102,0,.9) 100%);
+	background: linear-gradient(135deg,  rgba(217,30,24,.9) 0%,rgba(255,102,0,.9) 100%);*/
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d91e18', endColorstr='#ff6600',GradientType=1 );
 }
 

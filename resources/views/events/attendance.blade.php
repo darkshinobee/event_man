@@ -5,7 +5,8 @@
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
         @if ($guest->attendance == 0)
-          <h2>Welcome {{ $attendee->first_name.' '.$attendee->last_name }}</h2>
+          {{-- <h2>Welcome {{ $attendee->first_name.' '.$attendee->last_name }}</h2> --}}
+          <h2>{{ $event->title }}</h2>
           @if ($book->ticket_type == 1)
             <h4>{{ $book->quantity }} Early Bird Ticket(s) - &#8358;{{ number_format($book->amount,2) }}</h4>
           @elseif ($book->ticket_type == 2)
