@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuestListsTable extends Migration
+class CreateExtrasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateGuestListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('guest_lists', function (Blueprint $table) {
+        Schema::create('extras', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('reference');
-            $table->boolean('attendance')->default(0);
+            $table->integer('transaction_id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateGuestListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guest_lists');
+        Schema::dropIfExists('extras');
     }
 }

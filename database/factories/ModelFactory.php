@@ -32,35 +32,35 @@ $factory->define(App\Admin::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => 'admin@ticketroom.ng',
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'password' => $password ?: $password = bcrypt('123456'),
+        // 'remember_token' => str_random(10),
     ];
 });
 
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
 
     return [
-        'title' => 'Event Number '.$faker->unique()->numberBetween($min = 1, $max = 10),
+        'title' => 'Gadget Show'.$faker->unique()->numberBetween($min = 1, $max = 10),
         'venue' => $faker->address,
         'state' => 'Abuja',
         'description' => $faker->text($maxNbChars = 200),
-        'category' => 'party',
+        'category' => 'networking',
         'organizer' => $faker->company,
         'organizer_id' => 1,
-        'event_type' => 0,
+        'event_type' => 1,
         'ticket_count' => 50,
-        // 'early_bird' => 2500,
-        // 'early_max' => $faker->numberBetween($min = 50, $max = 200),
-        // 'regular_fee' => 5000,
-        // 'regular_max' => $faker->numberBetween($min = 50, $max = 200),
-        // 'vip_fee' => 10000,
-        // 'vip_max' => $faker->numberBetween($min = 50, $max = 200),
+        'early_bird' => 2500,
+        'early_max' => 10,
+        'regular_fee' => 5000,
+        'regular_max' => 30,
+        'vip_fee' => 10000,
+        'vip_max' => 10,
         // 'hits' => $faker->numberBetween($min = 0, $max = 50),
         // 'misses' => $faker->numberBetween($min = 0, $max = 20),
         'slug' => $faker->unique()->word,
-        'image_path' => '/images/defaults/party.jpg',
+        'image_path' => '/images/defaults/networking.jpg',
         // 'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
-        'event_start_date' => $faker->date($format = 'Y-m-d', $min = 'now'),
+        'event_start_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'event_start_time' => $faker->time($format = 'H:i'),
     ];
 });

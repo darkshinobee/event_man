@@ -52,14 +52,14 @@
                           <div class="row">
                             @if ($event->event_type == 0)
                               <div class="col-sm-6">
-                                <h1> FREE TICKET</h1>
+                                {{-- <h1> FREE TICKET</h1> --}}
                               </div>
 
                               @if ($event->ticket_bought < $event->ticket_count)
                                 <div class="col-sm-6">
                                   <form action="{{ route('checkout', $event->slug) }}" method="post">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="book-ticket">Get Ticket</button>
+                                    <button type="submit" class="btn btn-lg btn-block myBtn">Get Free Ticket</button>
                                   </form>
                                   <h1></h1>
                                 </div>
@@ -71,13 +71,13 @@
 
                             @else
                               <div class="col-sm-6">
-                                <h5>Select Ticket</h5>
+                                <h5 style="color:#ff5700">Select Ticket <span><i class="fa fa-arrow-down" aria-hidden="true"></i></span></h5>
                                 <form action="{{ route('checkout', $event->slug) }}" method="post" id="checkout_form">
                                   {{ csrf_field() }}
                                   @if ($event->early_bought < $event->early_max)
                                     <div class="form-check">
                                       <label class="form-check-label">
-                                        <input style="cursor:pointer" class="form-check-input" type="radio" name="fee_type" value="early" v-model="radio">
+                                        <input style="cursor:pointer" class="form-check-input m-l-5" type="radio" name="fee_type" value="early" v-model="radio">
                                         <small>Early Bird</small> - &#8358;{{ number_format($event->early_bird,2) }}
                                       </label>
                                     </div>
@@ -86,7 +86,7 @@
                                   @if ($event->regular_bought < $event->regular_max)
                                     <div class="form-check">
                                       <label class="form-check-label">
-                                        <input style="cursor:pointer" class="form-check-input" type="radio" name="fee_type" value="regular" v-model="radio">
+                                        <input style="cursor:pointer" class="form-check-input m-l-5" type="radio" name="fee_type" value="regular" v-model="radio">
                                         <small>Regular</small> - &#8358;{{ number_format($event->regular_fee,2) }}
                                       </label>
                                     </div>
@@ -95,7 +95,7 @@
                                   @if ($event->vip_bought < $event->vip_max)
                                     <div class="form-check">
                                       <label class="form-check-label">
-                                        <input style="cursor:pointer" class="form-check-input" type="radio" name="fee_type" value="vip" v-model="radio">
+                                        <input style="cursor:pointer" class="form-check-input m-l-5" type="radio" name="fee_type" value="vip" v-model="radio">
                                         <small>VIP</small> - &#8358;{{ number_format($event->vip_fee,2) }}
                                       </label>
                                     </div>
@@ -106,7 +106,7 @@
 
                               @if ($event->ticket_bought < $event->ticket_count)
                                 <div class="col-sm-6">
-                                  <button v-if="radio" type="submit" class="book-ticket" form="checkout_form">Get Ticket</button>
+                                  <button v-if="radio" type="submit" class="btn btn-block btn-lg myBtn m-t-30" form="checkout_form">Get Ticket</button>
                                   <h1></h1>
                                 </div>
                               @else

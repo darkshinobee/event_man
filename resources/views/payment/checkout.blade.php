@@ -138,6 +138,8 @@
           <div class="section-order-review-pricing">
             <div class="pricing-coupon">
                 <table class="table pricing-review">
+                  <input v-for="name in qty" class="form-control m-b-5" type="text" name="names[]" form="payForm" placeholder="Name on Ticket *" required>
+                  <hr>
                   <tbody>
                     <tr>
                       <td>Ticket Price</td>
@@ -164,7 +166,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <form action="{{ route('pay') }}" method="post">
+          <form action="{{ route('pay') }}" method="post" id="payForm">
             {{ csrf_field() }}
             <input type="hidden" name="event_id" value="{{ $event->id }}">
             <input type="hidden" name="email" value="{{ $attendee_email }}">

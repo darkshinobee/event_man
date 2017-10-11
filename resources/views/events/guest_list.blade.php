@@ -21,11 +21,10 @@
           <thead style="color:red">
             <tr>
               <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
+              <th>Name</th>
               <th>Ticket Type</th>
-              <th>Quantity</th>
-              <td></td>
+              <th>Reference No</th>
+              <th>Check-in</th>
             </tr>
           </thead>
           <tbody>
@@ -34,8 +33,7 @@
               @php $i++; @endphp
               <tr>
                 <td>{{ $i }}</td>
-                <td>{{ $guest->first_name }}</td>
-                <td>{{ $guest->last_name }}</td>
+                <td>{{ $guest->name }}</td>
                 @if ($guest->ticket_type == 0)
                   <td>Free</td>
                 @elseif ($guest->ticket_type == 1)
@@ -45,7 +43,7 @@
                   @else
                     <td>VIP</td>
                 @endif
-                <td>{{ $guest->quantity }}</td>
+                <td>{{ substr($guest->reference, 0, 5) }}</td>
                 <td><input type="checkbox"></td>
               </tr>
             @endforeach

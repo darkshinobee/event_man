@@ -163,8 +163,7 @@ class EventController extends Controller
       $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
       $guest = new GuestList;
-      $guest->event_id = $event->id;
-      $guest->attendee_id = $attendee->id;
+      $guest->reference = $reference;
       $guest->save();
 
       Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran, $organizer->email));
@@ -255,13 +254,31 @@ class EventController extends Controller
       }
     }
 
+    // public function viewList($event_id)
+    // {
+    //   $organizer = Auth::guard('customer')->user();
+    //   $title = DB::table('events')->where('id', $event_id)->value('title');
+    //   $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name',
+    //   'booked_events.ticket_type', 'booked_events.amount', 'booked_events.quantity', 'transactions.reference')
+    //             ->join('transactions', 'customers.id', '=', 'transactions.attendee_id')
+    //             ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
+    //             ->join('events', 'transactions.event_id', '=', 'events.id')
+    //             ->where('events.organizer_id', $organizer->id)
+    //             ->where('events.id', $event_id)
+    //             ->where('booking_status', 1)
+    //             ->orderBy('transactions.created_at', 'asc')
+    //             ->get();
+    //             // dd($guests);
+    //             return view('events.guest_list', compact('title','guests'));
+    // }
+
     public function viewList($event_id)
     {
       $organizer = Auth::guard('customer')->user();
       $title = DB::table('events')->where('id', $event_id)->value('title');
-      $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name',
-      'booked_events.ticket_type', 'booked_events.amount', 'booked_events.quantity')
-                ->join('transactions', 'customers.id', '=', 'transactions.attendee_id')
+      $guests = DB::table('extras')->select('extras.name', 'booked_events.ticket_type',
+      'booked_events.amount', 'transactions.reference')
+                ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
                 ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
                 ->join('events', 'transactions.event_id', '=', 'events.id')
                 ->where('events.organizer_id', $organizer->id)

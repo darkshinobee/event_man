@@ -8,6 +8,7 @@ use Paystack;
 use Auth;
 use App\BookedEvent;
 use App\Event;
+use App\Extra;
 use App\Transaction;
 
 class PaymentController extends Controller
@@ -21,6 +22,13 @@ class PaymentController extends Controller
     $tran->attendee_id = $attendee->id;
     $tran->reference = $request->reference;
     $tran->save();
+
+    foreach ($request->names as $name) {
+      $extra = new Extra;
+      $extra->transaction_id = $tran->id;
+      $extra->name = $name;
+      $extra->save();
+    }
 
     $book = new BookedEvent;
     $book->transaction_id = $tran->id;

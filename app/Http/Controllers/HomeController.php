@@ -33,33 +33,40 @@ class HomeController extends Controller
       return view('pages.pricing');
     }
 
-    public function attendance($event_id, $attendee_id)
+    public function attendance($reference)
     {
-      $attendee = Customer::find($attendee_id);
-      $event = Event::find($event_id);
+      $tran = DB::table('transactions')
+      ->where('reference', $reference)
+      ->first();
+
+      $event = Event::find($tran->event_id);
 
       $guest = DB::table('guest_lists')
-      ->where('event_id', $event_id)
-      ->where('attendee_id', $attendee_id)
+      ->where('reference', $reference)
       ->first();
-
-      $tran = DB::table('transactions')
-      ->where('event_id', $event_id)
-      ->where('attendee_id', $attendee_id)
-      ->first();
+      // dd($guest);
 
       $book = DB::table('booked_events')
       ->where('transaction_id', $tran->id)
       ->first();
 
+      $names = DB::table('extras')->select('extras.name', 'booked_events.ticket_type', 'transactions.reference')
+                ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
+                ->join('guest_lists', 'transactions.reference', '=', 'guest_lists.reference')
+                ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
+                ->join('events', 'transactions.event_id', '=', 'events.id')
+                ->where('events.organizer_id', $event->organizer_id)
+                ->where('events.id', $tran->event_id)
+                ->where('booking_status', 1)
+                ->orderBy('transactions.created_at', 'asc')
+                ->get();
+
       if ($guest->attendance == 0) {
         DB::table('guest_lists')->where('id', $guest->id)
         ->update(['attendance' => 1]);
-        return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
-      }elseif ($guest->attendance == 1) {
-        return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
-      }else {
-        return view('events.attendance');
+        return view('events.attendance', compact('names', 'event', 'tran', 'guest', 'book'));
+      } else {
+        return view('events.attendance', compact('names', 'event', 'tran', 'guest', 'book'));
       }
     }
 

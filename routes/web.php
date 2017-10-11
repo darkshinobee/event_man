@@ -11,12 +11,15 @@
 |
 */
 Route::get('/test', function () {
-    $guest = App\GuestList::find(2);
+    $guest = App\GuestList::find(1);
     $attendee = App\Customer::find(3);
     $event = App\Event::find(11);
     $tran = App\Transaction::find(2);
     $book = App\BookedEvent::find(2);
-    return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
+    $a = 16;
+    $b = 1;
+    // return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
+    return redirect()->action('HomeController@attendance',[$guest->reference]);
 });
 
 // Route::get('/test', function () {
@@ -40,7 +43,7 @@ Route::get('/my_tickets', 'HomeController@myTickets')->name('my_tickets')->middl
 Route::get('/my_events', 'HomeController@myEvents')->name('my_events')->middleware('customer');
 Route::get('/my_events_single/{slug}', 'HomeController@myEventsSingle')->name('my_events_single')->middleware('customer');
 
-Route::get('/attendance/{event_id}/{attendee_id}', 'HomeController@attendance')->name('attendance');
+Route::get('/attendance/{reference}', 'HomeController@attendance')->name('attendance');
 
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
 Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');

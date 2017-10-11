@@ -2,8 +2,8 @@
 # Ticket Booked Successfully
 
 Hi {{ $customer->first_name }},<br>
-Thank you for choosing TicketRoom, here is your ticket. You have been added to the guest list. Awesome! On the day of the event, simply give your name and ticket number at the admission gate to check-in. Simple!
-
+<p>Thank you for choosing TicketRoom, here is your ticket. You have been added to the guest list. Awesome! On the day of the event, simply show this email at the admission gate to check-in. Simple!
+</p>
 # Ticket Information
 @component('mail::table')
 |       |         |
@@ -26,11 +26,11 @@ Thank you for choosing TicketRoom, here is your ticket. You have been added to t
 @endcomponent
 
 <p style="text-align:center">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$event->id}}/{{$customer->id}}&amp;size=100x100"/>
+  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/>
 </p>
 
 @component('mail::panel')
-If you have any questions about the event contact the organizer @:<br>
+<p>If you have any questions about the event contact the organizer @:</p>
 E: {{ $organizer }}
 @endcomponent
 
