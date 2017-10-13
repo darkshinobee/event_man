@@ -1,45 +1,16 @@
 @component('mail::message')
-# Ticket Booked Successfully
+<p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
 
-Hi {{ $customer->first_name }},<br>
-<p>Thank you for choosing TicketRoom, here is your ticket. You have been added to the guest list. Awesome! On the day of the event, simply show this email at the admission gate to check-in. Simple!
-</p>
-# Ticket Information
-@component('mail::table')
-|       |         |
-| :------------- |:-------------|
-| Order Number     | {{ $tran->reference }}   |
-| Event Name      |{{ $event->title }} |
-| Venue      | {{ $event->venue }} |
-| Date      | {{ date_format(new DateTime($event->event_start_date), "l F j, Y ") }} |
-| Time      | {{ date_format(new DateTime($event->event_start_time), "h:ia") }} |
-| Quantity      | {{ $book->quantity }} |
-@if ($book->ticket_type == 0)
-| FREE Event      | &#8358;0.00 |
-@elseif ($book->ticket_type == 1)
-| Early Bird      | &#8358;{{ number_format($book->amount,2) }} |
-@elseif ($book->ticket_type == 2)
-| Regular      | &#8358;{{ number_format($book->amount,2) }} |
-@else
-| VIP      | &#8358;{{ number_format($book->amount,2) }} |
-@endif
-@endcomponent
-
-<p style="text-align:center">
-  <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/>
-</p>
-
-@component('mail::panel')
-<p>If you have any questions about the event contact the organizer @:</p>
-E: {{ $organizer }}
-@endcomponent
-
-<p>Do enjoy your event. Feel free to provide a feedback afterwards. All feedbacks are anonymous and would be sent to the organizer directly. This would enable them provide a better service for you the next time around.
-</p>
-<p>Got feedback for us? Shoot us a quick email at help@ticketroom.ng
-</p>
-<a href="http://ticketroom.dev/category/{{ $event->category }}">Check out these events, you might like them too</a>
-
+<p>Hi {{ $customer->first_name }},</p>
+<p>Thank you for choosing TicketRoom. You have been added to the guest list. Awesome!</p>
+<p><a style="color:#ff6600" href="{{ route('ticket_pdf', $tran->reference) }}">Download your eTicket</a></p>
+<p>When attending the event, simply show your eTicket at the admission gate to check-in. That easy!</p>
+<p>Please note that you are the primary guest on this ticket. If you bought more than one ticket for this event, we recommend you and the other person(s) on the ticket check-in at the same time to ensure a smooth admission.</p>
+<p>If you have any questions about the event contact the organizer @: {{ $organizer }}</p>
+<p><a style="color:#ff6600" href="{{ route('my_tickets') }}">View all your event tickets</a></p>
+<p>Do enjoy your event.</p>
+<p><a style="color:#ff6600" href="{{ route('events.category', $event->category) }}">Check out these events, you might like them too</a></p>
+<p>Got feedback for us? Shoot us a quick email at support@ticketroom.ng</p>
 Cheers,<br>
 {{ config('app.name') }}
 @endcomponent

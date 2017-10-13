@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Paystack;
+use Session;
 use Auth;
 use App\BookedEvent;
 use App\Event;
@@ -15,43 +16,49 @@ class PaymentController extends Controller
 {
   public function redirectToGateway(Request $request)
   {
+    $event = Event::find($request->event_id);
     $attendee = Auth::guard('customer')->user();
+    // if ($event->event_over_18 == true && $attendee->customer_over_18 == false) {
+    //   Session::flash('success', 'This event is not suitable for you');
+    //   return back();
+    // }else {
 
-    $tran = new Transaction;
-    $tran->event_id = $request->event_id;
-    $tran->attendee_id = $attendee->id;
-    $tran->reference = $request->reference;
-    $tran->save();
+      $tran = new Transaction;
+      $tran->event_id = $request->event_id;
+      $tran->attendee_id = $attendee->id;
+      $tran->reference = $request->reference;
+      $tran->save();
 
-    foreach ($request->names as $name) {
-      $extra = new Extra;
-      $extra->transaction_id = $tran->id;
-      $extra->name = $name;
-      $extra->save();
-    }
+      foreach ($request->names as $name) {
+        $extra = new Extra;
+        $extra->transaction_id = $tran->id;
+        $extra->name = $name;
+        $extra->save();
+      }
 
-    $book = new BookedEvent;
-    $book->transaction_id = $tran->id;
-    $book->ticket_type = $request->ticket_type;
-    $book->amount = $request->amount/100;
-    $book->quantity = $request->quantity;
-    if ($request->ticket_type == 0) {
-      $book->booking_status = 1;
-      $book->save();
+      $book = new BookedEvent;
+      $book->transaction_id = $tran->id;
+      $book->ticket_type = $request->ticket_type;
+      $book->amount = $request->amount/100;
+      $book->quantity = $request->quantity;
+      if ($request->ticket_type == 0) {
+        $book->booking_status = 1;
+        $book->save();
 
-      $event = Event::find($request->event_id);
-      $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
+        // $event = Event::find($request->event_id);
+        $organizer = DB::table('customers')->where('id', $event->organizer_id)->first();
 
-      DB::table('events')->where('id', $event->id)
+        DB::table('events')->where('id', $event->id)
         ->update(['ticket_bought' => $event->ticket_bought + $request->quantity]);
 
         return redirect()->action('EventController@orderSuccess', $request->reference);
 
-    }else {
-      $book->booking_status = 0;
-      $book->save();
-      return Paystack::getAuthorizationUrl()->redirectNow();
-    }
+      }else {
+        $book->booking_status = 0;
+        $book->save();
+        return Paystack::getAuthorizationUrl()->redirectNow();
+      }
+    // }
   }
 
   public function handleGatewayCallback()
@@ -70,19 +77,19 @@ class PaymentController extends Controller
 
       if ($book->ticket_type == 1) {
         DB::table('events')->where('id', $event->id)
-          ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
-       'early_bought' => $event->early_bought + $book->quantity]);
+        ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
+        'early_bought' => $event->early_bought + $book->quantity]);
       }
       elseif ($book->ticket_type == 2) {
         DB::table('events')->where('id', $event->id)
-          ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
-       'regular_bought' => $event->regular_bought + $book->quantity]);
-     }else {
-       DB::table('events')->where('id', $event->id)
         ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
-      'vip_bought' => $event->vip_bought + $book->quantity]);
-     }
-     return redirect()->action('EventController@orderSuccess', $reference);
+        'regular_bought' => $event->regular_bought + $book->quantity]);
+      }else {
+        DB::table('events')->where('id', $event->id)
+        ->update(['ticket_bought' => $event->ticket_bought + $book->quantity,
+        'vip_bought' => $event->vip_bought + $book->quantity]);
+      }
+      return redirect()->action('EventController@orderSuccess', $reference);
     }else {
       return redirect()->route('order_fail', $reference);
     }

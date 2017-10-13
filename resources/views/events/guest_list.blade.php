@@ -2,10 +2,13 @@
 <html>
 <head>
   <meta charset="utf-8">
+  {{-- <base href="{{ url('/') }}"> --}}
   <link rel="stylesheet" href="/css/my_styles.css">
   <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="{{ ltrim('css/app.css'), '/' }}" />
+  <link rel="stylesheet" href="{{ ltrim('css/my_styles.css'), '/' }}" />
   <script src="/js/app.js"></script>
-  <title>{{ $title }} Guest List</title>
+  <title>{{ $event->title }} Guest List</title>
 </head>
 <body style="background-color:white">
   <div class="container">
@@ -15,7 +18,7 @@
       </div>
     </div>
     <div class="row">
-      <h2 class="text-center">{{ $title }} - Guest List</h2><br>
+      <h2 class="text-center">{{ $event->title }} - Guest List</h2><br>
       <div class="col-md-8 col-md-offset-2">
         <table class="table">
           <thead style="color:red">

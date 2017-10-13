@@ -6,7 +6,7 @@
       <div class="row">
         <div class="hero-content">
           <h1 class="hero-title">Discover Your City One Event At A Time</h1>
-          <p class="hero-caption">Meet your favorite artists, sport teams and parties</p>
+          <p class="hero-caption">Buy and Sell Your Event Tickets</p>
           <div id="app">
             <homesearch></homesearch>
           </div>
@@ -24,29 +24,28 @@
         <div class="section-content">
           <ul class="row clearfix">
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/concert.jpg') }}" alt="image">
-              {{-- <a href="{{ route('events.category', 'concert') }}"></a> --}}
-              <a href="{{ route('events.category', 'concert') }}"><span>Concerts</span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Concert.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Concert') }}"><span><strong>Concerts</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/sport & wellness.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'sport & wellness') }}"><span>Sport & Welness</span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Sport & Wellness.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Sport & Wellness') }}"><span><strong>Sport & Welness</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/conference.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'conference') }}"><span>Conference</span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Conference.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Conference') }}"><span><strong>Conference</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/food & drink.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'food & drink') }}"><span>Food & Drink</span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Food & Drink.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Food & Drink') }}"><span><strong>Food & Drink</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/networking.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'networking') }}"><span>Networking</span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Networking.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Networking') }}"><span><strong>Networking</strong></span></a>
             </li>
             <li class=" col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/class.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'class') }}"><span>Classes</span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Class.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Class') }}"><span><strong>Classes</strong></span></a>
             </li>
           </ul>
         </div>

@@ -42,7 +42,8 @@ class EventController extends Controller
         'category' => 'required',
         'event_type' => 'required',
         'event_start_date' => 'required',
-        'event_start_time' => 'required'
+        'event_start_time' => 'required',
+        'event_over_18' => 'required'
       ));
 
       // Store to DB
@@ -102,12 +103,7 @@ class EventController extends Controller
       }
       $event->event_start_date = $request->event_start_date;
       $event->event_start_time = $request->event_start_time;
-      if ($request->has('event_end_date')) {
-        $event->event_end_date = $request->event_end_date;
-      }
-      if ($request->has('event_end_time')) {
-        $event->event_end_time = $request->event_end_time;
-      }
+      $event->event_over_18 = $request->event_over_18;
       $event->save();
 
       $ev_org = new EventOrganizer;
@@ -166,10 +162,12 @@ class EventController extends Controller
       $guest->reference = $reference;
       $guest->save();
 
-      Mail::to($attendee->email)->send(new BookingSuccess($event, $book, $attendee, $tran, $organizer->email));
+      $names = DB::table('extras')->where('transaction_id', $tran->id)->get();
+
+      Mail::to($attendee->email)->send(new BookingSuccess($event, $attendee, $tran, $organizer->email));
       // Mail::to($organizer->email)->send(new SaleSuccess($event, $book, $attendee, $organizer, $tran));
 
-      return view('events.order_success', compact('book', 'event', 'tran'));
+      return view('events.order_success', compact('book', 'event', 'tran', 'names'));
     }
 
     public function orderFail($reference)
@@ -275,7 +273,7 @@ class EventController extends Controller
     public function viewList($event_id)
     {
       $organizer = Auth::guard('customer')->user();
-      $title = DB::table('events')->where('id', $event_id)->value('title');
+      $event = DB::table('events')->where('id', $event_id)->first();
       $guests = DB::table('extras')->select('extras.name', 'booked_events.ticket_type',
       'booked_events.amount', 'transactions.reference')
                 ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
@@ -284,24 +282,28 @@ class EventController extends Controller
                 ->where('events.organizer_id', $organizer->id)
                 ->where('events.id', $event_id)
                 ->where('booking_status', 1)
-                ->orderBy('transactions.created_at', 'asc')
+                ->orderBy('extras.name', 'asc')
                 ->get();
                 // dd($guests);
-                return view('events.guest_list', compact('title','guests'));
+                return view('events.guest_list', compact('guests', 'event'));
     }
 
-    // public function downloadList($event_id)
-    // {
-    //   $organizer = Auth::guard('customer')->user();
-    //   $title = DB::table('events')->where('id', $event_id)->value('title');
-    //   $guests = DB::table('customers')->select('customers.first_name', 'customers.last_name', 'transactions.reference')
-    //             ->join('transactions', 'customers.id', '=', 'transactions.attendee_id')
-    //             ->join('events', 'transactions.event_id', '=', 'events.id')
-    //             ->where('events.organizer_id', $organizer->id)
-    //             ->where('events.id', $event_id)
-    //             ->orderBy('transactions.created_at', 'asc')
-    //             ->get();
-    //   $pdf = PDF::loadView('events.guest_list', compact('title', 'guests'));
-    //   return $pdf->download($title.'_'.'guest list.pdf');
-    // }
+    public function guestListPdf($event_id)
+    {
+      $organizer = Auth::guard('customer')->user();
+      $event = DB::table('events')->where('id', $event_id)->first();
+      $guests = DB::table('extras')->select('extras.name', 'booked_events.ticket_type',
+      'booked_events.amount', 'transactions.reference')
+                ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
+                ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
+                ->join('events', 'transactions.event_id', '=', 'events.id')
+                ->where('events.organizer_id', $organizer->id)
+                ->where('events.id', $event_id)
+                ->where('booking_status', 1)
+                ->orderBy('extras.name', 'asc')
+                ->get();
+      $pdf = PDF::loadView('events.guest_list', compact('guests', 'event'));
+      return $pdf->download($event->title.'_'.'Guest List.pdf');
+      return back();
+    }
 }

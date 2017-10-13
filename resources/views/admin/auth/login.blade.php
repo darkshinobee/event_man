@@ -54,9 +54,9 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/admin/password/reset') }}">
+                                {{-- <a class="btn btn-link" href="{{ url('/admin/password/reset') }}">
                                     Forgot Your Password?
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </form>

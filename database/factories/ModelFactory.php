@@ -62,6 +62,7 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
         // 'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
         'event_start_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'event_start_time' => $faker->time($format = 'H:i'),
+        'event_over_18' => 0,
     ];
 });
 

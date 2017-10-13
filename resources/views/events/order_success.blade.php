@@ -10,14 +10,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
+          <p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
           <div class="text-center">
             <h1>Thank you.</h1>
             <h3>Your order was completed successfully.</h3>
-            <h4>ORDER NUMBER: {{ $tran->reference }}</h4><br>
+            <h4>Reference Number: {{ $tran->reference }}</h4><br>
             <p>An email receipt including the details of your order has been sent to your email address.</p>
-            <p>You can download your ticket by clicking on this link <i><a href="#">here</a></i> or by visiting the <i><a href="#">My Tickets</a></i> page anytime.</p>
-            <h3>ORDER SUMMARY</h3>
-            <table class="table table-striped">
+            <p>You can download your ticket by clicking on this link <i><a style="color:#ff6600" href="{{ route('ticket_pdf', $tran->reference) }}">here</a></i> or by visiting the <i><a href="{{ route('my_tickets') }}" style="color:#ff6600">My Tickets</a></i> page anytime.</p><br>
+            <h3>Order Summary</h3>
+            <table class="table table-striped table-hover">
               <tbody>
                 <tr>
                   <td>Event Name</td>
@@ -53,7 +54,20 @@
                 </tr>
               </tbody>
             </table>
-            <a href="{{ route('home') }}" class="btn btn-lg myBtn">Go Home</a>
+            <div class="row">
+              <div class="col-sm-6 text-center">
+                <h3>Attendee(s)</h3>
+                <ol>
+                  @foreach ($names as $name)
+                    <li>{{ $name->name }}</li>
+                  @endforeach
+                </ol>
+              </div>
+              <div class="col-sm-6 text-center">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/>
+              </div>
+            </div>
+            <a href="{{ route('ticket', $tran->reference) }}" class="btn btn-lg myBtn">View Ticket</a>
           </div>
         </div>
       </div>

@@ -33,6 +33,11 @@
                             <div class="col-sm-8">
                               <p><span class="">{{ $event->venue.', '.$event->state }}</span></p>
                               <p><span class="">{{ date_format(new DateTime($event->event_start_date), "l F j, Y ") }} | {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</span></p>
+                              @if ($event->event_over_18 == 0)
+                                <p><span>18+</span></p>
+                                @else
+                                  <p><span>For All Ages</span></p>
+                              @endif
                             </div>
                             <div class="col-sm-4">
                               <p><span class="">Organized by - {{ $event->organizer ?: $organizer->first_name.' '.$organizer->last_name }}</span></p>

@@ -19,7 +19,7 @@
             </div>
             <div class="col-sm-5">
               <p class="">Phone: +2347038191374</p>
-              <p class="">Email: help@ticketroom.ng</p>
+              <p class="">Email: support@ticketroom.ng</p>
               <p class="">Address: 2nd Floor Machima Plaza, Mambolo Close Zone 2, Abuja.</p>
             </div>
           </div>

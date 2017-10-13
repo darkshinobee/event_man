@@ -24,7 +24,46 @@
             </div>
             <div class="form-group">
               <label for="state">State *</label>
-              <input name="state" type="text" value="" class="form-control" required="" placeholder="Enter event state">
+              <select class="form-control" name="state" required="">
+                <option>--</option>
+                <option value="Abia">Abia</option>
+                <option value="Adamawa">Adamawa</option>
+                <option value="Akwa Ibom">Akwa Ibom</option>
+                <option value="Anambra">Anambra</option>
+                <option value="Bauchi">Bauchi</option>
+                <option value="Bayelsa">Bayelsa</option>
+                <option value="Benue">Benue</option>
+                <option value="Borno">Borno</option>
+                <option value="Cross River">Cross River</option>
+                <option value="Delta">Delta</option>
+                <option value="Ebonyi">Ebonyi</option>
+                <option value="Edo">Edo</option>
+                <option value="Ekiti">Ekiti</option>
+                <option value="Enugu">Enugu</option>
+                <option value="Abuja">FCT-Abuja</option>
+                <option value="Gombe">Gombe</option>
+                <option value="Imo">Imo</option>
+                <option value="Jigawa">Jigawa</option>
+                <option value="Kaduna">Kaduna</option>
+                <option value="Kano">Kano</option>
+                <option value="Katsina">Katsina</option>
+                <option value="Kebbi">Kebbi</option>
+                <option value="Kogi">Kogi</option>
+                <option value="Kwara">Kwara</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Nasarawa">Nasarawa</option>
+                <option value="Niger">Niger</option>
+                <option value="Ogun">Ogun</option>
+                <option value="Ondo">Ondo</option>
+                <option value="Osun">Osun</option>
+                <option value="Oyo">Oyo</option>
+                <option value="Plateau">Plateau</option>
+                <option value="Rivers">Rivers</option>
+                <option value="Sokoto">Sokoto</option>
+                <option value="Taraba">Taraba</option>
+                <option value="Yobe">Yobe</option>
+                <option value="Zamafara">Zamafara</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="description">Description *</label>
@@ -35,12 +74,12 @@
                 <label for="category">Category *</label>
                 <select class="form-control" name="category" required="">
                   <option>--</option>
-                  <option value="concert">Concerts</option>
-                  <option value="sport & wellness">Sports &amp; Wellness</option>
-                  <option value="networking">Networking</option>
-                  <option value="conference">Conference</option>
-                  <option value="food & drink">Food &amp; Drink</option>
-                  <option value="class">Classes</option>
+                  <option value="Concert">Concerts</option>
+                  <option value="Sport & Wellness">Sports &amp; Wellness</option>
+                  <option value="Networking">Networking</option>
+                  <option value="Conference">Conference</option>
+                  <option value="Food & Drink">Food &amp; Drink</option>
+                  <option value="Class">Classes</option>
                 </select>
               </div>
               <div class="form-group col-sm-6">
@@ -110,22 +149,19 @@
             <label for="event_start_time">Start Time</label>
             <input type="time" name="event_start_time" value="" class="form-control" required="">
           </div>
-          {{-- <div class="form-group col-sm-4 m-t-35">
-          <a data-toggle="collapse" href="#endTime" aria-expanded="false" aria-controls="endTime">+ Add End Time</a>
-        </div> --}}
+          <div class="col-sm-4">
+            Suitable for
+            <div class="row form-check">
+              <div class="col-sm-6 m-t-10">
+                Adults<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 0 }}" required>
+              </div>
+              <div class="col-sm-6 m-t-10">
+                All<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 1 }}" required>
+              </div>
+            </div>
+          </div>
       </div>
-      {{-- <div class="collapse" id="endTime">
-      <div class="row">
-      <div class="form-group col-sm-4">
-      <label for="event_end_date">End Date</label>
-      <input type="date" name="event_end_date" value="" class="form-control">
-    </div>
-    <div class="form-group col-sm-4">
-    <label for="event_end_time">End Time</label>
-    <input type="time" name="event_end_time" value="" class="form-control">
-  </div>
-</div>
-</div> --}}
+
 <button type="submit" class="btn btn-lg btn-block myBtn m-t-20">Submit</button>
 </form>
 </div>

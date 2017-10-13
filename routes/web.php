@@ -10,25 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', function () {
-    $guest = App\GuestList::find(1);
-    $attendee = App\Customer::find(3);
-    $event = App\Event::find(11);
-    $tran = App\Transaction::find(2);
-    $book = App\BookedEvent::find(2);
-    $a = 16;
-    $b = 1;
-    // return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
-    return redirect()->action('HomeController@attendance',[$guest->reference]);
-});
+// Route::get('/test', function () {
+//     $guest = App\GuestList::find(2);
+//     // return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
+//     return redirect()->action('HomeController@attendance',[$guest->reference]);
+// });
 
 // Route::get('/test', function () {
-//     Mail::to('test@t.com')->send(new App\Mail\TestMail);
-//     return new App\Mail\TestMail;
+//   $event = App\Event::find(2);
+//   $organizer = App\Customer::find(1);
+//     return new App\Mail\AdminEventRequest;
 // });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/pricing', 'HomeController@pricing')->name('pricing');
 Route::post('/contact', 'HomeController@contactMail')->name('contact_mail');
 Route::get('/gallery', 'HomeController@pastEvents')->name('past_events');
@@ -39,6 +35,8 @@ Route::get('/events/{slug}', 'HomeController@singleEvent')->name('single_event')
 Route::get('/search/{key}', 'HomeController@search');
 
 Route::get('/my_tickets', 'HomeController@myTickets')->name('my_tickets')->middleware('customer');
+Route::get('/ticket/{reference}', 'HomeController@ticket')->name('ticket')->middleware('customer');
+Route::get('/ticket_pdf/{reference}', 'HomeController@ticketPdf')->name('ticket_pdf')->middleware('customer');
 
 Route::get('/my_events', 'HomeController@myEvents')->name('my_events')->middleware('customer');
 Route::get('/my_events_single/{slug}', 'HomeController@myEventsSingle')->name('my_events_single')->middleware('customer');
@@ -55,6 +53,7 @@ Route::group(['prefix' => '/event', 'middleware' => 'customer'], function() {
   Route::get('/order_success/{reference}', 'EventController@orderSuccess')->name('order_success');
   Route::get('/order_fail/{reference}', 'EventController@orderFail')->name('order_fail');
   Route::get('/view_list/{event_id}', 'EventController@viewList')->name('view_list');
+  Route::get('/guest_list_pdf{event_id}', 'EventController@guestListPdf')->name('guest_list_pdf');
   // Route::post('/hit/{event_id}/{customer_id}', 'EventController@eventHit')->name('event_hit');
   // Route::post('/miss/{event_id}/{customer_id}', 'EventController@eventMiss')->name('event_miss');
 });
@@ -78,13 +77,13 @@ Route::group(['prefix' => '/admin'], function () {
   Route::post('/login', 'AdminAuth\LoginController@login');
   Route::post('/logout', 'AdminAuth\LoginController@logout');
 
-  Route::get('/register', 'AdminAuth\RegisterController@showRegistrationForm');
+  // Route::get('/register', 'AdminAuth\RegisterController@showRegistrationForm');
   Route::post('/register', 'AdminAuth\RegisterController@register');
 
   Route::post('/password/email', 'AdminAuth\ForgotPasswordController@sendResetLinkEmail');
   Route::post('/password/reset', 'AdminAuth\ResetPasswordController@reset');
-  Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
-  Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
+  // Route::get('/password/reset', 'AdminAuth\ForgotPasswordController@showLinkRequestForm');
+  // Route::get('/password/reset/{token}', 'AdminAuth\ResetPasswordController@showResetForm');
 
   Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard')->middleware('admin');
   Route::get('/event_request', 'AdminController@eventRequest')->name('event_request')->middleware('admin');

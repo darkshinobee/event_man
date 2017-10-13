@@ -16,6 +16,7 @@ class AdminController extends Controller
 {
   public function dashboard()
   {
+    // return $this->eventRequest();
     return view('admin.dashboard');
   }
 

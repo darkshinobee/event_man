@@ -19,7 +19,16 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Event Name - {{ $event->title }}</li>
                 <li class="list-group-item">Date - {{ date_format(new DateTime($event->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($event->event_start_time), "h:ia") }} </li>
-                <li class="list-group-item text-center"><a class="btn btn-md myBtn" href="{{ route('view_list', $event->id) }}">Guest List</a></li>
+                <li class="list-group-item text-center">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <a class="btn btn-md myBtn" href="{{ route('view_list', $event->id) }}">View Guest List</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <a class="btn btn-md myBtn" href="{{ route('guest_list_pdf', $event->id) }}">Download Guest List</a>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>

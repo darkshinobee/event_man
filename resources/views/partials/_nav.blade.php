@@ -28,7 +28,6 @@
                 <ul class="dropdown-menu" role="menu">
                   <li><a href="{{ route('my_events') }}">My Events</a></li>
                   <li><a href="{{ route('my_tickets') }}">My Tickets</a></li>
-                  {{-- <li><a href="#">My Account</a></li> --}}
                   <li><a href="{{ url('/customer/logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ url('/customer/logout') }}" method="POST" style="display: none;">
@@ -61,7 +60,6 @@
           <nav id="site-navigation" class="navbar">
             <!-- toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              {{-- <div class="mobile-cart" ><a href="#">0</a></div> --}}
               <button type="button" class="navbar-toggle offcanvas-toggle pull-right" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -77,12 +75,12 @@
 
               <ul class="nav navbar-nav navbar-right m-t-15">
                 <li class="active"><a href="{{ route('home') }}">Home</a></li>
+                <li><a href="{{ route('about') }}">About Us</a></li>
                 <li><a href="{{ route('upcoming_events') }}">Upcoming Events</a></li>
-                <li><a href="{{ route('past_events') }}">Past Events</a></li>
+                {{-- <li><a href="{{ route('past_events') }}">Past Events</a></li> --}}
                 <li><a href="{{ route('pricing') }}">Pricing</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
                 <li><a class="btn myBtn" href="{{ route('events.create') }}">CREATE EVENT</a></li>
-                {{-- <li class="cart"><a href="#">0</a></li> --}}
               </ul>
             </div>
           </nav><!-- #site-navigation -->

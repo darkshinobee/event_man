@@ -1,13 +1,10 @@
 @component('mail::message')
+<p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
 # Thank You For Being Awesome
 
-We have received your message and would like to thank you for writing to us. If your inquiry is urgent, please use the telephone number listed below to talk to one of our staff members. Otherwise, we will reply by email as soon as possible.
-<br>
-In the meantime, check out this week's events.
+<p>We have received your message and would like to thank you for writing to us. If your inquiry is urgent, please use the telephone number listed below to talk to one of our staff members. Otherwise, we will reply by email as soon as possible.</p>
+<p><a style="#ff6600" href="{{ route('upcoming_events') }}">In the meantime, check out these events</a></p>
 
-@component('mail::button', ['url' => 'http://ticketroom.dev/upcoming_events'])
-Upcoming Events
-@endcomponent
 
 Talk to you soon,<br>
 {{ config('app.name') }}<br>

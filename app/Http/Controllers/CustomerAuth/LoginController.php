@@ -46,9 +46,15 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    // public function showLoginForm()
+    // {
+    //     return view('customer.auth.login');
+    // }
+
+    public function logout()
     {
-        // return view('customer.auth.login');
+      Auth::guard('customer')->logout();
+      return view('welcome');
     }
 
     /**

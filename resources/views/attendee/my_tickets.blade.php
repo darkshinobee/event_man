@@ -18,36 +18,24 @@
                   <div class="img-responsive text-center">
                     <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
                   </div>
-                  @else
-                    @foreach ($u_tickets as $u_ticket)
-
-                  <div class="card" style="">
-                    <a href="{{ route('single_event', $u_ticket->slug) }}">
-                      <img class="card-img-top" src="{{ asset($u_ticket->image_path) }}" alt="Card image cap">
-                    </a>
-                    <div class="card-body p-t-10">
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Event Name - {{ $u_ticket->title }}</li>
-                        <li class="list-group-item">Venue - {{ $u_ticket->venue.', '.$u_ticket->state }}</li>
-                        @if ($u_ticket->ticket_type == 0)
-                          <li class="list-group-item">Amount Paid - Free Event</li>
-                        @elseif ($u_ticket->ticket_type == 1)
-                          <li class="list-group-item">Early Bird - &#8358;{{ number_format($u_ticket->amount,2) }}</li>
-                        @elseif ($u_ticket->ticket_type == 2)
-                          <li class="list-group-item">Regular - &#8358;{{ number_format($u_ticket->amount,2) }}</li>
-                        @else
-                          <li class="list-group-item">VIP - &#8358;{{ number_format($u_ticket->amount,2) }}</li>
-                        @endif
-                        <li class="list-group-item">Quantity - {{ $u_ticket->quantity }}</li>
-                        @if ($u_ticket->status == 0)
-                          <li class="list-group-item">Due {{ date_format(new DateTime($u_ticket->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($u_ticket->event_start_time), "h:ia") }} </li>
-                        @else
-                          <li class="list-group-item">Held on {{ date_format(new DateTime($u_ticket->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($u_ticket->event_start_time), "h:ia") }} </li>
-                        @endif
-                      </ul>
-                    </div>
-                  </div>
-                @endforeach
+                @else
+                  <table class="table table-hover">
+                    <thead>
+                      <th>Event</th>
+                      <th>Action</th>
+                    </thead>
+                    <tbody>
+                      @foreach ($u_tickets as $u_ticket)
+                        <tr>
+                          <td>{{ $u_ticket->title }}</td>
+                          <td>
+                            <a class="btn btn-sm myBtn" href="{{ route('ticket', $u_ticket->reference) }}">View</a>
+                            <a class="btn btn-sm myBtn" href="{{ route('ticket_pdf', $u_ticket->reference) }}">Download</a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 @endif
               </div>
               <div class="col-sm-2"></div>
@@ -57,36 +45,23 @@
                   <div class="img-responsive text-center">
                     <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
                   </div>
-                  @else
-                @foreach ($p_tickets as $p_ticket)
-
-                  <div class="card" style="">
-                    <a href="{{ route('single_event', $p_ticket->slug) }}">
-                      <img class="card-img-top" src="{{ asset($p_ticket->image_path) }}" alt="Card image cap">
-                    </a>
-                    <div class="card-body p-t-10">
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Event Name - {{ $p_ticket->title }}</li>
-                        <li class="list-group-item">Venue - {{ $p_ticket->venue.', '.$p_ticket->state }}</li>
-                        @if ($p_ticket->ticket_type == 0)
-                          <li class="list-group-item">Amount Paid - Free Event</li>
-                        @elseif ($p_ticket->ticket_type == 1)
-                          <li class="list-group-item">Early Bird - &#8358;{{ number_format($p_ticket->amount,2) }}</li>
-                        @elseif ($p_ticket->ticket_type == 2)
-                          <li class="list-group-item">Regular - &#8358;{{ number_format($p_ticket->amount,2) }}</li>
-                        @else
-                          <li class="list-group-item">VIP - &#8358;{{ number_format($p_ticket->amount,2) }}</li>
-                        @endif
-                        <li class="list-group-item">Quantity - {{ $p_ticket->quantity }}</li>
-                        @if ($p_ticket->status == 0)
-                          <li class="list-group-item">Due {{ date_format(new DateTime($p_ticket->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($u_ticket->event_start_time), "h:ia") }} </li>
-                        @else
-                          <li class="list-group-item">Held on {{ date_format(new DateTime($p_ticket->event_start_date), "F jS, Y") }} | {{ date_format(new DateTime($u_ticket->event_start_time), "h:ia") }} </li>
-                        @endif
-                      </ul>
-                    </div>
-                  </div>
-                @endforeach
+                @else
+                  <table class="table table-hover">
+                    <thead>
+                      <th>Event</th>
+                      <th>Action</th>
+                    </thead>
+                    <tbody>
+                      @foreach ($p_tickets as $p_ticket)
+                        <tr>
+                          <td>{{ $p_ticket->title }}</td>
+                          <td>
+                            <a class="btn btn-sm myBtn" href="{{ route('ticket', $p_ticket->reference) }}">View Ticket</a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 @endif
               </div>
             </div>

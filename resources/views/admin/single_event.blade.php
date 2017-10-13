@@ -9,7 +9,12 @@
                 <div class="col-sm-7">
                   <span>{{ $event->venue.', '.$event->state }}</span><br>
                   <span>{{ date_format(new DateTime($event->event_start_date), "F jS, Y") }}</span><br>
-                  <span>{{ date_format(new DateTime($event->event_start_time), "h:ia") }}</span>
+                  <span>{{ date_format(new DateTime($event->event_start_time), "h:ia") }}</span><br>
+                  @if ($event->event_over_18 == 0)
+                    <span>18+</span>
+                    @else
+                      <span>For All Ages</span>
+                  @endif
                 </div>
                 <div class="col-sm-5">
                   <p><a href="{{ route('organizer_events', $organizer->id) }}" style="cursor:pointer; color:#ff5700">Organized by - {{ $event->organizer ?: $organizer->first_name.' '.$organizer->last_name }}</a></p>

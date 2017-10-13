@@ -11,6 +11,7 @@ use App\Event;
 use App\Customer;
 use App\GuestList;
 use Auth;
+use PDF;
 use Session;
 
 class HomeController extends Controller
@@ -26,6 +27,11 @@ class HomeController extends Controller
     public function contact()
     {
       return view('pages.contact');
+    }
+
+    public function about()
+    {
+      return view('pages.about');
     }
 
     public function pricing()
@@ -50,16 +56,7 @@ class HomeController extends Controller
       ->where('transaction_id', $tran->id)
       ->first();
 
-      $names = DB::table('extras')->select('extras.name', 'booked_events.ticket_type', 'transactions.reference')
-                ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
-                ->join('guest_lists', 'transactions.reference', '=', 'guest_lists.reference')
-                ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
-                ->join('events', 'transactions.event_id', '=', 'events.id')
-                ->where('events.organizer_id', $event->organizer_id)
-                ->where('events.id', $tran->event_id)
-                ->where('booking_status', 1)
-                ->orderBy('transactions.created_at', 'asc')
-                ->get();
+      $names = DB::table('extras')->where('transaction_id', $tran->id)->get();
 
       if ($guest->attendance == 0) {
         DB::table('guest_lists')->where('id', $guest->id)
@@ -145,7 +142,7 @@ class HomeController extends Controller
       public function myTickets()
       {
         $attendee = Auth::guard('customer')->user();
-        $p_tickets = DB::table('events')
+        $p_tickets = DB::table('events')->select('events.title', 'transactions.reference')
                   ->join('transactions', 'events.id', '=', 'transactions.event_id')
                   ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
                   ->where('transactions.attendee_id', $attendee->id)
@@ -155,7 +152,7 @@ class HomeController extends Controller
                   ->orderBy('events.event_start_date', 'asc')
                   ->get();
 
-        $u_tickets = DB::table('events')
+        $u_tickets = DB::table('events')->select('events.title', 'transactions.reference')
                   ->join('transactions', 'events.id', '=', 'transactions.event_id')
                   ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
                   ->where('transactions.attendee_id', $attendee->id)
@@ -165,6 +162,29 @@ class HomeController extends Controller
                   ->orderBy('events.event_start_date', 'asc')
                   ->get();
         return view('attendee.my_tickets', compact('p_tickets', 'u_tickets'));
+      }
+
+      public function ticket($reference)
+      {
+        $tran = DB::table('transactions')->where('reference', $reference)->first();
+        $book = DB::table('booked_events')->where('transaction_id', $tran->id)->first();
+        $event = DB::table('events')->where('id', $tran->event_id)->first();
+
+        $guests = DB::table('extras')->where('transaction_id', $tran->id)->get();
+        return view('attendee.ticket', compact('guests', 'event', 'tran', 'book'));
+      }
+
+      public function ticketPdf($reference)
+      {
+        $tran = DB::table('transactions')->where('reference', $reference)->first();
+        $book = DB::table('booked_events')->where('transaction_id', $tran->id)->first();
+        $event = DB::table('events')->where('id', $tran->event_id)->first();
+
+        $guests = DB::table('extras')->where('transaction_id', $tran->id)->get();
+
+        $pdf = PDF::loadView('attendee.ticket', compact('guests', 'event', 'tran', 'book'));
+        return $pdf->download($event->title.'_'.'Ticket.pdf');
+        return back();
       }
 
       public function myEvents()
