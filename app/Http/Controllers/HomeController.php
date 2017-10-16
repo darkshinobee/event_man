@@ -18,10 +18,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-      $events = DB::table('events')->where('status', 0)->where('approval', 1)
-      ->orderBy('events.event_start_date', 'desc')
-      ->take(6)->get();
-      return view('welcome', compact('events'));
+      return view('welcome');
     }
 
     public function contact()
