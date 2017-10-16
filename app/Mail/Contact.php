@@ -30,7 +30,7 @@ class Contact extends Mailable
     {
         return $this->markdown('emails.contact')
         ->with('request', $this->request)
-        ->from($this->request->email)
+        ->from('no-reply@ticketroom.ng', 'TicketRoom')
         ->subject($this->request->subject);
     }
 }

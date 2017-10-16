@@ -39,6 +39,10 @@ body {
 	position: relative;
 }
 
+.slidebar li.active a{
+	color: red;
+}
+
 .slidebar ul a {
 	color: rgb(140,140,140);
 	text-decoration: none;

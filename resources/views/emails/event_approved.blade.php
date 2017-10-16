@@ -1,5 +1,5 @@
 @component('mail::message')
-<p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
+<p style="text-align:center"><img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo"></p>
 <p>Hi {{ $organizer->first_name }},</p>
 <p>We are delighted to inform you that your event has been approved and is now live. Thank you for choosing TicketRoom.</p>
 <p>You may <a style="color:#ff6600" href="{{ route('single_event', $event->slug) }}">share this link</a> and start filling up your guestlist immediately.</p>

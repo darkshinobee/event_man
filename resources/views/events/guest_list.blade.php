@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="text-center">
-        <img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo">
+        <img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo">
       </div>
     </div>
     <div class="row">

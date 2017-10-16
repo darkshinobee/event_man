@@ -1,5 +1,5 @@
 @component('mail::message')
-<p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
+<p style="text-align:center"><img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo"></p>
 Hi {{ $organizer->first_name }},<br>
 <p>We're so glad you chose TicketRoom. Unfortunately, your event request was not approved. This may be due to, but not limited to, the following reasons:</p>
 <ol>

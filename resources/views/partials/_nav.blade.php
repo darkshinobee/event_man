@@ -53,7 +53,7 @@
     <div class="container">
       <div class="row">
         <div class="site-branding col-sm-3 m-b-8">
-          <h1 class="site-title"><a href="{{ route('home') }}" title="myticket" rel="home"><img src="/images/t_logo2.png" alt="logo"></a></h1>
+          <h1 class="site-title"><a href="{{ route('home') }}" title="myticket" rel="home"><img src="/images/logos/t_logo2.png" alt="logo"></a></h1>
         </div>
 
         <div class="col-sm-9">
@@ -102,7 +102,7 @@
           <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
               <div class="text-center">
-                <img src="/images/t_logo.png" alt="">
+                <img src="/images/logos/t_logo.png" alt="">
               </div><br>
               <form class="" id="register_form" role="form" method="POST" action="{{ url('/customer/register') }}">
                 {{ csrf_field() }}
@@ -173,7 +173,7 @@
           <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
               <div class="text-center">
-                <img src="/images/t_logo.png" alt="">
+                <img src="/images/logos/t_logo.png" alt="">
               </div><br>
               <form class="" id="login_form" role="form" method="POST" action="{{ url('/customer/login') }}">
                 {{ csrf_field() }}

@@ -36,12 +36,6 @@
                   'placeholder' => 'Last Name', 'maxlength' => '255')) }}
                 </div>
               </div><br>
-              <div class="row">
-                <div class="col-sm-12">
-                  {{ Form::text('email', null, array('class' => 'form-control', 'required' => '',
-                    'placeholder' => 'Email', 'maxlength' => '255')) }}
-                  </div>
-                </div><br>
                 <div class="row">
                   <div class="col-sm-12">
                     {{ Form::text('subject', null, array('class' => 'form-control', 'required' => '',

@@ -1,5 +1,5 @@
 @component('mail::message')
-<p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
+<p style="text-align:center"><img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo"></p>
 
 <p>Hi {{ $customer->first_name }},</p>
 <p>Thank you for choosing TicketRoom. You have been added to the guest list. Awesome!</p>

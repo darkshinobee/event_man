@@ -35,4 +35,5 @@
 <!-- Custom styles for this template -->
 <link rel="stylesheet" href="/theme/publish/css/style.css" >
 <link rel="stylesheet" href="/theme/publish/css/responsive.css" >
-<link rel="icon" type="image/png" href="/images/favicon_logo1.png">
+<link rel="icon" type="image/png" href="/images/logos/favicon2.png">
+{{-- <link rel="icon" type="image/png" href="/favicon.ico"> --}}

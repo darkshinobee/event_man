@@ -10,7 +10,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <p style="text-align:center"><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></p>
+          <p style="text-align:center"><img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo"></p>
           <div class="text-center">
             <h1>Thank you.</h1>
             <h3>Your order was completed successfully.</h3>

@@ -16,7 +16,7 @@
                 <h2 class="text-center m-t-15">UPCOMING EVENTS</h2>
                 @if (!$u_tickets->Count())
                   <div class="img-responsive text-center">
-                    <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
+                    <img src="{{ asset('/images/logos/no_ticket.png') }}" alt="no ticket">
                   </div>
                 @else
                   <table class="table table-hover">
@@ -43,7 +43,7 @@
                 <h2 class="text-center m-t-15">PAST EVENTS</h2>
                 @if (!$p_tickets->Count())
                   <div class="img-responsive text-center">
-                    <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
+                    <img src="{{ asset('/images/logos/no_ticket.png') }}" alt="no ticket">
                   </div>
                 @else
                   <table class="table table-hover">
@@ -67,7 +67,7 @@
             </div>
           @else
             <div class="img-responsive text-center">
-              <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
+              <img src="{{ asset('/images/logos/no_ticket.png') }}" alt="no ticket">
             </div>
           @endif
         </div>

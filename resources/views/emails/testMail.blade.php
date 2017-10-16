@@ -1,5 +1,5 @@
 @component('mail::message')
-  <img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"><br>
+  <img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo"><br>
   <img src="https://api.qrserver.com/v1/create-qr-code/?data={{$bn}}&amp;size=100x100"/><br>
 # Some Title That I Came Up With
 

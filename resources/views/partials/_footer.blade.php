@@ -22,11 +22,11 @@
           <div class="about clearfix">
             <h3>About</h3>
             <ul>
-              <li><a href="#">The Company</a></li>
+              <li><a href="{{ route('about') }}">The Company</a></li>
               {{-- <li><a href="#">Careers</a></li> --}}
               {{-- <li><a href="#">Advertising</a></li> --}}
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              {{-- <li><a href="#">Terms of Service</a></li> --}}
+              <li><a href="{{ route('policy') }}">Privacy Policy</a></li>
             </ul>
           </div>
 
@@ -53,18 +53,18 @@
                   Twitter
                 </a>
               </li>
-              <li class="linkedin">
+              {{-- <li class="linkedin">
                 <a href="https://www.linkedin.com/">
                   <i class="fa fa-linkedin-square" aria-hidden="true"></i>
                   LinkedIn
                 </a>
-              </li>
-              <li class="google">
+              </li> --}}
+              {{-- <li class="google">
                 <a href="https://plus.google.com">
                   <i class="fa fa-google-plus-square" aria-hidden="true"></i>
                   Google+
                 </a>
-              </li>
+              </li> --}}
               <li class="rss">
                 <a href="https://www.instagram.com/">
                   <i class="fa fa-instagram" aria-hidden="true"></i>

@@ -39,6 +39,11 @@ class HomeController extends Controller
       return view('pages.pricing');
     }
 
+    public function policy()
+    {
+      return view('pages.policy');
+    }
+
     public function attendance($reference)
     {
       $tran = DB::table('transactions')
@@ -69,7 +74,7 @@ class HomeController extends Controller
 
     public function contactMail(Request $request)
     {
-      Mail::to('help@ticketroom.ng')->send(new Contact($request));
+      Mail::to('support@ticketroom.ng')->send(new Contact($request));
       Mail::to($request->email)->send(new InquiryReceived);
       Session::flash('success', 'Message Sent');
       return redirect()->action('HomeController@index');

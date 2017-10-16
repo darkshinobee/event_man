@@ -40,7 +40,7 @@
           @endforeach
         @else
           <div class="img-responsive text-center">
-            <img src="{{ asset('/images/no_ticket.png') }}" alt="no ticket">
+            <img src="{{ asset('/images/logos/no_ticket.png') }}" alt="no ticket">
           </div>
         @endif
           <div class="text-center">
