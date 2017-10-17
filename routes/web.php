@@ -10,17 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/test', function () {
-//     $guest = App\GuestList::find(2);
-//     // return view('events.attendance', compact('guest', 'attendee', 'event', 'tran', 'book'));
-//     return redirect()->action('HomeController@attendance',[$guest->reference]);
-// });
-
-// Route::get('/test', function () {
-//   $event = App\Event::find(2);
-//   $organizer = App\Customer::find(1);
-//     return new App\Mail\AdminEventRequest;
-// });
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');

@@ -19,7 +19,6 @@ use App\EventMiss;
 use App\Mail\BookingSuccess;
 use App\Mail\ContactOrganizer;
 use App\Mail\AdminEventRequest;
-// use App\Mail\SaleSuccess;
 use App\Mail\EventCreated;
 
 class EventController extends Controller

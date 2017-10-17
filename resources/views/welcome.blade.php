@@ -29,7 +29,7 @@
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Sport & Wellness.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'Sport & Wellness') }}"><span><strong>Sport & Welness</strong></span></a>
+              <a href="{{ route('events.category', 'Sports & Health') }}"><span><strong>Sports & Health</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Conference.jpg') }}" alt="image">
