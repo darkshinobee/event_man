@@ -5,8 +5,9 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=5.6.4",
-        "barryvdh/laravel-dompdf": "^0.8.1",
+        "php": ">7.0",
+        "barryvdh/laravel-dompdf": ">0.6",
+        "dompdf/dompdf": ">0.6",
         "hesto/multi-auth": "^1.0",
         "intervention/image": "^2.3",
         "laravel/framework": "5.5.*",
