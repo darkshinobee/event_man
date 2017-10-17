@@ -28,16 +28,16 @@
               <a href="{{ route('events.category', 'Concert') }}"><span><strong>Concerts</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Sport & Wellness.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'Sports & Health') }}"><span><strong>Sports & Health</strong></span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Sport&Health.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Sports&Health') }}"><span><strong>Sports & Health</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Conference.jpg') }}" alt="image">
               <a href="{{ route('events.category', 'Conference') }}"><span><strong>Conference</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
-              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Food & Drink.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'Food & Drink') }}"><span><strong>Food & Drink</strong></span></a>
+              <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Food&Drink.jpg') }}" alt="image">
+              <a href="{{ route('events.category', 'Food&Drink') }}"><span><strong>Food & Drink</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Networking.jpg') }}" alt="image">
