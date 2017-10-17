@@ -75,10 +75,10 @@
                 <select class="form-control" name="category" required="">
                   <option>--</option>
                   <option value="Concert">Concerts</option>
-                  <option value="Sport&Health">Sports &amp; Health</option>
+                  <option value="Sports">Sports &amp; Health</option>
                   <option value="Networking">Networking</option>
                   <option value="Conference">Conference</option>
-                  <option value="Food&Drink">Food &amp; Drink</option>
+                  <option value="Food">Food &amp; Drink</option>
                   <option value="Class">Classes</option>
                 </select>
               </div>
