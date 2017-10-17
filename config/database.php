@@ -52,7 +52,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-            'unix_socket' => '',
+            // 'unix_socket' => '',
         ],
 
         'pgsql' => [
