@@ -42,13 +42,13 @@
             <h3>Stay Connected</h3>
             <ul>
               <li class="facebook">
-                <a href="https://www.facebook.com/">
+                <a href="https://www.fb.me/ticketroom.ng">
                   <i class="fa fa-facebook" aria-hidden="true"></i>
                   Facebook
                 </a>
               </li>
               <li class="twitter">
-                <a href="https://twitter.com/">
+                <a href="https://twitter.com/ticketroomng">
                   <i class="fa fa-twitter" aria-hidden="true"></i>
                   Twitter
                 </a>
@@ -66,7 +66,7 @@
                 </a>
               </li> --}}
               <li class="rss">
-                <a href="https://www.instagram.com/">
+                <a href="https://www.instagram.com/ticketroom.ng">
                   <i class="fa fa-instagram" aria-hidden="true"></i>
                   Instagram
                 </a>

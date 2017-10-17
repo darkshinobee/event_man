@@ -5,15 +5,15 @@
         <div class="top-left">
           <ul>
             <li>
-              <a href="#">
+              <a href="{{ route('contact') }}">
                 <i class="fa fa-phone"></i>
-                0801 234 5678
+                +234 703 819 1374
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="{{ route('contact') }}">
                 <i class="fa fa-envelope-o"></i>
-                info@ticketroom.ng
+                support@ticketroom.ng
               </a>
             </li>
           </ul>
