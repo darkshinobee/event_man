@@ -29,7 +29,7 @@
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Sports.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'Sports&Health') }}"><span><strong>Sports & Health</strong></span></a>
+              <a href="{{ route('events.category', 'Sports') }}"><span><strong>Sports & Health</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Conference.jpg') }}" alt="image">
@@ -37,7 +37,7 @@
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Food.jpg') }}" alt="image">
-              <a href="{{ route('events.category', 'Food&Drink') }}"><span><strong>Food & Drink</strong></span></a>
+              <a href="{{ route('events.category', 'Food') }}"><span><strong>Food & Drink</strong></span></a>
             </li>
             <li class="col-sm-4 cat_img">
               <img class="img-responsive image_cat" src="{{ asset('/images/defaults/Networking.jpg') }}" alt="image">
