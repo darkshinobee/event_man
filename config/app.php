@@ -185,9 +185,6 @@ return [
 
         // Paystack
         Unicodeveloper\Paystack\PaystackServiceProvider::class,
-
-        // DomPDF
-        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -240,7 +237,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

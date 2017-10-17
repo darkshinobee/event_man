@@ -25,7 +25,7 @@
                       <a class="btn btn-md myBtn" href="{{ route('view_list', $event->id) }}">View Guest List</a>
                     </div>
                     <div class="col-sm-6">
-                      <a class="btn btn-md myBtn" href="{{ route('guest_list_pdf', $event->id) }}">Download Guest List</a>
+                      {{-- <a class="btn btn-md myBtn" href="{{ route('guest_list_pdf', $event->id) }}">Download Guest List</a> --}}
                     </div>
                   </div>
                 </li>

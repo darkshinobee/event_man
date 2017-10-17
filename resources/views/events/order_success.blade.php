@@ -16,7 +16,7 @@
             <h3>Your order was completed successfully.</h3>
             <h4>Reference Number: {{ $tran->reference }}</h4><br>
             <p>An email receipt including the details of your order has been sent to your email address.</p>
-            <p>You can download your ticket by clicking on this link <i><a style="color:#ff6600" href="{{ route('ticket_pdf', $tran->reference) }}">here</a></i> or by visiting the <i><a href="{{ route('my_tickets') }}" style="color:#ff6600">My Tickets</a></i> page anytime.</p><br>
+            {{-- <p>You can download your ticket by clicking on this link <i><a style="color:#ff6600" href="{{ route('ticket_pdf', $tran->reference) }}">here</a></i> or by visiting the <i><a href="{{ route('my_tickets') }}" style="color:#ff6600">My Tickets</a></i> page anytime.</p><br> --}}
             <h3>Order Summary</h3>
             <table class="table table-striped table-hover">
               <tbody>
