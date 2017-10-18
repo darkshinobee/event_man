@@ -16,7 +16,7 @@
       <div class='wp'>Type<h2>VIP</h2></div>
     @endif
 
-    <div class='wp'>Amount<h2>N {{ $book->amount }}</h2></div>
+    <div class='wp'>Ref No<h2>{{ substr($tran->reference, 0, 5) }}</h2></div>
   </div>
   <div class='total clearfix'>
     @foreach ($guests as $guest)
@@ -24,7 +24,7 @@
     @endforeach
   </div>
     <div class='total clearfix'>
-      <h3><img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/></h3>
+      <h3><img src="https://api.qrserver.com/v1/create-qr-code/?data=http://www.ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/></h3>
   </div>
   <div class="total clearfix">
     <h3>{{ date_format(new DateTime($event->event_start_date), "l F j, Y ") }} | {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</h3>

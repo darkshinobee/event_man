@@ -170,14 +170,12 @@
             {{ csrf_field() }}
             <input type="hidden" name="event_id" value="{{ $event->id }}">
             <input type="hidden" name="email" value="{{ $attendee_email }}">
-            @if ($event->event_type == 1)
-              @if ($radio_value == 'early')
+            @if ($radio_value == 'early')
               <input type="hidden" name="ticket_type" value="{{ 1 }}">
-              @elseif ($radio_value == 'regular')
+            @elseif ($radio_value == 'regular')
               <input type="hidden" name="ticket_type" value="{{ 2 }}">
-              @else
+            @else
               <input type="hidden" name="ticket_type" value="{{ 3 }}">
-              @endif
             @endif
             <input type="hidden" name="amount" v-if="qty == 1" :value="v_price * 100">
             <input type="hidden" name="amount" v-else :value="v_total * 100">

@@ -139,14 +139,17 @@ class EventController extends Controller
     {
       $customer = Auth::guard('customer')->user();
       $attendee_email = $customer->email;
-
-      $radio_value = $request->input('fee_type');
-      $new_radio_value = $radio_value.'_max';
       $id = DB::table('events')->where('slug', $slug)->value('id');
       $event = Event::find($id);
-      $tickets_left = DB::table('events')->where('id', $id)->value($new_radio_value);
 
-      return view('payment.checkout', compact('request', 'event', 'tickets_left', 'radio_value', 'attendee_email'));
+      if ($request->input('fee_type')) {
+        $radio_value = $request->input('fee_type');
+        $new_radio_value = $radio_value.'_max';
+        $tickets_left = DB::table('events')->where('id', $id)->value($new_radio_value);
+        return view('payment.checkout', compact('event', 'tickets_left', 'radio_value', 'attendee_email'));
+      }else {
+        return view('payment.checkout', compact('event', 'attendee_email'));
+      }
     }
 
     public function orderSuccess($reference)
