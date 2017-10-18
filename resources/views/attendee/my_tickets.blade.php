@@ -30,7 +30,7 @@
                           <td>{{ $u_ticket->title }}</td>
                           <td>
                             <a class="btn btn-sm myBtn" href="{{ route('ticket', $u_ticket->reference) }}">View</a>
-                            {{-- <a class="btn btn-sm myBtn" href="{{ route('ticket_pdf', $u_ticket->reference) }}">Download</a> --}}
+                            <a class="btn btn-sm myBtn" href="{{ route('ticket_pdf', $u_ticket->reference) }}">Download</a>
                           </td>
                         </tr>
                       @endforeach

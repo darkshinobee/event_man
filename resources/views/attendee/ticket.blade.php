@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/ticket.css" />
 <div class="box">
   <div class='inner'>
-    <h1><img src="{{ asset('images/t_logo.png') }}" alt="TicketRoom Logo"></h1>
+    <h1><img src="{{ asset('images/logos/t_logo.png') }}" alt="TicketRoom Logo"></h1>
   <h1>{{ $event->title }}</h1>
   <div class='info clearfix'>
     <div class='wp'>Qty<h2>{{ $book->quantity }}</h2></div>

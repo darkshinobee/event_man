@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Auth;
+use PDF;
 use Image;
 use Session;
 use App\Event;
@@ -286,22 +287,22 @@ class EventController extends Controller
                 return view('events.guest_list', compact('guests', 'event'));
     }
 
-    // public function guestListPdf($event_id)
-    // {
-    //   $organizer = Auth::guard('customer')->user();
-    //   $event = DB::table('events')->where('id', $event_id)->first();
-    //   $guests = DB::table('extras')->select('extras.name', 'booked_events.ticket_type',
-    //   'booked_events.amount', 'transactions.reference')
-    //             ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
-    //             ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
-    //             ->join('events', 'transactions.event_id', '=', 'events.id')
-    //             ->where('events.organizer_id', $organizer->id)
-    //             ->where('events.id', $event_id)
-    //             ->where('booking_status', 1)
-    //             ->orderBy('extras.name', 'asc')
-    //             ->get();
-    //   $pdf = PDF::loadView('events.guest_list', compact('guests', 'event'));
-    //   return $pdf->download($event->title.'_'.'Guest List.pdf');
-    //   return back();
-    // }
+    public function guestListPdf($event_id)
+    {
+      $organizer = Auth::guard('customer')->user();
+      $event = DB::table('events')->where('id', $event_id)->first();
+      $guests = DB::table('extras')->select('extras.name', 'booked_events.ticket_type',
+      'booked_events.amount', 'transactions.reference')
+                ->join('transactions', 'extras.transaction_id', '=', 'transactions.id')
+                ->join('booked_events', 'transactions.id', '=', 'booked_events.transaction_id')
+                ->join('events', 'transactions.event_id', '=', 'events.id')
+                ->where('events.organizer_id', $organizer->id)
+                ->where('events.id', $event_id)
+                ->where('booking_status', 1)
+                ->orderBy('extras.name', 'asc')
+                ->get();
+      $pdf = PDF::loadView('events.guest_list', compact('guests', 'event'));
+      return $pdf->download($event->title.'_'.'Guest List.pdf');
+      return back();
+    }
 }

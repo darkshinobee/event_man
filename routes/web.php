@@ -26,7 +26,7 @@ Route::get('/search/{key}', 'HomeController@search');
 
 Route::get('/my_tickets', 'HomeController@myTickets')->name('my_tickets')->middleware('customer');
 Route::get('/ticket/{reference}', 'HomeController@ticket')->name('ticket')->middleware('customer');
-// Route::get('/ticket_pdf/{reference}', 'HomeController@ticketPdf')->name('ticket_pdf')->middleware('customer');
+Route::get('/ticket_pdf/{reference}', 'HomeController@ticketPdf')->name('ticket_pdf')->middleware('customer');
 
 Route::get('/my_events', 'HomeController@myEvents')->name('my_events')->middleware('customer');
 Route::get('/my_events_single/{slug}', 'HomeController@myEventsSingle')->name('my_events_single')->middleware('customer');
@@ -43,7 +43,7 @@ Route::group(['prefix' => '/event', 'middleware' => 'customer'], function() {
   Route::get('/order_success/{reference}', 'EventController@orderSuccess')->name('order_success');
   Route::get('/order_fail/{reference}', 'EventController@orderFail')->name('order_fail');
   Route::get('/view_list/{event_id}', 'EventController@viewList')->name('view_list');
-  // Route::get('/guest_list_pdf{event_id}', 'EventController@guestListPdf')->name('guest_list_pdf');
+  Route::get('/guest_list_pdf{event_id}', 'EventController@guestListPdf')->name('guest_list_pdf');
   // Route::post('/hit/{event_id}/{customer_id}', 'EventController@eventHit')->name('event_hit');
   // Route::post('/miss/{event_id}/{customer_id}', 'EventController@eventMiss')->name('event_miss');
 });

@@ -11,6 +11,7 @@ use App\Event;
 use App\Customer;
 use App\GuestList;
 use Auth;
+use PDF;
 use Session;
 
 class HomeController extends Controller
@@ -175,18 +176,18 @@ class HomeController extends Controller
         return view('attendee.ticket', compact('guests', 'event', 'tran', 'book'));
       }
 
-      // public function ticketPdf($reference)
-      // {
-      //   $tran = DB::table('transactions')->where('reference', $reference)->first();
-      //   $book = DB::table('booked_events')->where('transaction_id', $tran->id)->first();
-      //   $event = DB::table('events')->where('id', $tran->event_id)->first();
-      //
-      //   $guests = DB::table('extras')->where('transaction_id', $tran->id)->get();
-      //
-      //   $pdf = PDF::loadView('attendee.ticket', compact('guests', 'event', 'tran', 'book'));
-      //   return $pdf->download($event->title.'_'.'Ticket.pdf');
-      //   return back();
-      // }
+      public function ticketPdf($reference)
+      {
+        $tran = DB::table('transactions')->where('reference', $reference)->first();
+        $book = DB::table('booked_events')->where('transaction_id', $tran->id)->first();
+        $event = DB::table('events')->where('id', $tran->event_id)->first();
+
+        $guests = DB::table('extras')->where('transaction_id', $tran->id)->get();
+
+        $pdf = PDF::loadView('attendee.ticket', compact('guests', 'event', 'tran', 'book'));
+        return $pdf->download($event->title.'_'.'Ticket.pdf');
+        return back();
+      }
 
       public function myEvents()
       {
