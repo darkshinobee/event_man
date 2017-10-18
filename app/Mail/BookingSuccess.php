@@ -39,6 +39,6 @@ class BookingSuccess extends Mailable
                       'organizer' => $this->organizer
                     ])
                     ->from('no-reply@ticketroom.ng', 'TicketRoom')
-                    ->subject('Here&apos;s Your eTicket');
+                    ->subject('Here"'"s Your eTicket');
     }
 }

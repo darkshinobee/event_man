@@ -80,6 +80,8 @@
                   <option value="Conference">Conference</option>
                   <option value="Food">Food &amp; Drink</option>
                   <option value="Class">Classes</option>
+                  <option value="Arts">Arts &amp; Culture</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div class="form-group col-sm-6">
