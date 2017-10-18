@@ -62,7 +62,7 @@
 
                               @if ($event->ticket_bought < $event->ticket_count)
                                 <div class="col-sm-6">
-                                  <form action="{{ route('free_checkout', $event->slug) }}" method="post">
+                                  <form action="{{ route('checkout', $event->slug) }}" method="post">
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-lg btn-block myBtn">Get Free Ticket</button>
                                   </form>
