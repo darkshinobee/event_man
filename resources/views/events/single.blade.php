@@ -64,7 +64,7 @@
                                 <div class="col-sm-6">
                                   <form action="{{ route('checkout', $event->slug) }}" method="post">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-lg btn-block myBtn">Get Free Ticket</button>
+                                    <button type="submit" class="btn btn-lg btn-block myBtn">Get Ticket</button>
                                   </form>
                                   <h1></h1>
                                 </div>
