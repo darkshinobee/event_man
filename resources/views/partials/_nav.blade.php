@@ -18,7 +18,7 @@
             </li>
           </ul>
         </div>
-        <div class="top-right">
+        <div class="collapse navbar-collapse top-right" id="logBar">
           <ul>
             @if (Auth::guard('customer')->check())
               <li class="dropdown">
@@ -60,7 +60,7 @@
           <nav id="site-navigation" class="navbar">
             <!-- toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle offcanvas-toggle pull-right" data-toggle="offcanvas" data-target="#js-bootstrap-offcanvas">
+              <button type="button" class="navbar-toggle offcanvas-toggle pull-right" data-toggle="collapse" data-target="#logBar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

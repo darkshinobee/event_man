@@ -19,6 +19,15 @@
     body{
       background-color: red;
     }
+    h2{
+      font-size: 2.8em;
+    }
+    h3{
+      font-size: 2.5em;
+    }
+    h4{
+      font-size: 2.2em;
+    }
   </style>
 @endif
 
