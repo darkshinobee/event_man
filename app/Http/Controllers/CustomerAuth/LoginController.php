@@ -54,7 +54,7 @@ class LoginController extends Controller
     public function logout()
     {
       Auth::guard('customer')->logout();
-      return view('welcome');
+      return redirect()->action('HomeController@index');
     }
 
     /**

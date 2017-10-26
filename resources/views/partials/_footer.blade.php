@@ -5,10 +5,11 @@
 
         <div class="site-branding col-md-8">
           {{-- <a href="#"><img src="/images/t_logo2.png" alt="logo"></a> --}}
+          <span>Powered By - IB DeV</span>
         </div>
         <div class="col-md-4">
 
-          <p class="pull-right">&copy; 2017 TICKETROOM. ALL RIGHTS RESEVED</p>
+          <p class="pull-right">&copy; {{ date('Y') }} TICKETROOM. ALL RIGHTS RESEVED</p>
         </div>
       </div>
 

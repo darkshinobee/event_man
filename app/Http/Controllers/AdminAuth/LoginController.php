@@ -54,7 +54,7 @@ class LoginController extends Controller
     public function logout()
     {
       Auth::guard('admin')->logout();
-      return view('admin.auth.login');
+      return redirect()->action('AdminController@dashboard');
     }
 
     /**

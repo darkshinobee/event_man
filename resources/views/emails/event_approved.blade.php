@@ -8,12 +8,12 @@
 <ol>
   <li>There are two ways you can control admission at your event:
     <ul>
-      <li>Use a third-party app to scan tickets for validation. Download and install this app [insert link to app] and link it to our server by adding XXX to the Server section. We are currently working on having our app for this. But this works just fine.</li>
+      <li>Use a third-party app to scan tickets for validation. Download and install <a style="color:#ff6600" href="https://play.google.com/store/apps/details?id=com.raloco.qrcode">MyTicket Scanner</a> for andriod devices OR <a style="color:#ff6600" href="https://itunes.apple.com/us/app/raloco-qr-scan/id762587481?mt=8">Raloco QR Scan</a> for IOS devices. We are currently working on having our app for this. But this works just fine.</li>
       <li>You can use the guest list for smaller events or as a back-up. You can download the complete guest list after your event closes. We strongly recommend you print your guest list in case of unforeseen challenges like your battery running low.</li>
       <li><a style="color:#ff6600" href="{{ route('view_list', $event->id) }}">Here is your guest list.</a></li>
     </ul>
   </li><br>
-<li>In the case where a guest buys more than one ticket, it would be indicated on the ticket and guest list. The name(s) of the other guest(s) would be displayed on the same ticket when scanned. Look out for these.</li>
+<li>In the case where a guest buys more than one ticket, it will be indicated on the ticket and guest list. The name(s) of the other guest(s) will be displayed on the same ticket when scanned. Look out for these.</li>
 </ol>
 
 <h4>EVENT CLOSING</h4>
