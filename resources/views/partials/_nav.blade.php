@@ -155,6 +155,7 @@
       <div class="modal-footer">
         {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Go To Login</button> --}}
         {{-- <a class="btn myBtn" form="register_form">Register</a> --}}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn myBtn" form="register_form">Register</button>
       </div>
     </div>
@@ -206,6 +207,7 @@
           </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn myBtn" form="login_form">Sign In</button>
       </div>
     </div>
