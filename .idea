@@ -1,1 +1,2 @@
-
+- php fpm 7.1 gd and xsl install for dompfpdf
+- permissions for intervention image io [ chmod -R 777 /images/.. ]

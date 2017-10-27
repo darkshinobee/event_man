@@ -24,7 +24,7 @@
     @endforeach
   </div>
     <div class='total clearfix'>
-      <h3><img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/></h3>
+      <h3><img src="https://api.qrserver.com/v1/create-qr-code/?data=https://ticketroom.ng/attendance/{{$tran->reference}}&amp;size=100x100"/></h3>
   </div>
   <div class="total clearfix">
     <h3>{{ date_format(new DateTime($event->event_start_date), "l F j, Y ") }} | {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</h3>
