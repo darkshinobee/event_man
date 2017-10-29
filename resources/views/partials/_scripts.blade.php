@@ -13,3 +13,4 @@
 {{-- <script src="/theme/publish/js/main.js"></script> --}}
 
 <script src="/js/app.js"></script>
+{{-- <script src="/js/parsley.min.js"></script> --}}
