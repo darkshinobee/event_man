@@ -40,11 +40,11 @@ $factory->define(App\Admin::class, function (Faker\Generator $faker) {
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
 
     return [
-        'title' => 'Gadget Show'.$faker->unique()->numberBetween($min = 1, $max = 10),
+        'title' => $faker->company,
         'venue' => $faker->address,
         'state' => 'Abuja',
         'description' => $faker->text($maxNbChars = 200),
-        'category' => 'networking',
+        'category' => 'Other',
         'organizer' => $faker->company,
         'organizer_id' => 1,
         'event_type' => 1,
@@ -58,7 +58,7 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
         // 'hits' => $faker->numberBetween($min = 0, $max = 50),
         // 'misses' => $faker->numberBetween($min = 0, $max = 20),
         'slug' => $faker->unique()->word,
-        'image_path' => '/images/defaults/networking.jpg',
+        'image_path' => '/images/defaults/Other.jpg',
         // 'age_rating' => $faker->boolean($chanceOfGettingTrue = 50),
         'event_start_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'event_start_time' => $faker->time($format = 'H:i'),

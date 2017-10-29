@@ -30,10 +30,12 @@
                       </a>
                     </div>
                     <div class="card-body">
-                      <h3 class="event_title text-center card-title">{{ $event->title }}</h3>
-                      <p style="height:35px; overflow-x: scroll;" class="card-text">Venue - {{ $event->venue.', '.$event->state }}</p>
-                      <p class="card-text">Date - {{ date_format(new DateTime($event->event_start_date), "l, F jS, Y") }}</p>
-                      <p class="card-text">Time - {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</p>
+                      <div style="height:190px; overflow-x: scroll;">
+                        <h3 class="event_title text-center card-title">{{ $event->title }}</h3>
+                        <p class="card-text">Venue - {{ $event->venue.', '.$event->state }}</p>
+                        <p class="card-text">Date - {{ date_format(new DateTime($event->event_start_date), "l, F jS, Y") }}</p>
+                        <p class="card-text">Time - {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</p>
+                      </div>
                       <a href="{{ route('single_event', $event->slug) }}" class="btn btn-block myBtn">View Event</a>
                     </div>
                   </div>
