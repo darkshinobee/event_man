@@ -16,7 +16,7 @@
           <p>In a nutshell, TicketRoom is an event marketplace where you can buy and sell event tickets. Simple!</p><br>
           <h3 class="text-center">WHY YOU SHOULD USE TICKETROOM</h3><br>
           <ul class="list-group">
-            <li class="list-group-item">TicketRoom saves even organizers the cost of printing tickets and having to make them available to different locations around town so people can buy. </li>
+            <li class="list-group-item">TicketRoom saves event organizers the cost of printing tickets and having to make them available to different locations around town so people can buy. </li>
             <li class="list-group-item">It saves guests the hassle of having to go to these locations in order to get tickets. Now they can simply go to TicketRoom.ng and get their tickets from anywhere in the world. </li>
             <li class="list-group-item">Dealing with cash can sometimes be very stressful and, if not managed properly, may lead to serious financial loss. All payments are done online on our secure platform. As an organizer, you can track each transaction on your dashboard. There is transparency and accountability. Again, it lets you focus on other aspects of your event planning knowing that your money is intact and waiting for you in your account.</li>
             <li class="list-group-item">As a guest, you don’t have to worry about incomplete change or carrying lots of cash around in crowded places, risking being mugged. This is a win-win for everyone.</li>

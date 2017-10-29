@@ -51,3 +51,7 @@
 .cat_img:hover .image_cat {
   opacity: 0.3;
 }
+
+.event_title {
+  color: #ff6600; font-family: 'Signika', sans-serif;
+}

@@ -15,7 +15,7 @@
           <div class="search-result-header">
             <div class="row">
               <div class="text-center">
-                <h1>UPCOMING EVENTS</h1>
+                <h1 class="event_title">UPCOMING EVENTS</h1>
               </div>
             </div>
           </div>
@@ -24,13 +24,13 @@
               @foreach ($events as $event)
                 <div class="col-sm-4 m-t-10">
                   <div class="card" style="">
-                    <div class="cat_img" style="height:200px">
+                    <div class="cat_img" style="height:170px">
                       <a style="text-decoration:none;" href="{{ route('single_event', $event->slug) }}">
                         <img class="card-img-top image_cat" src="{{ asset($event->image_path) }}" alt="Card image cap">
                       </a>
                     </div>
                     <div class="card-body">
-                      <h4 class="card-title">{{ $event->title }}</h4>
+                      <h3 class="event_title text-center card-title">{{ $event->title }}</h3>
                       <p style="height:35px; overflow-x: scroll;" class="card-text">Venue - {{ $event->venue.', '.$event->state }}</p>
                       <p class="card-text">Date - {{ date_format(new DateTime($event->event_start_date), "l, F jS, Y") }}</p>
                       <p class="card-text">Time - {{ date_format(new DateTime($event->event_start_time), "h:ia") }}</p>
