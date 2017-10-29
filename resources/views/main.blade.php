@@ -13,5 +13,6 @@
       @include('partials._footer')
     </footer>
     @include('partials._scripts')
+    @include('partials._requiredFix')
   </body>
 </html>

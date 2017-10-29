@@ -4,7 +4,7 @@
 
 Hi {{ $first_name }},<br>
 
-<p>Welcome to TicketRoom! My name is Ahmed, I'm the founder. Thank you for signing up. At TicketRoom, our goal is help you discover experiences in your city that will help spice up your week. If there's anything I can do to help just let me know!
+<p>Welcome to TicketRoom! My name is Ahmed. Thank you for signing up. At TicketRoom, our goal is help you discover experiences in your city that will help spice up your week. If there's anything I can do to help just let me know!
 </p>
 <p>Here's a quick guide to help you get started.</p>
 <p><a style="#ff6600" href="{{ route('upcoming_events') }}">Discover your city one event at a time.</a>
