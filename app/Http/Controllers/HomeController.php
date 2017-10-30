@@ -129,7 +129,8 @@ class HomeController extends Controller
               $ww->where('title', 'like', '%'.$q.'%')
                     ->orWhere('category', 'like', '%'.$q.'%')
                     ->orWhere('organizer', 'like', '%'.$q.'%')
-                    ->orWhere('state', 'like', '%'.$q.'%');
+                    ->orWhere('state', 'like', '%'.$q.'%')
+                    ->orWhere('venue', 'like', '%'.$q.'%');
           })
           ->get();
         if ($query->Count()) {

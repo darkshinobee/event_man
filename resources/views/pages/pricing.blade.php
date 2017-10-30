@@ -28,9 +28,9 @@
                         <h3 style="color:#ffffff">Paid Events</h3>
                     </div>
                     <ul class="list-group text-center">
-                      <li class="list-group-item">If you will be selling your tickets, TicketRoom would charge the following:</li>
-                        <li class="list-group-item">Ticket Fee: 10% per ticket sold + &#8358;100 processing fee.</li>
-                        <li class="list-group-item">TicketRoom would receive all transactions from the ticket sales then remit to the organizer in a timely fashion.</li>
+                      <li class="list-group-item">For events with fees, TicketRoom will charge the following:</li>
+                        <li class="list-group-item">Charges: 10% per ticket sold + &#8358;100 processing fee.</li>
+                        <li class="list-group-item">Receive payments within 24hrs.</li>
                     </ul>
                 </div>
             </div>

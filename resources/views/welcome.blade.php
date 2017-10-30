@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Homepage')
+@section('title', 'Event Marketplace')
 @section('content')
   <section class="hero-1">
     <div class="container">

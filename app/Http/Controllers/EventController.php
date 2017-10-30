@@ -69,6 +69,8 @@ class EventController extends Controller
           $event->ticket_count = $request->regular_max + $request->vip_max;
         }elseif ($request->regular_max && $request->early_max && !$request->vip_max) {
           $event->ticket_count = $request->regular_max + $request->early_max;
+        }elseif ($request->regular_max && !$request->early_max && !$request->vip_max) {
+          $event->ticket_count = $request->regular_max;
         }
       }
       if ($request->early_bird && $request->early_max && $event->event_type == 1) {
