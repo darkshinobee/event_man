@@ -76,7 +76,9 @@
 
                             @else
                               <div class="col-sm-6">
+                                @if ($event->ticket_count > $event->ticket_bought)
                                 <h5 style="color:#ff5700">Select Ticket <span><i class="fa fa-arrow-down" aria-hidden="true"></i></span></h5>
+                                @endif
                                 <form action="{{ route('checkout', $event->slug) }}" method="post" id="checkout_form">
                                   {{ csrf_field() }}
                                   @if ($event->early_bought < $event->early_max)
