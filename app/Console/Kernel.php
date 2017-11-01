@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\CloseEvent',
+        \App\Console\Commands\CloseEvent::class,
     ];
 
     /**
@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-      $schedule->command('close:event', ['--force'])
-      ->dailyAt('01:00')->timezone('Africa/Lagos');
+      $schedule->command(CloseEvent::class, ['--force'])
+      ->dailyAt('07:25');
     }
 
     /**
