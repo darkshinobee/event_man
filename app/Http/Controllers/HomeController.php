@@ -102,6 +102,7 @@ class HomeController extends Controller
       $related_events = DB::table('events')->where('category', $event->category)
                                            ->where('status', 0)
                                            ->where('approval', 1)
+                                           ->where('id', '!=', $id)
                                            ->take(3)
                                            ->orderBy('events.event_start_date', 'desc')
                                            ->get();

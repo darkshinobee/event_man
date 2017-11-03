@@ -15,7 +15,7 @@
                     <div class="panel-heading">
                         <h3 style="color:#ffffff">Free Events</h3>
                     </div>
-                    <ul style="height:170px" class="list-group text-center">
+                    <ul class="list-group text-center">
                         <li class="list-group-item">Free events are free. No charge at all.</li>
                         <li class="list-group-item">Feel free to create as many free events as you want.</li>
                         <li class="list-group-item">Your customers don't have to pay for anything either.</li>
@@ -29,7 +29,7 @@
                     </div>
                     <ul class="list-group text-center">
                       <li class="list-group-item">For events with fees, TicketRoom will charge the following:</li>
-                        <li class="list-group-item">Charges: 10% per ticket sold + &#8358;100 processing fee.</li>
+                        <li class="list-group-item">Charges: 10% per ticket sold.</li>
                         <li class="list-group-item">Receive payments within 24hrs.</li>
                     </ul>
                 </div>

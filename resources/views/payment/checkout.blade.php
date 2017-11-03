@@ -138,8 +138,6 @@
           <div class="section-order-review-pricing">
             <div class="pricing-coupon">
                 <table class="table pricing-review">
-                  {{-- <input v-for="name in qty" class="form-control m-b-5" type="text" name="names[]" form="payForm" placeholder="Name on Ticket *" required> --}}
-                  {{-- <hr> --}}
                   <tbody>
                     <tr>
                       <td>Ticket Price</td>
@@ -153,12 +151,17 @@
                       <td>Quantity</td>
                       <td>@{{ qty }}</td>
                     </tr>
+                    <tr>
+                      <td>Tax</td>
+                      <td v-if="qty == 1">&#8358;@{{ v_tax_price.toFixed(2) }}</td>
+                      <td v-else>&#8358;@{{ v_tax_total.toFixed(2) }}</td>
+                    </tr>
                   </tbody>
                   <tfoot>
                     <tr>
-                      <td>Total Price</td>
-                      <td class="total-price" v-if="qty == 1">&#8358;@{{ v_price.toFixed(2) }}</td>
-                      <td class="total-price" v-else>&#8358;@{{ v_total.toFixed(2) }}</td>
+                      <td>Total</td>
+                      <td class="total-price" v-if="qty == 1">&#8358;@{{ total_p.toFixed(2) }}</td>
+                      <td class="total-price" v-else>&#8358;@{{ total_t.toFixed(2) }}</td>
                     </tr>
                   </tfoot>
                 </table>
@@ -181,13 +184,12 @@
               <input type="hidden" name="ticket_type" value="{{ 3 }}">
               @endif
             @endif
-            <input type="hidden" name="amount" v-if="qty == 1" :value="v_price * 100">
-            <input type="hidden" name="amount" v-else :value="v_total * 100">
+            <input type="hidden" name="amount" v-if="qty == 1" :value="total_p * 100">
+            <input type="hidden" name="amount" v-else :value="total_t * 100">
 
             <input type="hidden" name="quantity" :value="qty">
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
             <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}">
-            {{-- <input type="hidden" name="event_type" value="{{ $event->event_type }}"> --}}
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           @if ($event->event_type == 0)
             <input type="hidden" name="ticket_type" value="{{ 0 }}">
@@ -211,16 +213,42 @@ var v_checkout = new Vue({
   data: {
     qty: 1,
     v_price: 0,
-    v_total: 0
+    v_total: 0,
+    v_tax_total: 0
+  },
+  computed: {
+    v_tax_price: function() {
+      if (this.qty == 1 && this.v_price < 2500) {
+        return 0.015 * this.v_price;
+      }else if (this.qty == 1 && this.v_price >= 2500) {
+        return (0.015 * this.v_price) + 100;
+      }
+    },
+    total_p: function() {
+      return this.v_price + this.v_tax_price;
+    },
+    total_t: function() {
+      return this.v_total + this.v_tax_total;
+    }
   },
   methods: {
     add: function() {
       this.qty = +this.qty + +1;
-      this.v_total = this.v_price * this.qty
+      this.v_total = this.v_price * this.qty;
+      if (this.v_total < 2500) {
+        this.v_tax_total = 0.015 * this.v_total;
+      }else {
+        this.v_tax_total = (0.015 * this.v_total) + 100;
+      }
     },
     minus: function() {
       this.qty = this.qty - 1;
-      this.v_total = this.v_price * this.qty
+      this.v_total = this.v_price * this.qty;
+      if (this.v_total < 2500) {
+        this.v_tax_total = 0.015 * this.v_total;
+      }else {
+        this.v_tax_total = (0.015 * this.v_total) + 100;
+      }
     }
   }
 });

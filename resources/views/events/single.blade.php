@@ -56,10 +56,7 @@
                         @if ($event->status == 0)
                           <div class="row">
                             @if ($event->event_type == 0)
-                              <div class="col-sm-6">
-                                {{-- <h1> FREE TICKET</h1> --}}
-                              </div>
-
+                              <div class="col-sm-6"></div>
                               @if ($event->ticket_bought < $event->ticket_count)
                                 <div class="col-sm-6">
                                   <form action="{{ route('checkout', $event->slug) }}" method="post">
@@ -138,6 +135,7 @@
         <div class="col-md-3">
           <div class="">
             <h3 class="text-center">Related Events</h3>
+            @if ($related_events->Count())
             @foreach ($related_events as $related)
               <div class="">
                 <a class="" href="{{ route('single_event', $related->slug) }}">
@@ -148,6 +146,11 @@
             @endforeach
           </div>
           <a class="btn btn-md myBtn pull-right" href="{{ route('events.category', $event->category) }}">More...</a>
+          @else
+            <div class="img-responsive text-center">
+              <img src="{{ asset('/images/logos/no_ticket.png') }}" alt="no ticket">
+            </div>
+          @endif
         </div>
       </div>
     </div>
