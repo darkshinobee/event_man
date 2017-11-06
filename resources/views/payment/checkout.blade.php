@@ -187,6 +187,11 @@
             <input type="hidden" name="amount" v-if="qty == 1" :value="total_p * 100">
             <input type="hidden" name="amount" v-else :value="total_t * 100">
 
+            <input type="hidden" name="business_name" value="IB DeV">
+            <input type="hidden" name="settlement_bank" value="Guaranty Trust Bank">
+            <input type="hidden" name="account_number" value="{{ 0141617371 }}">
+            <input type="hidden" name="percentage_charge" value="{{ 90 }}">
+
             <input type="hidden" name="quantity" :value="qty">
             <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
             <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}">
