@@ -152,7 +152,7 @@
                       <td>@{{ qty }}</td>
                     </tr>
                     <tr>
-                      <td>Tax</td>
+                      <td>V.A.T</td>
                       <td v-if="qty == 1">&#8358;@{{ v_tax_price.toFixed(2) }}</td>
                       <td v-else>&#8358;@{{ v_tax_total.toFixed(2) }}</td>
                     </tr>

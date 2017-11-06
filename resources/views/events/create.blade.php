@@ -90,104 +90,104 @@
               </div>
             </div>
             <div class="row">
-          <div class="col-sm-6">
-            <label>Event Type</label><br>
-            <div class="form-check form-check-inline m-t-10">
-              <label class="form-check-label">
-                <input name="event_type" type="radio" class="form-check-input" value={{ 1 }} required="" @click="paid"> Paid
-              </label>
-              <label class="form-check-label">
-                <input name="event_type" type="radio" class="form-check-input" value={{ 0 }} required="" checked @click="free"> Free
-              </label>
-            </div>
-          </div>
-
-          <div class="form-group col-sm-6" :hidden="isFree">
-            <label for="ticket_count">Max Number of Tickets *</label>
-            <input name="ticket_count" type="number" value="" class="form-control" :required="isPaid">
-          </div>
-        </div>
-        <div class="" id="" :hidden="isPaid">
-          <div class="row">
-            <div class="form-group col-sm-4">
-              <label for="early_bird">Early bird (optional)</label>
-              <input name="early_bird" type="number" class="form-control" placeholder="&#8358; 00.00">
-            </div>
-            <div class="form-group col-sm-4">
-              <label for="vip_fee">VIP fee (optional)</label>
-              <input name="vip_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
-            </div>
-            <div class="form-group col-sm-4">
-              <label for="regular_fee">Regular fee *</label>
-              <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00" :required="isFree">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group col-sm-4">
-              <label for="early_bird">Early bird Qty</label>
-              <input name="early_max" type="number" class="form-control" >
-            </div>
-            <div class="form-group col-sm-4">
-              <label for="vip_fee">VIP Qty</label>
-              <input name="vip_max" type="number" class="form-control" >
-            </div>
-            <div class="form-group col-sm-4">
-              <label for="regular_fee">Regular Qty *</label>
-              <input name="regular_max" type="number" class="form-control" :required="isFree">
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="image_path">Upload Event Photo (optional)</label>
-          <input type="file" name="image_path" value="" class="form-control">
-        </div>
-        <div class="row">
-          <div class="form-group col-sm-4">
-            <label for="event_start_date">Start Date</label>
-            <input type="date" name="event_start_date" value="" min="{{ date("Y-m-d") }}" class="form-control" required="">
-          </div>
-          <div class="form-group col-sm-4">
-            <label for="event_start_time">Start Time</label>
-            <input type="time" name="event_start_time" value="" class="form-control" required="">
-          </div>
-          <div class="col-sm-4">
-            Suitable for
-            <div class="row form-check">
-              <div class="col-sm-6 m-t-10">
-                Adults<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 0 }}" required>
+              <div class="col-sm-6">
+                <label>Event Type</label><br>
+                <div class="form-check form-check-inline m-t-10">
+                  <label class="form-check-label">
+                    <input name="event_type" type="radio" class="form-check-input" value={{ 1 }} required="" @click="paid"> Paid
+                  </label>
+                  <label class="form-check-label">
+                    <input name="event_type" type="radio" class="form-check-input" value={{ 0 }} required="" checked @click="free"> Free
+                  </label>
+                </div>
               </div>
-              <div class="col-sm-6 m-t-10">
-                All<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 1 }}" required>
+
+              <div class="form-group col-sm-6" :hidden="isFree">
+                <label for="ticket_count">Max Number of Tickets *</label>
+                <input name="ticket_count" type="number" value="" class="form-control" :required="isPaid">
               </div>
             </div>
-          </div>
+            <div class="" id="" :hidden="isPaid">
+              <div class="row">
+                <div class="form-group col-sm-4">
+                  <label for="early_bird">Early bird (optional)</label>
+                  <input name="early_bird" type="number" class="form-control" placeholder="&#8358; 00.00">
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="vip_fee">VIP fee (optional)</label>
+                  <input name="vip_fee" type="number" class="form-control" placeholder="&#8358; 00.00">
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="regular_fee">Regular fee *</label>
+                  <input name="regular_fee" type="number" class="form-control" placeholder="&#8358; 00.00" :required="isFree">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group col-sm-4">
+                  <label for="early_bird">Early bird Qty</label>
+                  <input name="early_max" type="number" class="form-control" >
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="vip_fee">VIP Qty</label>
+                  <input name="vip_max" type="number" class="form-control" >
+                </div>
+                <div class="form-group col-sm-4">
+                  <label for="regular_fee">Regular Qty *</label>
+                  <input name="regular_max" type="number" class="form-control" :required="isFree">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image_path">Upload Event Photo (optional)</label>
+              <input type="file" name="image_path" value="" class="form-control">
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-4">
+                <label for="event_start_date">Start Date</label>
+                <input type="date" name="event_start_date" value="" min="{{ date("Y-m-d") }}" class="form-control" required="">
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="event_start_time">Start Time</label>
+                <input type="time" name="event_start_time" value="" class="form-control" required="">
+              </div>
+              <div class="col-sm-4">
+                Suitable for
+                <div class="row form-check">
+                  <div class="col-sm-6 m-t-10">
+                    Adults<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 0 }}" required>
+                  </div>
+                  <div class="col-sm-6 m-t-10">
+                    All<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 1 }}" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-lg btn-block myBtn m-t-20">Submit</button>
+          </form>
+        </div>
       </div>
-
-<button type="submit" class="btn btn-lg btn-block myBtn m-t-20">Submit</button>
-</form>
-</div>
-</div>
-</div>
-</section>
-<script type="text/javascript" src="/js/vue.js"></script>
-<script>
-var v_create = new Vue({
-  el: '#create',
-  data: {
-    isFree: false,
-    isPaid: true
-  },
-  methods: {
-    free: function() {
-      this.isFree = false;
-      this.isPaid = true
+    </div>
+  </section>
+  <script type="text/javascript" src="/js/vue.js"></script>
+  <script>
+  var v_create = new Vue({
+    el: '#create',
+    data: {
+      isFree: false,
+      isPaid: true
     },
-    paid: function() {
-      this.isFree = true;
-      this.isPaid = false
+    methods: {
+      free: function() {
+        this.isFree = false;
+        this.isPaid = true
+      },
+      paid: function() {
+        this.isFree = true;
+        this.isPaid = false
+      }
     }
-  }
-});
-</script>
+  });
+  </script>
 @endsection

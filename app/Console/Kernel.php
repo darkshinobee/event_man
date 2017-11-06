@@ -25,9 +25,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-      $schedule->command(CloseEvent::class, ['--force'])
-      // ->dailyAt('07:25');
-      ->everyMinute();
+      $schedule->command(CloseEvent::class, ['--force'])->everyMinute();
     }
 
     /**
