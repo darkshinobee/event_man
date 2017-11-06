@@ -104,7 +104,7 @@
 
               <div class="form-group col-sm-6" :hidden="isFree">
                 <label for="ticket_count">Max Number of Tickets *</label>
-                <input name="ticket_count" type="number" value="" class="form-control" :required="isPaid">
+                <input name="ticket_count" type="number" v-model="t_max" :value="t_max" class="form-control" :required="isPaid">
               </div>
             </div>
             <div class="" id="" :hidden="isPaid">
@@ -176,7 +176,8 @@
     el: '#create',
     data: {
       isFree: false,
-      isPaid: true
+      isPaid: true,
+      t_max: 0
     },
     methods: {
       free: function() {
@@ -185,7 +186,8 @@
       },
       paid: function() {
         this.isFree = true;
-        this.isPaid = false
+        this.isPaid = false;
+        this.t_max = 0
       }
     }
   });
