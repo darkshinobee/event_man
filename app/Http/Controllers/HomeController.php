@@ -86,7 +86,8 @@ class HomeController extends Controller
 
     public function upcomingEvents()
     {
-      $events = DB::table('events')->where('status', 0)->where('approval', 1)
+      $events = DB::table('events')->where('status', 0)
+      ->where('approval', 1)->where('event_start_date', '>', date('Y-m-d'))
       ->orderBy('events.event_start_date', 'asc')->simplePaginate(6);
       return view('events.upcoming', compact('events'));
     }

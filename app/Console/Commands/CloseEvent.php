@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class CloseEvent extends Command
 {
@@ -42,5 +42,5 @@ class CloseEvent extends Command
     ->where('event_start_date', date('Y-m-d'))
     ->where('approval', 1)
     ->update(['status' => 1]);
-  }
+}
 }
