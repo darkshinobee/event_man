@@ -13,9 +13,24 @@ use App\GuestList;
 use Auth;
 use PDF;
 use Session;
+use Ixudra\Curl\Facades\Curl;
 
 class HomeController extends Controller
 {
+
+  // public function test()
+  // {
+  //   $response = Curl::to('https://api.paystack.co/subaccount')
+  //   ->withHeader('Authorization: Bearer [sk_test_654d07ce99089f0d5f46bc30a438907ac9dcf487]')
+  //   ->withData(array('business_name' => 'My Biz',
+  //   'settlement_bank' => 'Zenith Bank',
+  //   'account_number' => '0000000000',
+  //   'percentage_charge' => '100'))
+  //   ->asJson()
+  //   ->post();
+  //   dd($response);
+  // }
+
   public function index()
   {
     return view('welcome');

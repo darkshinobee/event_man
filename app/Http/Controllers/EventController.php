@@ -124,7 +124,8 @@ class EventController extends Controller
     {
       $events = DB::table('events')->where('category', $category)
       ->where('status', 0)->where('approval', 1)
-      ->orderBy('events.event_start_date', 'desc')->simplePaginate(6);
+      ->where('event_start_date', '>', date('Y-m-d'))
+      ->orderBy('events.event_start_date', 'asc')->simplePaginate(6);
       return view('events.upcoming', compact('events', 'category'));
     }
 

@@ -188,6 +188,9 @@ return [
 
         // DomPDF
         Barryvdh\DomPDF\ServiceProvider::class,
+
+        // Curl
+        Ixudra\Curl\CurlServiceProvider::class,
     ],
 
     /*
@@ -241,6 +244,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Curl' => Ixudra\Curl\Facades\Curl::class,
 
     ],
 

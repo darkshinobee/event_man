@@ -30,7 +30,7 @@
                     <ul class="list-group text-center">
                       <li class="list-group-item">For events with fees, TicketRoom will charge the following:</li>
                         <li class="list-group-item">Charges: 10% per ticket sold.</li>
-                        <li class="list-group-item">Receive payments within 24hrs.</li>
+                        <li class="list-group-item">Receive payments on a weekly basis.</li>
                     </ul>
                 </div>
             </div>
