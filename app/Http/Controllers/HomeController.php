@@ -142,6 +142,7 @@ class HomeController extends Controller
       $query = DB::table('events')->select('title', 'category', 'venue', 'state', 'organizer', 'regular_fee', 'image_path', 'slug', 'event_start_date', 'status')
       ->where('status', $key)
       ->where('approval', 1)
+      ->where('event_start_date', '>', date('Y-m-d'))
       ->where(function ($ww) use ($q){
         $ww->where('title', 'like', '%'.$q.'%')
         ->orWhere('category', 'like', '%'.$q.'%')
