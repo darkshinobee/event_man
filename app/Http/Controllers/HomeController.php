@@ -118,6 +118,7 @@ class HomeController extends Controller
     $related_events = DB::table('events')->where('category', $event->category)
     ->where('status', 0)
     ->where('approval', 1)
+    ->where('event_start_date', '>', date('Y-m-d'))
     ->where('id', '!=', $id)
     ->take(3)
     ->orderBy('events.event_start_date', 'desc')
@@ -142,6 +143,7 @@ class HomeController extends Controller
       $query = DB::table('events')->select('title', 'category', 'venue', 'state', 'organizer', 'regular_fee', 'image_path', 'slug', 'event_start_date', 'status')
       ->where('status', $key)
       ->where('approval', 1)
+      ->where('event_start_date', '>', date('Y-m-d'))
       ->where(function ($ww) use ($q){
         $ww->where('title', 'like', '%'.$q.'%')
         ->orWhere('category', 'like', '%'.$q.'%')
