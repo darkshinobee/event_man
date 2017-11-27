@@ -79,7 +79,7 @@
       <div class="col-sm-6 col-sm-offset-3">
         <div class="row">
           <div class="col-sm-6">
-            {{-- <a href="{{ route('edit_event', $event->id) }}" class="btn btn-primary btn-block">Edit</a> --}}
+            <a href="{{ route('edit_event', $event->id) }}" class="btn btn-primary btn-block">Edit</a>
           </div>
           <div class="col-sm-6">
             <a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal">Delete</a>

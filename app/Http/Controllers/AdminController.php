@@ -16,7 +16,6 @@ class AdminController extends Controller
 {
   public function dashboard()
   {
-    // return $this->eventRequest();
     return view('admin.dashboard');
   }
 
@@ -149,15 +148,41 @@ class AdminController extends Controller
     return redirect()->action('AdminController@dashboard');
   }
 
-  // public function editEvent($id)
-  // {
-  //   $event = Event::find($id);
-  //   return view('admin.edit_event', compact('event'));
-  // }
-  //
-  // public function updateEventDetails(Request $request, $id)
-  // {
-  //   # code...
-  // }
+  public function editEvent($id)
+  {
+    $event = Event::find($id);
+    return view('admin.edit_event', compact('event'));
+  }
+
+  public function updateEventDetails(Request $request, $id)
+  {
+    // Validation
+    $this -> validate($request, array(
+      'title' => 'required',
+      'venue' => 'required',
+      'state' => 'required',
+      'description' => 'required',
+      'category' => 'required',
+      'event_start_date' => 'required',
+      'event_start_time' => 'required',
+      'event_over_18' => 'required'
+    ));
+
+    $event = Event::find($id);
+
+    $event->title = $request->title;
+    $event->venue = $request->venue;
+    $event->state = $request->state;
+    $event->description = $request->description;
+    $event->category = $request->category;
+
+    $event->event_start_date = $request->event_start_date;
+    $event->event_start_time = $request->event_start_time;
+    $event->event_over_18 = $request->event_over_18;
+    $event->save();
+
+    Session::flash('success', 'Event Updated.');
+    return redirect()->action('AdminController@dashboard');
+  }
 
 }

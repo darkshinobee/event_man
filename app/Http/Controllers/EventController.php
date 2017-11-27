@@ -30,7 +30,6 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-      // dd($request);
       $customer = Auth::guard('customer')->user();
       // Validation
       $this -> validate($request, array(

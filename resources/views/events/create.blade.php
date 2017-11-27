@@ -125,15 +125,15 @@
 
               <div class="row">
                 <div class="form-group col-sm-4">
-                  <label for="early_bird">Early bird Qty</label>
+                  <label for="early_max">Early bird Qty</label>
                   <input name="early_max" type="number" class="form-control" >
                 </div>
                 <div class="form-group col-sm-4">
-                  <label for="vip_fee">VIP Qty</label>
+                  <label for="vip_max">VIP Qty</label>
                   <input name="vip_max" type="number" class="form-control" >
                 </div>
                 <div class="form-group col-sm-4">
-                  <label for="regular_fee">Regular Qty *</label>
+                  <label for="regular_max">Regular Qty *</label>
                   <input name="regular_max" type="number" class="form-control" :required="isFree">
                 </div>
               </div>
@@ -163,26 +163,6 @@
                 </div>
               </div>
             </div>
-            {{-- <div class="row">
-              <div class="form-group col-sm-6">
-                <label for="category">Bank Name</label>
-                <select class="form-control" name="bank_name" required="">
-                  <option>--</option>
-                  <option value="Concert">Concerts</option>
-                  <option value="Sports">Sports &amp; Health</option>
-                  <option value="Networking">Networking</option>
-                  <option value="Conference">Conference</option>
-                  <option value="Food">Food &amp; Drink</option>
-                  <option value="Class">Classes</option>
-                  <option value="Arts">Arts &amp; Culture</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div class="form-group col-sm-6">
-                <label for="organizer">Account Number *</label>
-                <input name="account_number" type="text"  class="form-control" placeholder="Account Number *" required>
-              </div>
-            </div> --}}
 
             <button type="submit" class="btn btn-lg btn-block myBtn m-t-20">Submit</button>
           </form>

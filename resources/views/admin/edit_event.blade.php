@@ -76,7 +76,70 @@
               <option value="Other">Other</option>
             </select>
           </div>
+          {{-- @if ($event->event_type == 0)
+            <div class="form-group">
+              <label for="ticket_count">Max Number of Tickets *</label>
+              <input name="ticket_count" type="number" value="{{ $event->ticket_count }}" class="form-control" required>
+            </div>
+            @else
+              <div>
+                <div class="row">
+                  <div class="form-group col-sm-4">
+                    <label for="early_bird">Early bird</label>
+                    <input name="early_bird" type="number" class="form-control" value="{{ $event->early_bird }}">
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="vip_fee">VIP fee</label>
+                    <input name="vip_fee" type="number" class="form-control" value="{{ $event->vip_fee }}">
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="regular_fee">Regular fee *</label>
+                    <input name="regular_fee" type="number" class="form-control" value="{{ $event->regular_fee }}" required>
+                  </div>
+                </div>
 
+                <div class="row">
+                  <div class="form-group col-sm-4">
+                    <label for="early_max">Early bird Qty</label>
+                    <input name="early_max" type="number" class="form-control" value="{{ $event->early_max }}">
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="vip_max">VIP Qty</label>
+                    <input name="vip_max" type="number" class="form-control" value="{{ $event->vip_max }}">
+                  </div>
+                  <div class="form-group col-sm-4">
+                    <label for="regular_max">Regular Qty *</label>
+                    <input name="regular_max" type="number" class="form-control" value="{{ $event->regular_max }}" required>
+                  </div>
+                </div>
+              </div>
+          @endif --}}
+          <div class="row">
+            <div class="form-group col-sm-4">
+              <label for="event_start_date">Start Date</label>
+              <input type="date" name="event_start_date" value="{{ $event->event_start_date }}" min="{{ date("Y-m-d") }}" class="form-control" required>
+            </div>
+            <div class="form-group col-sm-4">
+              <label for="event_start_time">Start Time</label>
+              <input type="time" name="event_start_time" value="{{ $event->event_start_time }}" class="form-control" required>
+            </div>
+            <div class="col-sm-4">
+              Suitable for
+              <div class="row form-check">
+                <div class="col-sm-6 m-t-10">
+                  Adults<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 0 }}" required>
+                </div>
+                <div class="col-sm-6 m-t-10">
+                  All<input class="m-l-5 form-check-input" type="radio" name="event_over_18" value="{{ 1 }}" required>
+                </div>
+              </div>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+              <button type="submit" class="btn btn-block btn-success">Submit</button>
+            </div>
+          </div><br>
         </form>
       </div>
     </div>
