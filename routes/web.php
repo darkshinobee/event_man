@@ -88,4 +88,8 @@ Route::group(['prefix' => '/admin'], function () {
   Route::get('approve/{event_id}', 'AdminController@approve')->name('approve')->middleware('admin');
   Route::get('reject/{event_id}', 'AdminController@reject')->name('reject')->middleware('admin');
   Route::post('contact_organizer', 'AdminController@contactOrganizer')->name('admin_contact_organizer')->middleware('admin');
+
+  Route::post('/delete_event/{id}', 'AdminController@deleteEvent')->name('delete_event')->middleware('admin');
+  // Route::get('/edit_event/{id}', 'AdminController@editEvent')->name('edit_event')->middleware('admin');
+  // Route::post('/update_event_details/{id}', 'HomeController@updateEventDetails')->name('update_event_details')->middleware('admin');
 });

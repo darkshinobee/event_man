@@ -75,6 +75,18 @@
         </tbody>
       </table><br>
     @endif
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <div class="row">
+          <div class="col-sm-6">
+            {{-- <a href="{{ route('edit_event', $event->id) }}" class="btn btn-primary btn-block">Edit</a> --}}
+          </div>
+          <div class="col-sm-6">
+            <a href="#" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteModal">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div><br>
   </div>
 
   <!-- Contact Modal -->
@@ -113,5 +125,29 @@
       </div>
     </div>
   </div>
+
+  {{-- Delete Modal --}}
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Delete Event</h5>
+      </div>
+      <div class="modal-footer">
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+          <div class="col-sm-6">
+            <form action="{{ route('delete_event', $event->id) }}" method="post">
+              {{ csrf_field() }}
+              <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 @stop

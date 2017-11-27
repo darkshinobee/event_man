@@ -139,4 +139,25 @@ class AdminController extends Controller
     Session::flash('success', 'Message Sent');
     return redirect()->action('AdminController@dashboard');
   }
+
+  public function deleteEvent($id)
+  {
+    $event = Event::find($id);
+    $event->delete();
+
+    Session::flash('success', 'Event Deleted');
+    return redirect()->action('AdminController@dashboard');
+  }
+
+  // public function editEvent($id)
+  // {
+  //   $event = Event::find($id);
+  //   return view('admin.edit_event', compact('event'));
+  // }
+  //
+  // public function updateEventDetails(Request $request, $id)
+  // {
+  //   # code...
+  // }
+
 }
