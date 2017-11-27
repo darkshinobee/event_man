@@ -42794,7 +42794,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }],
     attrs: {
       "type": "text",
-      "placeholder": "Seach Event or City"
+      "placeholder": "Search Event or City"
     },
     domProps: {
       "value": (_vm.search_query)

@@ -5,8 +5,9 @@
     <div class="container">
       <div class="row">
         <div class="hero-content">
-          <h1 class="hero-title">Discover Your City One Event At A Time</h1>
-          <p class="hero-caption">Buy and Sell Your Event Tickets</p>
+          <h1 class="hero-title">Buy and Sell Your Event Tickets</h1><br>
+          {{-- <h1 class="hero-title">Discover Your City One Event At A Time</h1> --}}
+          {{-- <p class="hero-caption">Buy and Sell Your Event Tickets</p> --}}
           <div id="app">
             <homesearch></homesearch>
           </div>

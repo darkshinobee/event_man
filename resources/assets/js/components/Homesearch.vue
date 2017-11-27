@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="dropdown">
     <div class="hero-search dropdown-toggle" data-toggle="dropdown">
-      <input type="text" placeholder="Seach Event or City"
+      <input type="text" placeholder="Search Event or City"
       v-model="search_query" @keyup.enter="search()">
     </div>
     <ul class="search_res dropdown-menu search_ddown" v-if="search_query.length">
